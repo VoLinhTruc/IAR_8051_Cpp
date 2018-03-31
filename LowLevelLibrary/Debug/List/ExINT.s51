@@ -1,0 +1,995 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.10.1.4655 for 8051              31/Mar/2018  15:48:42
+// Copyright 2004-2017 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ExINT.c
+//    Command line       =  
+//        -f C:\Users\Bico\AppData\Local\Temp\EW940F.tmp
+//        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ExINT.c" -lC
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+//        --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+//        Files (x86)\IAR Systems\Embedded Workbench
+//        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+//        -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+//        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+//        --no_cross_call)
+//    Locale             =  Vietnamese_Vietnam.1258
+//    List file          =  
+//        C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\Debug\List\ExINT.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME ExINT
+
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__register_banks", "*"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?S_SHL
+
+        PUBLIC ??egdeSelectionP0
+        FUNCTION ??egdeSelectionP0,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??egdeSelectionP0::?relay`
+        FUNCTION `??egdeSelectionP0::?relay`,0203H
+        PUBLIC ??egdeSelectionP1_0ToP1_3
+        FUNCTION ??egdeSelectionP1_0ToP1_3,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??egdeSelectionP1_0ToP1_3::?relay`
+        FUNCTION `??egdeSelectionP1_0ToP1_3::?relay`,0203H
+        PUBLIC ??egdeSelectionP1_4ToP1_7
+        FUNCTION ??egdeSelectionP1_4ToP1_7,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??egdeSelectionP1_4ToP1_7::?relay`
+        FUNCTION `??egdeSelectionP1_4ToP1_7::?relay`,0203H
+        PUBLIC ??egdeSelectionP2_0ToP2_4
+        FUNCTION ??egdeSelectionP2_0ToP2_4,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??egdeSelectionP2_0ToP2_4::?relay`
+        FUNCTION `??egdeSelectionP2_0ToP2_4::?relay`,0203H
+        FUNCTION ??pinClearFlag,080203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        FUNCTION `??pinClearFlag::?relay`,0203H
+        PUBLIC ??pinInterruptSwitch
+        FUNCTION ??pinInterruptSwitch,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        PUBLIC `??pinInterruptSwitch::?relay`
+        FUNCTION `??pinInterruptSwitch::?relay`,0203H
+        FUNCTION ??portClearFlag,0203H
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCTION `??portClearFlag::?relay`,0203H
+        PUBLIC ??portInterruptSwitch
+        FUNCTION ??portInterruptSwitch,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC `??portInterruptSwitch::?relay`
+        FUNCTION `??portInterruptSwitch::?relay`,0203H
+        PUBWEAK P0IEN
+        PUBWEAK P0IFG
+        PUBWEAK P1IEN
+        PUBWEAK P1IFG
+        PUBWEAK P2IEN
+        PUBWEAK P2IFG
+        PUBWEAK PICTL
+        PUBWEAK _A_IRCON
+        PUBWEAK _A_IRCON2
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+
+`??GlobalInterruptSwitch::?relay` SYMBOL "?relay", ??GlobalInterruptSwitch
+
+`??P0InterruptSwitch::?relay` SYMBOL "?relay", ??P0InterruptSwitch
+
+`??P1InterruptSwitch::?relay` SYMBOL "?relay", ??P1InterruptSwitch
+
+`??P2InterruptSwitch::?relay` SYMBOL "?relay", ??P2InterruptSwitch
+
+`??egdeSelectionP0::?relay` SYMBOL "?relay", ??egdeSelectionP0
+
+`??egdeSelectionP1_0ToP1_3::?relay` SYMBOL "?relay", ??egdeSelectionP1_0ToP1_3
+
+`??egdeSelectionP1_4ToP1_7::?relay` SYMBOL "?relay", ??egdeSelectionP1_4ToP1_7
+
+`??egdeSelectionP2_0ToP2_4::?relay` SYMBOL "?relay", ??egdeSelectionP2_0ToP2_4
+
+`??pinInterruptSwitch::?relay` SYMBOL "?relay", ??pinInterruptSwitch
+
+`??portInterruptSwitch::?relay` SYMBOL "?relay", ??portInterruptSwitch
+
+        EXTERN ??GlobalInterruptSwitch
+        FUNCTION ??GlobalInterruptSwitch,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??GlobalInterruptSwitch::?relay`
+        FUNCTION `??GlobalInterruptSwitch::?relay`,00H
+        EXTERN ??P0InterruptSwitch
+        FUNCTION ??P0InterruptSwitch,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??P0InterruptSwitch::?relay`
+        FUNCTION `??P0InterruptSwitch::?relay`,00H
+        EXTERN ??P1InterruptSwitch
+        FUNCTION ??P1InterruptSwitch,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??P1InterruptSwitch::?relay`
+        FUNCTION `??P1InterruptSwitch::?relay`,00H
+        EXTERN ??P2InterruptSwitch
+        FUNCTION ??P2InterruptSwitch,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??P2InterruptSwitch::?relay`
+        FUNCTION `??P2InterruptSwitch::?relay`,00H
+
+// C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ExINT.c
+//    1 #include "ExINT.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,089H
+// unsigned char volatile __sfr P0IFG
+P0IFG:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,08aH
+// unsigned char volatile __sfr P1IFG
+P1IFG:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,08bH
+// unsigned char volatile __sfr P2IFG
+P2IFG:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,08cH
+// unsigned char volatile __sfr PICTL
+PICTL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,08dH
+// unsigned char volatile __sfr P1IEN
+P1IEN:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0abH
+// unsigned char volatile __sfr P0IEN
+P0IEN:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0acH
+// unsigned char volatile __sfr P2IEN
+P2IEN:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c0H
+// union <unnamed> volatile __sfr _A_IRCON
+_A_IRCON:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0e8H
+// union <unnamed> volatile __sfr _A_IRCON2
+_A_IRCON2:
+        DATA8
+        DS 1
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+// static __banked_func __xdata_reentrant void pinClearFlag(uint8_t)
+??pinClearFlag:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??pinClearFlag
+        CODE
+        REQUIRE ?V0
+        REQUIRE ?V1
+        PUSH      ?V0
+          CFI V0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      ?V1
+          CFI V1 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinClearFlag_1
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0x89,A
+        CLR       0xc0.5
+??pinClearFlag_1:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinClearFlag_2
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0x8a,A
+        CLR       0xe8.3
+??pinClearFlag_2:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x10
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??pinClearFlag_3
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0x8b,A
+        CLR       0xe8.0
+??pinClearFlag_3:
+        POP       ?V1
+          CFI V1 SameValue
+          CFI CFA_SP SP+-4
+        POP       ?V0
+          CFI V0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock0
+        REQUIRE P0IFG
+        REQUIRE _A_IRCON
+        REQUIRE P1IFG
+        REQUIRE _A_IRCON2
+        REQUIRE P2IFG
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+// static __banked_func __xdata_reentrant void portClearFlag(uint8_t)
+??portClearFlag:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??portClearFlag
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       A,R1
+        JNZ       ??portClearFlag_1
+        MOV       0x89,#0x0
+        CLR       0xc0.5
+??portClearFlag_1:
+        MOV       A,#0x8
+        XRL       A,R1
+        JNZ       ??portClearFlag_2
+        MOV       0x8a,#0x0
+        CLR       0xe8.3
+??portClearFlag_2:
+        MOV       A,#0x10
+        XRL       A,R1
+        JNZ       ??portClearFlag_3
+        MOV       0x8b,#0x0
+        CLR       0xe8.0
+??portClearFlag_3:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock1
+        REQUIRE P0IFG
+        REQUIRE _A_IRCON
+        REQUIRE P1IFG
+        REQUIRE _A_IRCON2
+        REQUIRE P2IFG
+//    2 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//    3 void pinInterruptSwitch(uint8_t pin, uint8_t mode)
+??pinInterruptSwitch:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??pinInterruptSwitch
+        CODE
+//    4 {
+        FUNCALL ??pinInterruptSwitch, ??pinClearFlag
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ??pinInterruptSwitch, ??P0InterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ??pinInterruptSwitch, ??P1InterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ??pinInterruptSwitch, ??P2InterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ??pinInterruptSwitch, ??GlobalInterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0xa
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R6,A
+        MOV       A,R2
+        MOV       R7,A
+//    5 	pinClearFlag(pin);
+        ; Setup parameters for call to function pinClearFlag(uint8_t)
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     `??pinClearFlag::?relay`; Banked call to: pinClearFlag(uint8_t)
+//    6 
+//    7 	if BELONG_TO_PORT0(pin)
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinInterruptSwitch_1
+//    8 	{
+//    9 		if(mode == ON)
+        MOV       A,#0x1
+        XRL       A,R7
+        JNZ       ??pinInterruptSwitch_2
+//   10 			P0IEN |= (1<< (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R6
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xab,A
+        SJMP      ??pinInterruptSwitch_3
+//   11 		else if(mode == OFF)
+??pinInterruptSwitch_2:
+        MOV       A,R7
+        JNZ       ??pinInterruptSwitch_3
+//   12 			P0IEN &= ~(1<< (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R6
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xab,A
+//   13 		P0InterruptSwitch(ON);
+??pinInterruptSwitch_3:
+        ; Setup parameters for call to function P0InterruptSwitch(uint8_t)
+        MOV       R1,#0x1
+        LCALL     `??P0InterruptSwitch::?relay`; Banked call to: P0InterruptSwitch(uint8_t)
+//   14 	}
+//   15 	if BELONG_TO_PORT1(pin)
+??pinInterruptSwitch_1:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x8
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinInterruptSwitch_4
+//   16 	{
+//   17 		if(mode == ON)
+        MOV       A,#0x1
+        XRL       A,R7
+        JNZ       ??pinInterruptSwitch_5
+//   18 			P1IEN |= (1<< (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R6
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0x8d,A
+        SJMP      ??pinInterruptSwitch_6
+//   19 		else if(mode == OFF)
+??pinInterruptSwitch_5:
+        MOV       A,R7
+        JNZ       ??pinInterruptSwitch_6
+//   20 			P1IEN &= ~(1<< (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R6
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0x8d,A
+//   21 		P1InterruptSwitch(ON);
+??pinInterruptSwitch_6:
+        ; Setup parameters for call to function P1InterruptSwitch(uint8_t)
+        MOV       R1,#0x1
+        LCALL     `??P1InterruptSwitch::?relay`; Banked call to: P1InterruptSwitch(uint8_t)
+//   22 	}
+//   23 	if BELONG_TO_PORT2(pin)
+??pinInterruptSwitch_4:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x10
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??pinInterruptSwitch_7
+//   24 	{
+//   25 		if(mode == ON)
+        MOV       A,#0x1
+        XRL       A,R7
+        JNZ       ??pinInterruptSwitch_8
+//   26 			P2IEN |= (1<< (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R6
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xac,A
+        SJMP      ??pinInterruptSwitch_9
+//   27 		else if(mode == OFF)
+??pinInterruptSwitch_8:
+        MOV       A,R7
+        JNZ       ??pinInterruptSwitch_9
+//   28 			P2IEN &= ~(1<< (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R6
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xac,A
+//   29 		P2InterruptSwitch(ON);
+??pinInterruptSwitch_9:
+        ; Setup parameters for call to function P2InterruptSwitch(uint8_t)
+        MOV       R1,#0x1
+        LCALL     `??P2InterruptSwitch::?relay`; Banked call to: P2InterruptSwitch(uint8_t)
+//   30 	}
+//   31 
+//   32 	GlobalInterruptSwitch(ON);
+??pinInterruptSwitch_7:
+        ; Setup parameters for call to function GlobalInterruptSwitch(uint8_t)
+        MOV       R1,#0x1
+        LCALL     `??GlobalInterruptSwitch::?relay`; Banked call to: GlobalInterruptSwitch(uint8_t)
+//   33 }
+        MOV       R7,#0x2
+        LJMP      ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock2
+        REQUIRE P0IEN
+        REQUIRE P1IEN
+        REQUIRE P2IEN
+//   34 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   35 void portInterruptSwitch(uint8_t port, uint8_t mode)
+??portInterruptSwitch:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function ??portInterruptSwitch
+        CODE
+//   36 {
+        FUNCALL ??portInterruptSwitch, ??portClearFlag
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ??portInterruptSwitch, ??P0InterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ??portInterruptSwitch, ??P1InterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ??portInterruptSwitch, ??P2InterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ??portInterruptSwitch, ??GlobalInterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV       A,#-0x9
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R7,A
+        MOV       A,R2
+        MOV       R6,A
+//   37 	portClearFlag(port);
+        ; Setup parameters for call to function portClearFlag(uint8_t)
+        MOV       A,R7
+        MOV       R1,A
+        LCALL     `??portClearFlag::?relay`; Banked call to: portClearFlag(uint8_t)
+//   38 
+//   39 	if(port == PORT0)
+        MOV       A,R7
+        JNZ       ??portInterruptSwitch_1
+//   40 	{
+//   41 		P0IEN = mode;
+        MOV       0xab,R6
+//   42 		P0InterruptSwitch(mode);
+        ; Setup parameters for call to function P0InterruptSwitch(uint8_t)
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     `??P0InterruptSwitch::?relay`; Banked call to: P0InterruptSwitch(uint8_t)
+//   43 	}
+//   44 	if(port == PORT1)
+??portInterruptSwitch_1:
+        MOV       A,#0x8
+        XRL       A,R7
+        JNZ       ??portInterruptSwitch_2
+//   45 	{
+//   46 		P1IEN = mode;
+        MOV       0x8d,R6
+//   47 		P1InterruptSwitch(mode);
+        ; Setup parameters for call to function P1InterruptSwitch(uint8_t)
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     `??P1InterruptSwitch::?relay`; Banked call to: P1InterruptSwitch(uint8_t)
+//   48 	}
+//   49 	if(port == PORT2)
+??portInterruptSwitch_2:
+        MOV       A,#0x10
+        XRL       A,R7
+        JNZ       ??portInterruptSwitch_3
+//   50 	{
+//   51 		P2IEN = mode;
+        MOV       0xac,R6
+//   52 		P2InterruptSwitch(mode);
+        ; Setup parameters for call to function P2InterruptSwitch(uint8_t)
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     `??P2InterruptSwitch::?relay`; Banked call to: P2InterruptSwitch(uint8_t)
+//   53 	}
+//   54 
+//   55 	GlobalInterruptSwitch(ON);
+??portInterruptSwitch_3:
+        ; Setup parameters for call to function GlobalInterruptSwitch(uint8_t)
+        MOV       R1,#0x1
+        LCALL     `??GlobalInterruptSwitch::?relay`; Banked call to: GlobalInterruptSwitch(uint8_t)
+//   56 }
+        MOV       R7,#0x1
+        LJMP      ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock3
+        REQUIRE P0IEN
+        REQUIRE P1IEN
+        REQUIRE P2IEN
+//   57 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   58 void egdeSelectionP0(uint8_t sel)
+??egdeSelectionP0:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function ??egdeSelectionP0
+        CODE
+//   59 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   60 	if(sel == FALLING)
+        MOV       A,R1
+        JNZ       ??egdeSelectionP0_1
+//   61 		PICTL |= 1;
+        ORL       0x8c,#0x1
+        SJMP      ??egdeSelectionP0_2
+//   62 	else if(sel == RAISING)
+??egdeSelectionP0_1:
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??egdeSelectionP0_2
+//   63 		PICTL &= ~1;
+        ANL       0x8c,#0xfe
+//   64 }
+??egdeSelectionP0_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock4
+        REQUIRE PICTL
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   65 void egdeSelectionP1_0ToP1_3(uint8_t sel)
+??egdeSelectionP1_0ToP1_3:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function ??egdeSelectionP1_0ToP1_3
+        CODE
+//   66 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   67 	if(sel == FALLING)
+        MOV       A,R1
+        JNZ       ??egdeSelectionP1_0ToP1_3_1
+//   68 		PICTL |= (1<<1);
+        ORL       0x8c,#0x2
+        SJMP      ??egdeSelectionP1_0ToP1_3_2
+//   69 	else if(sel == RAISING)
+??egdeSelectionP1_0ToP1_3_1:
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??egdeSelectionP1_0ToP1_3_2
+//   70 		PICTL &= ~(1<<1);
+        ANL       0x8c,#0xfd
+//   71 }
+??egdeSelectionP1_0ToP1_3_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock5
+        REQUIRE PICTL
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   72 void egdeSelectionP1_4ToP1_7(uint8_t sel)
+??egdeSelectionP1_4ToP1_7:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function ??egdeSelectionP1_4ToP1_7
+        CODE
+//   73 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   74 	if(sel == FALLING)
+        MOV       A,R1
+        JNZ       ??egdeSelectionP1_4ToP1_7_1
+//   75 		PICTL |= (1<<2);
+        ORL       0x8c,#0x4
+        SJMP      ??egdeSelectionP1_4ToP1_7_2
+//   76 	else if(sel == RAISING)
+??egdeSelectionP1_4ToP1_7_1:
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??egdeSelectionP1_4ToP1_7_2
+//   77 		PICTL &= ~(1<<2);
+        ANL       0x8c,#0xfb
+//   78 }
+??egdeSelectionP1_4ToP1_7_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock6
+        REQUIRE PICTL
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   79 void egdeSelectionP2_0ToP2_4(uint8_t sel)
+??egdeSelectionP2_0ToP2_4:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??egdeSelectionP2_0ToP2_4
+        CODE
+//   80 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   81 	if(sel == FALLING)
+        MOV       A,R1
+        JNZ       ??egdeSelectionP2_0ToP2_4_1
+//   82 		PICTL |= (1<<3);
+        ORL       0x8c,#0x8
+        SJMP      ??egdeSelectionP2_0ToP2_4_2
+//   83 	else if(sel == RAISING)
+??egdeSelectionP2_0ToP2_4_1:
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??egdeSelectionP2_0ToP2_4_2
+//   84 		PICTL &= ~(1<<3);
+        ANL       0x8c,#0xf7
+//   85 }
+??egdeSelectionP2_0ToP2_4_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock7
+        REQUIRE PICTL
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??pinClearFlag::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??pinClearFlag
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??portClearFlag::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??portClearFlag
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??pinInterruptSwitch::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??pinInterruptSwitch
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??portInterruptSwitch::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??portInterruptSwitch
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??egdeSelectionP0::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??egdeSelectionP0
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??egdeSelectionP1_0ToP1_3::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??egdeSelectionP1_0ToP1_3
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??egdeSelectionP1_4ToP1_7::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??egdeSelectionP1_4ToP1_7
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??egdeSelectionP2_0ToP2_4::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??egdeSelectionP2_0ToP2_4
+
+        END
+// 
+// 461 bytes in segment BANKED_CODE
+//  48 bytes in segment BANK_RELAYS
+//   9 bytes in segment SFR_AN
+// 
+//  48 bytes of CODE     memory
+//   0 bytes of DATA     memory (+ 9 bytes shared)
+// 461 bytes of HUGECODE memory
+//
+//Errors: none
+//Warnings: none

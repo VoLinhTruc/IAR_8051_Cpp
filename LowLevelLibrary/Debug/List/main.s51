@@ -1,0 +1,1039 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.10.1.4655 for 8051              31/Mar/2018  15:48:42
+// Copyright 2004-2017 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\main.cpp
+//    Command line       =  
+//        -f C:\Users\Bico\AppData\Local\Temp\EW96C2.tmp
+//        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\main.cpp" -lC
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+//        --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+//        Files (x86)\IAR Systems\Embedded Workbench
+//        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+//        -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+//        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+//        --no_cross_call)
+//    Locale             =  Vietnamese_Vietnam.1258
+//    List file          =  
+//        C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\Debug\List\main.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME main
+
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__register_banks", "*"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?INTERRUPT_ENTER_XSP
+        EXTERN ?INTERRUPT_LEAVE_XSP
+        EXTERN ?XLOAD_R2345
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC ??echo
+        FUNCTION ??echo,021203H
+        ARGFRAME XSTACK, 14, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??echo::?relay`
+        FUNCTION `??echo::?relay`,0203H
+        PUBLIC `??main::?relay`
+        FUNCTION `??main::?relay`,0203H
+        PUBLIC ??urx0Int0
+        FUNCTION ??urx0Int0,021233H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 14, STACK
+        PUBWEAK `??urx0Int0::??INTVEC 19`
+        PUBWEAK CLKCONCMD
+        PUBWEAK __Constant_1f4
+        PUBWEAK __Constant_e100
+        PUBLIC main
+        FUNCTION main,021a03H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC val
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-2
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B SameValue
+          CFI A SameValue
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT SameValue
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon1
+        
+        
+          CFI Common cfiCommon2 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` Undefined
+          CFI `B.BR0` Undefined
+          CFI `B.BR1` Undefined
+          CFI `B.BR2` Undefined
+          CFI `B.BR3` Undefined
+          CFI `B.BR4` Undefined
+          CFI `B.BR5` Undefined
+          CFI `B.BR6` Undefined
+          CFI `B.BR7` Undefined
+          CFI `VB.BR8` Undefined
+          CFI `VB.BR9` Undefined
+          CFI `VB.BR10` Undefined
+          CFI `VB.BR11` Undefined
+          CFI `VB.BR12` Undefined
+          CFI `VB.BR13` Undefined
+          CFI `VB.BR14` Undefined
+          CFI `VB.BR15` Undefined
+          CFI VB Undefined
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW Undefined
+          CFI DPL0 Undefined
+          CFI DPH0 Undefined
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 Undefined
+          CFI R7 Undefined
+          CFI V0 Undefined
+          CFI V1 Undefined
+          CFI V2 Undefined
+          CFI V3 Undefined
+          CFI V4 Undefined
+          CFI V5 Undefined
+          CFI V6 Undefined
+          CFI V7 Undefined
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon2
+        
+
+`??GlobalInterruptSwitch::?relay` SYMBOL "?relay", ??GlobalInterruptSwitch
+
+`??UART0AssignLocation::?relay` SYMBOL "?relay", ??UART0AssignLocation
+
+`??UART0GetData::?relay` SYMBOL "?relay", ??UART0GetData
+
+`??UART0ModeSel::?relay` SYMBOL "?relay", ??UART0ModeSel
+
+`??UART0SetBaud::?relay` SYMBOL "?relay", ??UART0SetBaud
+
+`??URX0InterruptSwitch::?relay` SYMBOL "?relay", ??URX0InterruptSwitch
+
+`??channelSeleted::?relay` SYMBOL "?relay", ??channelSeleted
+
+`??delay_ms::?relay` SYMBOL "?relay", ??delay_ms
+
+`??enableADCPin::?relay` SYMBOL "?relay", ??enableADCPin
+
+`??pinDirect::?relay` SYMBOL "?relay", ??pinDirect
+
+`??pinFunction::?relay` SYMBOL "?relay", ??pinFunction
+
+`??pinWrite::?relay` SYMBOL "?relay", ??pinWrite
+
+`??portDirect::?relay` SYMBOL "?relay", ??portDirect
+
+`??portFunction::?relay` SYMBOL "?relay", ??portFunction
+
+`??referenceVoltage::?relay` SYMBOL "?relay", ??referenceVoltage
+
+`??selectDecimationRate::?relay` SYMBOL "?relay", ??selectDecimationRate
+
+`??selectStartCondition::?relay` SYMBOL "?relay", ??selectStartCondition
+
+`??echo::?relay`    SYMBOL "?relay", ??echo
+main                SYMBOL "main"
+`??main::?relay`    SYMBOL "?relay", main
+
+`??urx0Int0::??INTVEC 19` SYMBOL "??INTVEC 19", ??urx0Int0
+
+        EXTERN ??GlobalInterruptSwitch
+        FUNCTION ??GlobalInterruptSwitch,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??GlobalInterruptSwitch::?relay`
+        FUNCTION `??GlobalInterruptSwitch::?relay`,00H
+        EXTERN ??UART0AssignLocation
+        FUNCTION ??UART0AssignLocation,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??UART0AssignLocation::?relay`
+        FUNCTION `??UART0AssignLocation::?relay`,00H
+        EXTERN ??UART0GetData
+        FUNCTION ??UART0GetData,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??UART0GetData::?relay`
+        FUNCTION `??UART0GetData::?relay`,00H
+        EXTERN ??UART0ModeSel
+        FUNCTION ??UART0ModeSel,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??UART0ModeSel::?relay`
+        FUNCTION `??UART0ModeSel::?relay`,00H
+        EXTERN ??UART0SetBaud
+        FUNCTION ??UART0SetBaud,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??UART0SetBaud::?relay`
+        FUNCTION `??UART0SetBaud::?relay`,00H
+        EXTERN ??URX0InterruptSwitch
+        FUNCTION ??URX0InterruptSwitch,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??URX0InterruptSwitch::?relay`
+        FUNCTION `??URX0InterruptSwitch::?relay`,00H
+        EXTERN ??channelSeleted
+        FUNCTION ??channelSeleted,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??channelSeleted::?relay`
+        FUNCTION `??channelSeleted::?relay`,00H
+        EXTERN ??delay_ms
+        FUNCTION ??delay_ms,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??delay_ms::?relay`
+        FUNCTION `??delay_ms::?relay`,00H
+        EXTERN ??enableADCPin
+        FUNCTION ??enableADCPin,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??enableADCPin::?relay`
+        FUNCTION `??enableADCPin::?relay`,00H
+        EXTERN ??pinDirect
+        FUNCTION ??pinDirect,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??pinDirect::?relay`
+        FUNCTION `??pinDirect::?relay`,00H
+        EXTERN ??pinFunction
+        FUNCTION ??pinFunction,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??pinFunction::?relay`
+        FUNCTION `??pinFunction::?relay`,00H
+        EXTERN ??pinWrite
+        FUNCTION ??pinWrite,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??pinWrite::?relay`
+        FUNCTION `??pinWrite::?relay`,00H
+        EXTERN ??portDirect
+        FUNCTION ??portDirect,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??portDirect::?relay`
+        FUNCTION `??portDirect::?relay`,00H
+        EXTERN ??portFunction
+        FUNCTION ??portFunction,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??portFunction::?relay`
+        FUNCTION `??portFunction::?relay`,00H
+        EXTERN ??referenceVoltage
+        FUNCTION ??referenceVoltage,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??referenceVoltage::?relay`
+        FUNCTION `??referenceVoltage::?relay`,00H
+        EXTERN ??selectDecimationRate
+        FUNCTION ??selectDecimationRate,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??selectDecimationRate::?relay`
+        FUNCTION `??selectDecimationRate::?relay`,00H
+        EXTERN ??selectStartCondition
+        FUNCTION ??selectStartCondition,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN `??selectStartCondition::?relay`
+        FUNCTION `??selectStartCondition::?relay`,00H
+
+// C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\main.cpp
+//    1 #include "Generic.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,0c6H
+// unsigned char volatile __sfr CLKCONCMD
+CLKCONCMD:
+        DATA8
+        DS 1
+//    2 #include "GlobalINT.h"
+//    3 #include "GPIO.h"
+//    4 #include "UART.h"
+//    5 #include "ADC.h"
+//    6 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//    7 uint8_t val = 0;
+val:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+//    8 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//    9 void echo()
+??echo:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??echo
+        CODE
+//   10 {
+        FUNCALL ??echo, ??UART0GetData
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH      DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   11   char c = UART0GetData();      // lay tin hieu tu buffer sau khi nhan duoc 1 byte
+        ; Setup parameters for call to function UART0GetData()
+        LCALL     `??UART0GetData::?relay`; Banked call to: UART0GetData()
+        MOV       A,R1
+        MOV       R0,A
+//   12   val++;        // dem so lan nhan duoc du lieu, gia tri nay hien thi ra port 1
+        MOV       DPTR,#val
+        MOVX      A,@DPTR
+        ADD       A,#0x1
+        MOVX      @DPTR,A
+//   13 }
+        POP       DPH
+          CFI DPH0 SameValue
+          CFI CFA_SP SP+-4
+        POP       DPL
+          CFI DPL0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock0
+//   14 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//   15 URX0ISRFunction(echo);  // lien ket IRS toi' ham echo
+??urx0Int0:
+          CFI Block cfiBlock1 Using cfiCommon1
+          CFI Function ??urx0Int0
+        CODE
+        FUNCALL ??urx0Int0, ??echo
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 14, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 14, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH      A
+          CFI A Frame(CFA_SP, 3)
+          CFI CFA_SP SP+-3
+        MOV       A,#-0xe
+        LCALL     ?INTERRUPT_ENTER_XSP
+          CFI B load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI PSW load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R5 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R4 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI R3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI R1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI R0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI CFA_XSP16 add(XSP16, 14)
+        ; Saved register size: 14
+        ; Auto size: 0
+        ; Setup parameters for call to function echo()
+        LCALL     `??echo::?relay` ; Banked call to: echo()
+        MOV       R7,#0x1
+        LJMP      ?INTERRUPT_LEAVE_XSP
+          CFI EndBlock cfiBlock1
+//   16 
+//   17 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   18 int main()
+main:
+          CFI Block cfiBlock2 Using cfiCommon2
+          CFI Function main
+        CODE
+//   19 {
+        FUNCALL main, ??portFunction
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??portDirect
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??URX0InterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??GlobalInterruptSwitch
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??pinFunction
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??pinFunction
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??UART0AssignLocation
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??UART0ModeSel
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??UART0SetBaud
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??selectStartCondition
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??referenceVoltage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??selectDecimationRate
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??pinFunction
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??enableADCPin
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??channelSeleted
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??pinFunction
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??pinDirect
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??pinWrite
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??delay_ms
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??pinWrite
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL main, ??delay_ms
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        ; Auto size: 0
+//   20   //2 dong duoi nay la su dung XOSC 32MHz
+//   21   CLKCONCMD &= ~(1<<6);
+        ANL       0xc6,#0xbf
+//   22   CLKCONCMD &= 0xFC;
+        ANL       0xc6,#0xfc
+//   23   
+//   24   portFunction(PORT1, PORT_GPIO);
+        ; Setup parameters for call to function portFunction(uint8_t, uint8_t)
+        MOV       R2,#0x0
+        MOV       R1,#0x8
+        LCALL     `??portFunction::?relay`; Banked call to: portFunction(uint8_t, uint8_t)
+//   25   portDirect(PORT1, PORT_OUTPUT);
+        ; Setup parameters for call to function portDirect(uint8_t, uint8_t)
+        MOV       R2,#-0x1
+        MOV       R1,#0x8
+        LCALL     `??portDirect::?relay`; Banked call to: portDirect(uint8_t, uint8_t)
+//   26   
+//   27   //URX0IF = 0; //xoa co ngat
+//   28   URX0InterruptSwitch(ON);      // cho phep ngat sau khi nhan 8 bit du lieu tu chan RX
+        ; Setup parameters for call to function URX0InterruptSwitch(uint8_t)
+        MOV       R1,#0x1
+        LCALL     `??URX0InterruptSwitch::?relay`; Banked call to: URX0InterruptSwitch(uint8_t)
+//   29   GlobalInterruptSwitch(ON);    // cho phep ngat toan cuc he thong
+        ; Setup parameters for call to function GlobalInterruptSwitch(uint8_t)
+        MOV       R1,#0x1
+        LCALL     `??GlobalInterruptSwitch::?relay`; Banked call to: GlobalInterruptSwitch(uint8_t)
+//   30   pinFunction(PIN0_2, PIN_PERIPHERAL);  // cai dat pin 0_2 co chuc nang la pin ngoai vi
+        ; Setup parameters for call to function pinFunction(uint8_t, uint8_t)
+        MOV       R2,#0x1
+        MOV       R1,#0x2
+        LCALL     `??pinFunction::?relay`; Banked call to: pinFunction(uint8_t, uint8_t)
+//   31   pinFunction(PIN0_3, PIN_PERIPHERAL);  // cai dat pin 0_3 co chuc nang la pin ngoai vi
+        ; Setup parameters for call to function pinFunction(uint8_t, uint8_t)
+        MOV       R2,#0x1
+        MOV       R1,#0x3
+        LCALL     `??pinFunction::?relay`; Banked call to: pinFunction(uint8_t, uint8_t)
+//   32   UART0AssignLocation(UART0_P02_P03);   // dang ky pin TX va RX la 0_2 va 0_3, co the dang ky pin TX va RX trong port 1
+        ; Setup parameters for call to function UART0AssignLocation(uint8_t)
+        MOV       R1,#0x0
+        LCALL     `??UART0AssignLocation::?relay`; Banked call to: UART0AssignLocation(uint8_t)
+//   33   UART0ModeSel(UART_MODE);      // chon che do UART, tai vi pin TX va RX trung voi chan cua SPI, mac dinh khi reset thi che do cua 2 pin nay la PIN
+        ; Setup parameters for call to function UART0ModeSel(uint8_t)
+        MOV       R1,#0x1
+        LCALL     `??UART0ModeSel::?relay`; Banked call to: UART0ModeSel(uint8_t)
+//   34   UART0SetBaud(57600);  // set baud rate, baud phu thuoc vao System Clock, baud nay duoc tinh dua tren System Clock la 32MHz
+        ; Setup parameters for call to function UART0SetBaud(unsigned long)
+        MOV       DPTR,#__Constant_e100
+        LCALL     ?XLOAD_R2345
+        LCALL     `??UART0SetBaud::?relay`; Banked call to: UART0SetBaud(unsigned long)
+//   35   
+//   36   //ADC common config
+//   37   selectStartCondition(SETBIT_ST);
+        ; Setup parameters for call to function selectStartCondition(uint8_t)
+        MOV       R1,#0x3
+        LCALL     `??selectStartCondition::?relay`; Banked call to: selectStartCondition(uint8_t)
+//   38   referenceVoltage(AVDD5);
+        ; Setup parameters for call to function referenceVoltage(uint8_t)
+        MOV       R1,#0x2
+        LCALL     `??referenceVoltage::?relay`; Banked call to: referenceVoltage(uint8_t)
+//   39   selectDecimationRate(RESOLUTION_7BIT);
+        ; Setup parameters for call to function selectDecimationRate(uint8_t)
+        MOV       R1,#0x0
+        LCALL     `??selectDecimationRate::?relay`; Banked call to: selectDecimationRate(uint8_t)
+//   40   //ADC pin6 config
+//   41   pinFunction(PIN0_6, PIN_PERIPHERAL);
+        ; Setup parameters for call to function pinFunction(uint8_t, uint8_t)
+        MOV       R2,#0x1
+        MOV       R1,#0x6
+        LCALL     `??pinFunction::?relay`; Banked call to: pinFunction(uint8_t, uint8_t)
+//   42   enableADCPin(PIN0_6);
+        ; Setup parameters for call to function enableADCPin(uint8_t)
+        MOV       R1,#0x6
+        LCALL     `??enableADCPin::?relay`; Banked call to: enableADCPin(uint8_t)
+        MOV       A,R1
+//   43   channelSeleted(AIN6);
+        ; Setup parameters for call to function channelSeleted(uint8_t)
+        MOV       R1,#0x6
+        LCALL     `??channelSeleted::?relay`; Banked call to: channelSeleted(uint8_t)
+//   44   
+//   45   pinFunction(PIN0_1, PIN_GPIO);
+        ; Setup parameters for call to function pinFunction(uint8_t, uint8_t)
+        MOV       R2,#0x0
+        MOV       R1,#0x1
+        LCALL     `??pinFunction::?relay`; Banked call to: pinFunction(uint8_t, uint8_t)
+//   46   pinDirect(PIN0_1, PIN_INPUT);
+        ; Setup parameters for call to function pinDirect(uint8_t, uint8_t)
+        MOV       R2,#0x0
+        MOV       R1,#0x1
+        LCALL     `??pinDirect::?relay`; Banked call to: pinDirect(uint8_t, uint8_t)
+//   47   
+//   48   for(;;)
+//   49   {
+//   50 
+//   51     //UART0FillData(CHIPID);
+//   52     pinWrite(PIN1_0, 1);
+??main_0:
+        ; Setup parameters for call to function pinWrite(uint8_t, uint8_t)
+        MOV       R2,#0x1
+        MOV       R1,#0x8
+        LCALL     `??pinWrite::?relay`; Banked call to: pinWrite(uint8_t, uint8_t)
+//   53     delay_ms(500);
+        ; Setup parameters for call to function delay_ms(unsigned long)
+        MOV       DPTR,#__Constant_1f4
+        LCALL     ?XLOAD_R2345
+        LCALL     `??delay_ms::?relay`; Banked call to: delay_ms(unsigned long)
+//   54     pinWrite(PIN1_0, 0);
+        ; Setup parameters for call to function pinWrite(uint8_t, uint8_t)
+        MOV       R2,#0x0
+        MOV       R1,#0x8
+        LCALL     `??pinWrite::?relay`; Banked call to: pinWrite(uint8_t, uint8_t)
+//   55     delay_ms(500);
+        ; Setup parameters for call to function delay_ms(unsigned long)
+        MOV       DPTR,#__Constant_1f4
+        LCALL     ?XLOAD_R2345
+        LCALL     `??delay_ms::?relay`; Banked call to: delay_ms(unsigned long)
+        SJMP      ??main_0
+          CFI EndBlock cfiBlock2
+        REQUIRE CLKCONCMD
+//   56     
+//   57   }
+//   58   return 0;
+//   59 }
+
+        COMMON INTVEC:CODE:ROOT(0)
+        ORG 19
+`??urx0Int0::??INTVEC 19`:
+        LJMP       (??urx0Int0)
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA32
+__Constant_e100:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_e100>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_e100>`:
+        DATA32
+        DD 57600
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA32
+__Constant_1f4:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_1f4>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_1f4>`:
+        DATA32
+        DD 500
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??echo::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??echo
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??main::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    main
+
+        END
+// 
+// 167 bytes in segment BANKED_CODE
+//  12 bytes in segment BANK_RELAYS
+//   3 bytes in segment INTVEC
+//  15 bytes in segment NEAR_CODE
+//   1 byte  in segment SFR_AN
+//   8 bytes in segment XDATA_I
+//   8 bytes in segment XDATA_ID
+//   1 byte  in segment XDATA_Z
+// 
+//  27 bytes of CODE     memory (+ 11 bytes shared)
+//   0 bytes of DATA     memory (+  1 byte  shared)
+// 167 bytes of HUGECODE memory
+//   1 byte  of XDATA    memory (+  8 bytes shared)
+//
+//Errors: none
+//Warnings: 1

@@ -1,0 +1,1002 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.10.1.4655 for 8051               31/Mar/2018  15:48:42
+# Copyright 2004-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\UART.c
+#    Command line       =  
+#        -f C:\Users\Bico\AppData\Local\Temp\EW978E.tmp
+#        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\UART.c" -lC
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+#        --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+#        Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+#        -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+#        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_cross_call)
+#    Locale             =  Vietnamese_Vietnam.1258
+#    List file          =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List\UART.lst
+#    Object file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj\UART.r51
+#
+###############################################################################
+
+C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\UART.c
+      1          #include "UART.h"
+
+   \                                 In  segment SFR_AN, at 0x86
+   \   unsigned char volatile __sfr U0CSR
+   \                     U0CSR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc1
+   \   unsigned char volatile __sfr U0DBUF
+   \                     U0DBUF:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc2
+   \   unsigned char volatile __sfr U0BAUD
+   \                     U0BAUD:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc5
+   \   unsigned char volatile __sfr U0GCR
+   \                     U0GCR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf1
+   \   unsigned char volatile __sfr PERCFG
+   \                     PERCFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf8
+   \   union <unnamed> volatile __sfr _A_U1CSR
+   \                     _A_U1CSR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf9
+   \   unsigned char volatile __sfr U1DBUF
+   \                     U1DBUF:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfa
+   \   unsigned char volatile __sfr U1BAUD
+   \                     U1BAUD:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfc
+   \   unsigned char volatile __sfr U1GCR
+   \                     U1GCR:
+   \   000000                DS 1
+      2          
+      3          // UART0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      4          void UART0AssignLocation(uint8_t sel)	//PERCFG.U0CFG, See table 7.1
+   \                     ??UART0AssignLocation:
+      5          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+      6          	if(sel == UART0_P14_P15)
+   \   000000   7401         MOV       A,#0x1
+   \   000002   69           XRL       A,R1
+   \   000003   7005         JNZ       ??UART0AssignLocation_1
+      7          		PERCFG |= sel;
+   \   000005   E9           MOV       A,R1
+   \   000006   42F1         ORL       0xf1,A
+   \   000008   8007         SJMP      ??UART0AssignLocation_2
+      8          	else if(sel == UART0_P02_P03)
+   \                     ??UART0AssignLocation_1:
+   \   00000A   E9           MOV       A,R1
+   \   00000B   7004         JNZ       ??UART0AssignLocation_2
+      9          		PERCFG &= ~sel;
+   \   00000D   E9           MOV       A,R1
+   \   00000E   F4           CPL       A
+   \   00000F   52F1         ANL       0xf1,A
+     10          }
+   \                     ??UART0AssignLocation_2:
+   \   000011   02....       LJMP      ?BRET
+   \   000014                REQUIRE PERCFG
+     11          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     12          void UART0ModeSel(uint8_t mode)	//MODE
+   \                     ??UART0ModeSel:
+     13          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     14          	if(mode == UART_MODE)
+   \   000000   7401         MOV       A,#0x1
+   \   000002   69           XRL       A,R1
+   \   000003   700B         JNZ       ??UART0ModeSel_1
+     15          		U0CSR |= (mode << 7);
+   \   000005   E9           MOV       A,R1
+   \   000006   A2E0         MOV       C,0xE0 /* A   */.0
+   \   000008   E4           CLR       A
+   \   000009   33           RLC       A
+   \   00000A   13           RRC       A
+   \   00000B   13           RRC       A
+   \   00000C   5480         ANL       A,#0x80
+   \   00000E   4286         ORL       0x86,A
+     16          }
+   \                     ??UART0ModeSel_1:
+   \   000010   02....       LJMP      ?BRET
+   \   000013                REQUIRE U0CSR
+     17          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     18          void UART0ReceiverEn(uint8_t sel)	//RE
+   \                     ??UART0ReceiverEn:
+     19          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     20          	if(sel)
+   \   000000   E9           MOV       A,R1
+   \   000001   600A         JZ        ??UART0ReceiverEn_1
+     21          	{
+     22          		U0CSR |= (sel << 6);
+   \   000003   E9           MOV       A,R1
+   \   000004   C4           SWAP      A
+   \   000005   33           RLC       A
+   \   000006   33           RLC       A
+   \   000007   54C0         ANL       A,#0xc0
+   \   000009   4286         ORL       0x86,A
+   \   00000B   8009         SJMP      ??UART0ReceiverEn_2
+     23          	}
+     24          	else
+     25          	{
+     26          		U0CSR &= ~(sel << 6);
+   \                     ??UART0ReceiverEn_1:
+   \   00000D   E9           MOV       A,R1
+   \   00000E   C4           SWAP      A
+   \   00000F   33           RLC       A
+   \   000010   33           RLC       A
+   \   000011   54C0         ANL       A,#0xc0
+   \   000013   F4           CPL       A
+   \   000014   5286         ANL       0x86,A
+     27          	}
+     28          }
+   \                     ??UART0ReceiverEn_2:
+   \   000016   02....       LJMP      ?BRET
+   \   000019                REQUIRE U0CSR
+     29          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     30          void UART0DiscardDataBuff()	//write to RX_BYTE
+   \                     ??UART0DiscardDataBuff:
+     31          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     32          	U0CSR &= ~(1 << 2);
+   \   000000   5386FB       ANL       0x86,#0xfb
+     33          }
+   \   000003   02....       LJMP      ?BRET
+   \   000006                REQUIRE U0CSR
+     34          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     35          uint8_t UART0IsReceiving()	//read from RX_BYTE
+   \                     ??UART0IsReceiving:
+     36          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     37          	return U0CSR & (1 << 2);
+   \   000000   E586         MOV       A,0x86
+   \   000002   5404         ANL       A,#0x4
+   \   000004   F9           MOV       R1,A
+   \   000005   02....       LJMP      ?BRET
+   \   000008                REQUIRE U0CSR
+     38          }
+     39          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     40          uint8_t UART0TranmissionCompleted()	//TX_BYTE
+   \                     ??UART0TranmissionCompleted:
+     41          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     42          	return U0CSR & (1 << 1);
+   \   000000   E586         MOV       A,0x86
+   \   000002   5402         ANL       A,#0x2
+   \   000004   F9           MOV       R1,A
+   \   000005   02....       LJMP      ?BRET
+   \   000008                REQUIRE U0CSR
+     43          }
+     44          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     45          uint8_t UART0IsBusy()	//ACTIVE
+   \                     ??UART0IsBusy:
+     46          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     47          	return U0CSR & 1;
+   \   000000   E586         MOV       A,0x86
+   \   000002   A2E0         MOV       C,0xE0 /* A   */.0
+   \   000004   E4           CLR       A
+   \   000005   33           RLC       A
+   \   000006   F9           MOV       R1,A
+   \   000007   02....       LJMP      ?BRET
+   \   00000A                REQUIRE U0CSR
+     48          }
+     49          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     50          void UART0SetBaud(unsigned long baud)	//BAUD bit and U0BAUD reg
+   \                     ??UART0SetBaud:
+     51          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000   74F4         MOV       A,#-0xc
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV       ?V0,R2
+   \   000007   8B..         MOV       ?V1,R3
+   \   000009   8C..         MOV       ?V2,R4
+   \   00000B   8D..         MOV       ?V3,R5
+     52          	switch(baud)
+   \   00000D   78..         MOV       R0,#?V0
+   \   00000F   12....       LCALL     ?UL_SWITCH_SPARSE
+   \                     `?<Jumptable for UART0SetBaud>_0`:
+   \   000012   00000000     DD        0
+   \   000016   0B000000     DD        11
+   \   00001A   60090000     DD        2400
+   \   00001E   ....         DW        ??UART0SetBaud_1
+   \   000020   C0120000     DD        4800
+   \   000024   ....         DW        ??UART0SetBaud_2
+   \   000026   80250000     DD        9600
+   \   00002A   ....         DW        ??UART0SetBaud_3
+   \   00002C   40380000     DD        14400
+   \   000030   ....         DW        ??UART0SetBaud_4
+   \   000032   004B0000     DD        19200
+   \   000036   ....         DW        ??UART0SetBaud_5
+   \   000038   80700000     DD        28800
+   \   00003C   ....         DW        ??UART0SetBaud_6
+   \   00003E   00960000     DD        38400
+   \   000042   ....         DW        ??UART0SetBaud_7
+   \   000044   00E10000     DD        57600
+   \   000048   ....         DW        ??UART0SetBaud_8
+   \   00004A   002C0100     DD        76800
+   \   00004E   ....         DW        ??UART0SetBaud_9
+   \   000050   00C20100     DD        115200
+   \   000054   ....         DW        ??UART0SetBaud_10
+   \   000056   00840300     DD        230400
+   \   00005A   ....         DW        ??UART0SetBaud_11
+   \   00005C   ....         DW        ??UART0SetBaud_12
+     53          	{
+     54          		case 2400: 
+     55          		{
+     56          			U0BAUD = 59;
+   \                     ??UART0SetBaud_1:
+   \   00005E   75C23B       MOV       0xc2,#0x3b
+     57          			U0GCR = 6;
+   \   000061   75C506       MOV       0xc5,#0x6
+     58                                  break;
+   \   000064   804E         SJMP      ??UART0SetBaud_12
+     59          		}
+     60          
+     61          		case 4800: 
+     62          		{
+     63          			U0BAUD = 59;
+   \                     ??UART0SetBaud_2:
+   \   000066   75C23B       MOV       0xc2,#0x3b
+     64          			U0GCR = 7;
+   \   000069   75C507       MOV       0xc5,#0x7
+     65                                  break;
+   \   00006C   8046         SJMP      ??UART0SetBaud_12
+     66          		}
+     67          
+     68          		case 9600: 
+     69          		{
+     70          			U0BAUD = 59;
+   \                     ??UART0SetBaud_3:
+   \   00006E   75C23B       MOV       0xc2,#0x3b
+     71          			U0GCR = 8;
+   \   000071   75C508       MOV       0xc5,#0x8
+     72                                  break;
+   \   000074   803E         SJMP      ??UART0SetBaud_12
+     73          		}
+     74          
+     75          		case 14400: 
+     76          		{
+     77          			U0BAUD = 216;
+   \                     ??UART0SetBaud_4:
+   \   000076   75C2D8       MOV       0xc2,#-0x28
+     78          			U0GCR = 8;
+   \   000079   75C508       MOV       0xc5,#0x8
+     79                                  break;
+   \   00007C   8036         SJMP      ??UART0SetBaud_12
+     80          		}
+     81          
+     82          		case 19200: 
+     83          		{
+     84          			U0BAUD = 59;
+   \                     ??UART0SetBaud_5:
+   \   00007E   75C23B       MOV       0xc2,#0x3b
+     85          			U0GCR = 9;
+   \   000081   75C509       MOV       0xc5,#0x9
+     86                                  break;
+   \   000084   802E         SJMP      ??UART0SetBaud_12
+     87          		}
+     88          
+     89          		case 28800: 
+     90          		{
+     91          			U0BAUD = 216;
+   \                     ??UART0SetBaud_6:
+   \   000086   75C2D8       MOV       0xc2,#-0x28
+     92          			U0GCR = 9;
+   \   000089   75C509       MOV       0xc5,#0x9
+     93                                  break;
+   \   00008C   8026         SJMP      ??UART0SetBaud_12
+     94          		}
+     95          
+     96          		case 38400: 
+     97          		{
+     98          			U0BAUD = 59;
+   \                     ??UART0SetBaud_7:
+   \   00008E   75C23B       MOV       0xc2,#0x3b
+     99          			U0GCR = 10;
+   \   000091   75C50A       MOV       0xc5,#0xa
+    100                                  break;		}
+   \   000094   801E         SJMP      ??UART0SetBaud_12
+    101          
+    102          		case 57600: 
+    103          		{
+    104          			U0BAUD = 216;
+   \                     ??UART0SetBaud_8:
+   \   000096   75C2D8       MOV       0xc2,#-0x28
+    105          			U0GCR = 10;
+   \   000099   75C50A       MOV       0xc5,#0xa
+    106                                  break;
+   \   00009C   8016         SJMP      ??UART0SetBaud_12
+    107          		}
+    108          
+    109          		case 76800: 
+    110          		{
+    111          			U0BAUD = 59;
+   \                     ??UART0SetBaud_9:
+   \   00009E   75C23B       MOV       0xc2,#0x3b
+    112          			U0GCR = 11;
+   \   0000A1   75C50B       MOV       0xc5,#0xb
+    113                                  break;
+   \   0000A4   800E         SJMP      ??UART0SetBaud_12
+    114          		}
+    115          
+    116          		case 115200: 
+    117          		{
+    118          			U0BAUD = 216;
+   \                     ??UART0SetBaud_10:
+   \   0000A6   75C2D8       MOV       0xc2,#-0x28
+    119          			U0GCR = 11;
+   \   0000A9   75C50B       MOV       0xc5,#0xb
+    120                                  break;
+   \   0000AC   8006         SJMP      ??UART0SetBaud_12
+    121          		}
+    122          
+    123          		case 230400: 
+    124          		{
+    125          			U0BAUD = 216;
+   \                     ??UART0SetBaud_11:
+   \   0000AE   75C2D8       MOV       0xc2,#-0x28
+    126          			U0GCR = 12;
+   \   0000B1   75C50C       MOV       0xc5,#0xc
+    127                                  break;
+    128          		}
+    129          	}
+    130          }
+   \                     ??UART0SetBaud_12:
+   \   0000B4   7F04         MOV       R7,#0x4
+   \   0000B6   02....       LJMP      ?BANKED_LEAVE_XDATA
+   \   0000B9                REQUIRE U0BAUD
+   \   0000B9                REQUIRE U0GCR
+    131          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    132          uint8_t UART0GetData()	//DATA reg
+   \                     ??UART0GetData:
+    133          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    134          	return U0DBUF;
+   \   000000   E5C1         MOV       A,0xc1
+   \   000002   F9           MOV       R1,A
+   \   000003   02....       LJMP      ?BRET
+   \   000006                REQUIRE U0DBUF
+    135          }
+    136          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    137          void UART0FillData(uint8_t data)	//DATA reg
+   \                     ??UART0FillData:
+    138          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    139          	U0DBUF = data;
+   \   000000   89C1         MOV       0xc1,R1
+    140          }
+   \   000002   02....       LJMP      ?BRET
+   \   000005                REQUIRE U0DBUF
+    141          
+    142          
+    143          
+    144          
+    145          
+    146          
+    147          // UART1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    148          void UART1AssignLocation(uint8_t sel)	//PERCFG.U1CFG, See table 7.1
+   \                     ??UART1AssignLocation:
+    149          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    150          	if(sel == UART1_P07_P06)
+   \   000000   7401         MOV       A,#0x1
+   \   000002   69           XRL       A,R1
+   \   000003   7007         JNZ       ??UART1AssignLocation_1
+    151          		PERCFG |= (sel << 1);
+   \   000005   E9           MOV       A,R1
+   \   000006   C3           CLR       C
+   \   000007   33           RLC       A
+   \   000008   42F1         ORL       0xf1,A
+   \   00000A   8009         SJMP      ??UART1AssignLocation_2
+    152          	else if(sel == UART1_P05_P04)
+   \                     ??UART1AssignLocation_1:
+   \   00000C   E9           MOV       A,R1
+   \   00000D   7006         JNZ       ??UART1AssignLocation_2
+    153          		PERCFG &= ~(sel << 1);
+   \   00000F   E9           MOV       A,R1
+   \   000010   C3           CLR       C
+   \   000011   33           RLC       A
+   \   000012   F4           CPL       A
+   \   000013   52F1         ANL       0xf1,A
+    154          }
+   \                     ??UART1AssignLocation_2:
+   \   000015   02....       LJMP      ?BRET
+   \   000018                REQUIRE PERCFG
+    155          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    156          void UART1ModeSel(uint8_t mode)	//MODE
+   \                     ??UART1ModeSel:
+    157          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    158          	if(mode == UART_MODE)
+   \   000000   7401         MOV       A,#0x1
+   \   000002   69           XRL       A,R1
+   \   000003   700B         JNZ       ??UART1ModeSel_1
+    159          		U1CSR |= (mode << 7);
+   \   000005   E9           MOV       A,R1
+   \   000006   A2E0         MOV       C,0xE0 /* A   */.0
+   \   000008   E4           CLR       A
+   \   000009   33           RLC       A
+   \   00000A   13           RRC       A
+   \   00000B   13           RRC       A
+   \   00000C   5480         ANL       A,#0x80
+   \   00000E   42F8         ORL       0xf8,A
+    160          }
+   \                     ??UART1ModeSel_1:
+   \   000010   02....       LJMP      ?BRET
+   \   000013                REQUIRE _A_U1CSR
+    161          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    162          void UART1ReceiverEn(uint8_t sel)	//RE
+   \                     ??UART1ReceiverEn:
+    163          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    164          	if(sel)
+   \   000000   E9           MOV       A,R1
+   \   000001   600A         JZ        ??UART1ReceiverEn_1
+    165          	{
+    166          		U1CSR |= (sel << 6);
+   \   000003   E9           MOV       A,R1
+   \   000004   C4           SWAP      A
+   \   000005   33           RLC       A
+   \   000006   33           RLC       A
+   \   000007   54C0         ANL       A,#0xc0
+   \   000009   42F8         ORL       0xf8,A
+   \   00000B   8009         SJMP      ??UART1ReceiverEn_2
+    167          	}
+    168          	else
+    169          	{
+    170          		U1CSR &= ~(sel << 6);
+   \                     ??UART1ReceiverEn_1:
+   \   00000D   E9           MOV       A,R1
+   \   00000E   C4           SWAP      A
+   \   00000F   33           RLC       A
+   \   000010   33           RLC       A
+   \   000011   54C0         ANL       A,#0xc0
+   \   000013   F4           CPL       A
+   \   000014   52F8         ANL       0xf8,A
+    171          	}
+    172          }
+   \                     ??UART1ReceiverEn_2:
+   \   000016   02....       LJMP      ?BRET
+   \   000019                REQUIRE _A_U1CSR
+    173          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    174          void UART1DiscardDataBuff()	//write to RX_BYTE
+   \                     ??UART1DiscardDataBuff:
+    175          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    176          	U1CSR &= ~(1 << 2);
+   \   000000   C2FA         CLR       0xf8.2
+    177          }
+   \   000002   02....       LJMP      ?BRET
+   \   000005                REQUIRE _A_U1CSR
+    178          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    179          uint8_t UART1IsReceiving()	//read from RX_BYTE
+   \                     ??UART1IsReceiving:
+    180          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    181          	return U1CSR & (1 << 2);
+   \   000000   E5F8         MOV       A,0xf8
+   \   000002   5404         ANL       A,#0x4
+   \   000004   F9           MOV       R1,A
+   \   000005   02....       LJMP      ?BRET
+   \   000008                REQUIRE _A_U1CSR
+    182          }
+    183          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    184          uint8_t UART1TranmissionCompleted()	//TX_BYTE
+   \                     ??UART1TranmissionCompleted:
+    185          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    186          	return U1CSR & (1 << 1);
+   \   000000   E5F8         MOV       A,0xf8
+   \   000002   5402         ANL       A,#0x2
+   \   000004   F9           MOV       R1,A
+   \   000005   02....       LJMP      ?BRET
+   \   000008                REQUIRE _A_U1CSR
+    187          }
+    188          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    189          uint8_t UART1IsBusy()	//ACTIVE
+   \                     ??UART1IsBusy:
+    190          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    191          	return U1CSR & 1;
+   \   000000   A2F8         MOV       C,0xf8.0
+   \   000002   E4           CLR       A
+   \   000003   33           RLC       A
+   \   000004   F9           MOV       R1,A
+   \   000005   02....       LJMP      ?BRET
+   \   000008                REQUIRE _A_U1CSR
+    192          }
+    193          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    194          void UART1SetBaud(unsigned long baud)	//BAUD bit and U1BAUD reg
+   \                     ??UART1SetBaud:
+    195          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000   74F4         MOV       A,#-0xc
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV       ?V0,R2
+   \   000007   8B..         MOV       ?V1,R3
+   \   000009   8C..         MOV       ?V2,R4
+   \   00000B   8D..         MOV       ?V3,R5
+    196          	switch(baud)
+   \   00000D   78..         MOV       R0,#?V0
+   \   00000F   12....       LCALL     ?UL_SWITCH_SPARSE
+   \                     `?<Jumptable for UART1SetBaud>_0`:
+   \   000012   00000000     DD        0
+   \   000016   0B000000     DD        11
+   \   00001A   60090000     DD        2400
+   \   00001E   ....         DW        ??UART1SetBaud_1
+   \   000020   C0120000     DD        4800
+   \   000024   ....         DW        ??UART1SetBaud_2
+   \   000026   80250000     DD        9600
+   \   00002A   ....         DW        ??UART1SetBaud_3
+   \   00002C   40380000     DD        14400
+   \   000030   ....         DW        ??UART1SetBaud_4
+   \   000032   004B0000     DD        19200
+   \   000036   ....         DW        ??UART1SetBaud_5
+   \   000038   80700000     DD        28800
+   \   00003C   ....         DW        ??UART1SetBaud_6
+   \   00003E   00960000     DD        38400
+   \   000042   ....         DW        ??UART1SetBaud_7
+   \   000044   00E10000     DD        57600
+   \   000048   ....         DW        ??UART1SetBaud_8
+   \   00004A   002C0100     DD        76800
+   \   00004E   ....         DW        ??UART1SetBaud_9
+   \   000050   00C20100     DD        115200
+   \   000054   ....         DW        ??UART1SetBaud_10
+   \   000056   00840300     DD        230400
+   \   00005A   ....         DW        ??UART1SetBaud_11
+   \   00005C   ....         DW        ??UART1SetBaud_12
+    197          	{
+    198          		case 2400: 
+    199          		{
+    200          			U1BAUD = 59;
+   \                     ??UART1SetBaud_1:
+   \   00005E   75FA3B       MOV       0xfa,#0x3b
+    201          			U1GCR = 6;
+   \   000061   75FC06       MOV       0xfc,#0x6
+    202                                  break;
+   \   000064   804E         SJMP      ??UART1SetBaud_12
+    203          		}
+    204          
+    205          		case 4800: 
+    206          		{
+    207          			U1BAUD = 59;
+   \                     ??UART1SetBaud_2:
+   \   000066   75FA3B       MOV       0xfa,#0x3b
+    208          			U1GCR = 7;
+   \   000069   75FC07       MOV       0xfc,#0x7
+    209                                  break;
+   \   00006C   8046         SJMP      ??UART1SetBaud_12
+    210          		}
+    211          
+    212          		case 9600: 
+    213          		{
+    214          			U1BAUD = 59;
+   \                     ??UART1SetBaud_3:
+   \   00006E   75FA3B       MOV       0xfa,#0x3b
+    215          			U1GCR = 8;
+   \   000071   75FC08       MOV       0xfc,#0x8
+    216                                  break;
+   \   000074   803E         SJMP      ??UART1SetBaud_12
+    217          		}
+    218          
+    219          		case 14400: 
+    220          		{
+    221          			U1BAUD = 216;
+   \                     ??UART1SetBaud_4:
+   \   000076   75FAD8       MOV       0xfa,#-0x28
+    222          			U1GCR = 8;
+   \   000079   75FC08       MOV       0xfc,#0x8
+    223                                  break;
+   \   00007C   8036         SJMP      ??UART1SetBaud_12
+    224          		}
+    225          
+    226          		case 19200: 
+    227          		{
+    228          			U1BAUD = 59;
+   \                     ??UART1SetBaud_5:
+   \   00007E   75FA3B       MOV       0xfa,#0x3b
+    229          			U1GCR = 9;
+   \   000081   75FC09       MOV       0xfc,#0x9
+    230                                  break;
+   \   000084   802E         SJMP      ??UART1SetBaud_12
+    231          		}
+    232          
+    233          		case 28800: 
+    234          		{
+    235          			U1BAUD = 216;
+   \                     ??UART1SetBaud_6:
+   \   000086   75FAD8       MOV       0xfa,#-0x28
+    236          			U1GCR = 9;
+   \   000089   75FC09       MOV       0xfc,#0x9
+    237                                  break;
+   \   00008C   8026         SJMP      ??UART1SetBaud_12
+    238          		}
+    239          
+    240          		case 38400: 
+    241          		{
+    242          			U1BAUD = 59;
+   \                     ??UART1SetBaud_7:
+   \   00008E   75FA3B       MOV       0xfa,#0x3b
+    243          			U1GCR = 10;		
+   \   000091   75FC0A       MOV       0xfc,#0xa
+    244                                  break;
+   \   000094   801E         SJMP      ??UART1SetBaud_12
+    245                          }
+    246          
+    247          		case 57600: 
+    248          		{
+    249          			U1BAUD = 216;
+   \                     ??UART1SetBaud_8:
+   \   000096   75FAD8       MOV       0xfa,#-0x28
+    250          			U1GCR = 10;
+   \   000099   75FC0A       MOV       0xfc,#0xa
+    251                                  break;
+   \   00009C   8016         SJMP      ??UART1SetBaud_12
+    252          		}
+    253          
+    254          		case 76800: 
+    255          		{
+    256          			U1BAUD = 59;
+   \                     ??UART1SetBaud_9:
+   \   00009E   75FA3B       MOV       0xfa,#0x3b
+    257          			U1GCR = 11;
+   \   0000A1   75FC0B       MOV       0xfc,#0xb
+    258                                  break;
+   \   0000A4   800E         SJMP      ??UART1SetBaud_12
+    259          		}
+    260          
+    261          		case 115200: 
+    262          		{
+    263          			U1BAUD = 216;
+   \                     ??UART1SetBaud_10:
+   \   0000A6   75FAD8       MOV       0xfa,#-0x28
+    264          			U1GCR = 11;
+   \   0000A9   75FC0B       MOV       0xfc,#0xb
+    265                                  break;
+   \   0000AC   8006         SJMP      ??UART1SetBaud_12
+    266          		}
+    267          
+    268          		case 230400: 
+    269          		{
+    270          			U1BAUD = 216;
+   \                     ??UART1SetBaud_11:
+   \   0000AE   75FAD8       MOV       0xfa,#-0x28
+    271          			U1GCR = 12;
+   \   0000B1   75FC0C       MOV       0xfc,#0xc
+    272                                  break;
+    273          		}
+    274          	}
+    275          }
+   \                     ??UART1SetBaud_12:
+   \   0000B4   7F04         MOV       R7,#0x4
+   \   0000B6   02....       LJMP      ?BANKED_LEAVE_XDATA
+   \   0000B9                REQUIRE U1BAUD
+   \   0000B9                REQUIRE U1GCR
+    276          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    277          uint8_t UART1GetData()	//DATA reg
+   \                     ??UART1GetData:
+    278          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    279          	return U1DBUF;
+   \   000000   E5F9         MOV       A,0xf9
+   \   000002   F9           MOV       R1,A
+   \   000003   02....       LJMP      ?BRET
+   \   000006                REQUIRE U1DBUF
+    280          }
+    281          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    282          void UART1FillData(uint8_t data)	//DATA reg
+   \                     ??UART1FillData:
+    283          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    284          	U1DBUF = data;
+   \   000000   89F9         MOV       0xf9,R1
+    285          }
+   \   000002   02....       LJMP      ?BRET
+   \   000005                REQUIRE U1DBUF
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0AssignLocation::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0AssignLocation
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0ModeSel::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0ModeSel
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0ReceiverEn::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0ReceiverEn
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0DiscardDataBuff::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0DiscardDataBuff
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0IsReceiving::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0IsReceiving
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0TranmissionCompleted::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0TranmissionCompleted
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0IsBusy::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0IsBusy
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0SetBaud::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0SetBaud
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0GetData::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0GetData
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART0FillData::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART0FillData
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1AssignLocation::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1AssignLocation
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1ModeSel::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1ModeSel
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1ReceiverEn::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1ReceiverEn
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1DiscardDataBuff::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1DiscardDataBuff
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1IsReceiving::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1IsReceiving
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1TranmissionCompleted::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1TranmissionCompleted
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1IsBusy::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1IsBusy
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1SetBaud::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1SetBaud
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1GetData::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1GetData
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??UART1FillData::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??UART1FillData
+
+   Maximum stack usage in bytes:
+
+   XSTACK Function
+   ------ --------
+      0   UART0AssignLocation(uint8_t)
+      0   UART0DiscardDataBuff()
+      0   UART0FillData(uint8_t)
+      0   UART0GetData()
+      0   UART0IsBusy()
+      0   UART0IsReceiving()
+      0   UART0ModeSel(uint8_t)
+      0   UART0ReceiverEn(uint8_t)
+     12   UART0SetBaud(unsigned long)
+      0   UART0TranmissionCompleted()
+      0   UART1AssignLocation(uint8_t)
+      0   UART1DiscardDataBuff()
+      0   UART1FillData(uint8_t)
+      0   UART1GetData()
+      0   UART1IsBusy()
+      0   UART1IsReceiving()
+      0   UART1ModeSel(uint8_t)
+      0   UART1ReceiverEn(uint8_t)
+     12   UART1SetBaud(unsigned long)
+      0   UART1TranmissionCompleted()
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       1  PERCFG
+       1  U0BAUD
+       1  U0CSR
+       1  U0DBUF
+       1  U0GCR
+       1  U1BAUD
+       1  U1DBUF
+       1  U1GCR
+      20  UART0AssignLocation(uint8_t)
+       6  UART0AssignLocation(uint8_t)::?relay
+       6  UART0DiscardDataBuff()
+       6  UART0DiscardDataBuff()::?relay
+       5  UART0FillData(uint8_t)
+       6  UART0FillData(uint8_t)::?relay
+       6  UART0GetData()
+       6  UART0GetData()::?relay
+      10  UART0IsBusy()
+       6  UART0IsBusy()::?relay
+       8  UART0IsReceiving()
+       6  UART0IsReceiving()::?relay
+      19  UART0ModeSel(uint8_t)
+       6  UART0ModeSel(uint8_t)::?relay
+      25  UART0ReceiverEn(uint8_t)
+       6  UART0ReceiverEn(uint8_t)::?relay
+     185  UART0SetBaud(unsigned long)
+       6  UART0SetBaud(unsigned long)::?relay
+       8  UART0TranmissionCompleted()
+       6  UART0TranmissionCompleted()::?relay
+      24  UART1AssignLocation(uint8_t)
+       6  UART1AssignLocation(uint8_t)::?relay
+       5  UART1DiscardDataBuff()
+       6  UART1DiscardDataBuff()::?relay
+       5  UART1FillData(uint8_t)
+       6  UART1FillData(uint8_t)::?relay
+       6  UART1GetData()
+       6  UART1GetData()::?relay
+       8  UART1IsBusy()
+       6  UART1IsBusy()::?relay
+       8  UART1IsReceiving()
+       6  UART1IsReceiving()::?relay
+      19  UART1ModeSel(uint8_t)
+       6  UART1ModeSel(uint8_t)::?relay
+      25  UART1ReceiverEn(uint8_t)
+       6  UART1ReceiverEn(uint8_t)::?relay
+     185  UART1SetBaud(unsigned long)
+       6  UART1SetBaud(unsigned long)::?relay
+       8  UART1TranmissionCompleted()
+       6  UART1TranmissionCompleted()::?relay
+       1  _A_U1CSR
+
+ 
+ 585 bytes in segment BANKED_CODE
+ 120 bytes in segment BANK_RELAYS
+   9 bytes in segment SFR_AN
+ 
+ 120 bytes of CODE     memory
+   0 bytes of DATA     memory (+ 9 bytes shared)
+ 585 bytes of HUGECODE memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,275 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.10.1.4655 for 8051               31/Mar/2018  15:48:42
+# Copyright 2004-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GlobalINT.c
+#    Command line       =  
+#        -f C:\Users\Bico\AppData\Local\Temp\EW95D6.tmp
+#        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GlobalINT.c"
+#        -lC "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List"
+#        -lA "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+#        --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+#        Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+#        -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+#        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_cross_call)
+#    Locale             =  Vietnamese_Vietnam.1258
+#    List file          =  
+#        C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\Debug\List\GlobalINT.lst
+#    Object file        =  
+#        C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\Debug\Obj\GlobalINT.r51
+#
+###############################################################################
+
+C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GlobalINT.c
+      1          #include "GlobalINT.h"
+
+   \                                 In  segment SFR_AN, at 0x9a
+   \   unsigned char volatile __sfr IEN2
+   \                     IEN2:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xa8
+   \   union <unnamed> volatile __sfr _A_IEN0
+   \                     _A_IEN0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xb8
+   \   union <unnamed> volatile __sfr _A_IEN1
+   \                     _A_IEN1:
+   \   000000                DS 1
+      2          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      3          void GlobalInterruptSwitch(uint8_t mode)
+   \                     ??GlobalInterruptSwitch:
+      4          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+      5          	EA = mode;
+   \   000000   E9           MOV       A,R1
+   \   000001   A2E0         MOV       C,0xE0 /* A   */.0
+   \   000003   92AF         MOV       0xa8.7,C
+      6          }
+   \   000005   02....       LJMP      ?BRET
+   \   000008                REQUIRE _A_IEN0
+      7          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      8          void P0InterruptSwitch(uint8_t mode)
+   \                     ??P0InterruptSwitch:
+      9          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     10          	P0IE = mode;
+   \   000000   E9           MOV       A,R1
+   \   000001   A2E0         MOV       C,0xE0 /* A   */.0
+   \   000003   92BD         MOV       0xb8.5,C
+     11          }
+   \   000005   02....       LJMP      ?BRET
+   \   000008                REQUIRE _A_IEN1
+     12          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     13          void P1InterruptSwitch(uint8_t mode)
+   \                     ??P1InterruptSwitch:
+     14          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     15          	if(mode == ON)
+   \   000000   7401         MOV       A,#0x1
+   \   000002   69           XRL       A,R1
+   \   000003   7005         JNZ       ??P1InterruptSwitch_1
+     16          		IEN2 |= (1<<4);
+   \   000005   439A10       ORL       0x9a,#0x10
+   \   000008   8006         SJMP      ??P1InterruptSwitch_2
+     17          	else if(mode == OFF)
+   \                     ??P1InterruptSwitch_1:
+   \   00000A   E9           MOV       A,R1
+   \   00000B   7003         JNZ       ??P1InterruptSwitch_2
+     18          		IEN2 &= ~(1<<4);
+   \   00000D   539AEF       ANL       0x9a,#0xef
+     19          }
+   \                     ??P1InterruptSwitch_2:
+   \   000010   02....       LJMP      ?BRET
+   \   000013                REQUIRE IEN2
+     20          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     21          void P2InterruptSwitch(uint8_t mode)
+   \                     ??P2InterruptSwitch:
+     22          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     23          	if(mode == ON)
+   \   000000   7401         MOV       A,#0x1
+   \   000002   69           XRL       A,R1
+   \   000003   7005         JNZ       ??P2InterruptSwitch_1
+     24          		IEN2 |= (1<<1);
+   \   000005   439A02       ORL       0x9a,#0x2
+   \   000008   8006         SJMP      ??P2InterruptSwitch_2
+     25          	else if(mode == OFF)
+   \                     ??P2InterruptSwitch_1:
+   \   00000A   E9           MOV       A,R1
+   \   00000B   7003         JNZ       ??P2InterruptSwitch_2
+     26          		IEN2 &= ~(1<<1);
+   \   00000D   539AFD       ANL       0x9a,#0xfd
+     27          }
+   \                     ??P2InterruptSwitch_2:
+   \   000010   02....       LJMP      ?BRET
+   \   000013                REQUIRE IEN2
+     28          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     29          void URX0InterruptSwitch(uint8_t mode)
+   \                     ??URX0InterruptSwitch:
+     30          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     31            	if(mode == ON)
+   \   000000   7401         MOV       A,#0x1
+   \   000002   69           XRL       A,R1
+   \   000003   7004         JNZ       ??URX0InterruptSwitch_1
+     32                    IEN0 |= (1<<2);
+   \   000005   D2AA         SETB      0xa8.2
+   \   000007   8005         SJMP      ??URX0InterruptSwitch_2
+     33          	else if(mode == OFF)
+   \                     ??URX0InterruptSwitch_1:
+   \   000009   E9           MOV       A,R1
+   \   00000A   7002         JNZ       ??URX0InterruptSwitch_2
+     34                    IEN0 &= ~(1<<2);
+   \   00000C   C2AA         CLR       0xa8.2
+     35          }
+   \                     ??URX0InterruptSwitch_2:
+   \   00000E   02....       LJMP      ?BRET
+   \   000011                REQUIRE _A_IEN0
+     36          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     37          void URX1InterruptSwitch(uint8_t mode)
+   \                     ??URX1InterruptSwitch:
+     38          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     39            	if(mode == ON)
+   \   000000   7401         MOV       A,#0x1
+   \   000002   69           XRL       A,R1
+   \   000003   7004         JNZ       ??URX1InterruptSwitch_1
+     40                    IEN0 |= (1<<3);
+   \   000005   D2AB         SETB      0xa8.3
+   \   000007   8005         SJMP      ??URX1InterruptSwitch_2
+     41          	else if(mode == OFF)
+   \                     ??URX1InterruptSwitch_1:
+   \   000009   E9           MOV       A,R1
+   \   00000A   7002         JNZ       ??URX1InterruptSwitch_2
+     42                    IEN0 &= ~(1<<3);
+   \   00000C   C2AB         CLR       0xa8.3
+     43          }
+   \                     ??URX1InterruptSwitch_2:
+   \   00000E   02....       LJMP      ?BRET
+   \   000011                REQUIRE _A_IEN0
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??GlobalInterruptSwitch::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??GlobalInterruptSwitch
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??P0InterruptSwitch::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??P0InterruptSwitch
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??P1InterruptSwitch::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??P1InterruptSwitch
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??P2InterruptSwitch::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??P2InterruptSwitch
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??URX0InterruptSwitch::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??URX0InterruptSwitch
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??URX1InterruptSwitch::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??URX1InterruptSwitch
+
+   Maximum stack usage in bytes:
+
+   ISTACK Function
+   ------ --------
+      0   GlobalInterruptSwitch(uint8_t)
+      0   P0InterruptSwitch(uint8_t)
+      0   P1InterruptSwitch(uint8_t)
+      0   P2InterruptSwitch(uint8_t)
+      0   URX0InterruptSwitch(uint8_t)
+      0   URX1InterruptSwitch(uint8_t)
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       8  GlobalInterruptSwitch(uint8_t)
+       6  GlobalInterruptSwitch(uint8_t)::?relay
+       1  IEN2
+       8  P0InterruptSwitch(uint8_t)
+       6  P0InterruptSwitch(uint8_t)::?relay
+      19  P1InterruptSwitch(uint8_t)
+       6  P1InterruptSwitch(uint8_t)::?relay
+      19  P2InterruptSwitch(uint8_t)
+       6  P2InterruptSwitch(uint8_t)::?relay
+      17  URX0InterruptSwitch(uint8_t)
+       6  URX0InterruptSwitch(uint8_t)::?relay
+      17  URX1InterruptSwitch(uint8_t)
+       6  URX1InterruptSwitch(uint8_t)::?relay
+       1  _A_IEN0
+       1  _A_IEN1
+
+ 
+ 88 bytes in segment BANKED_CODE
+ 36 bytes in segment BANK_RELAYS
+  3 bytes in segment SFR_AN
+ 
+ 36 bytes of CODE     memory
+  0 bytes of DATA     memory (+ 3 bytes shared)
+ 88 bytes of HUGECODE memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,958 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.10.1.4655 for 8051              31/Mar/2018  15:48:42
+// Copyright 2004-2017 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ADC.c
+//    Command line       =  
+//        -f C:\Users\Bico\AppData\Local\Temp\EW940E.tmp
+//        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ADC.c" -lC
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+//        --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+//        Files (x86)\IAR Systems\Embedded Workbench
+//        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+//        -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+//        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+//        --no_cross_call)
+//    Locale             =  Vietnamese_Vietnam.1258
+//    List file          =  
+//        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List\ADC.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME ADC
+
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__register_banks", "*"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?SS_SHR
+        EXTERN ?S_SHL
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC ??channelSeleted
+        FUNCTION ??channelSeleted,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??channelSeleted::?relay`
+        FUNCTION `??channelSeleted::?relay`,0203H
+        PUBLIC ??completedConvertion
+        FUNCTION ??completedConvertion,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??completedConvertion::?relay`
+        FUNCTION `??completedConvertion::?relay`,0203H
+        PUBLIC ??connectTemSensorToADC
+        FUNCTION ??connectTemSensorToADC,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??connectTemSensorToADC::?relay`
+        FUNCTION `??connectTemSensorToADC::?relay`,0203H
+        PUBLIC ??disableADCPin
+        FUNCTION ??disableADCPin,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??disableADCPin::?relay`
+        FUNCTION `??disableADCPin::?relay`,0203H
+        PUBLIC ??enableADCPin
+        FUNCTION ??enableADCPin,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??enableADCPin::?relay`
+        FUNCTION `??enableADCPin::?relay`,0203H
+        PUBLIC ??isInConvertion
+        FUNCTION ??isInConvertion,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??isInConvertion::?relay`
+        FUNCTION `??isInConvertion::?relay`,0203H
+        PUBLIC ??readResult
+        FUNCTION ??readResult,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        PUBLIC `??readResult::?relay`
+        FUNCTION `??readResult::?relay`,0203H
+        PUBLIC ??referenceVoltage
+        FUNCTION ??referenceVoltage,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??referenceVoltage::?relay`
+        FUNCTION `??referenceVoltage::?relay`,0203H
+        PUBLIC ??selectDecimationRate
+        FUNCTION ??selectDecimationRate,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??selectDecimationRate::?relay`
+        FUNCTION `??selectDecimationRate::?relay`,0203H
+        PUBLIC ??selectStartCondition
+        FUNCTION ??selectStartCondition,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??selectStartCondition::?relay`
+        FUNCTION `??selectStartCondition::?relay`,0203H
+        PUBLIC ??singleConversionchannelSeleted
+        FUNCTION ??singleConversionchannelSeleted,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??singleConversionchannelSeleted::?relay`
+        FUNCTION `??singleConversionchannelSeleted::?relay`,0203H
+        PUBLIC ??singleConversionreferenceVoltage
+        FUNCTION ??singleConversionreferenceVoltage,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??singleConversionreferenceVoltage::?relay`
+        FUNCTION `??singleConversionreferenceVoltage::?relay`,0203H
+        PUBLIC ??singleConversionselectDecimationRate
+        FUNCTION ??singleConversionselectDecimationRate,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??singleConversionselectDecimationRate::?relay`
+        FUNCTION `??singleConversionselectDecimationRate::?relay`,0203H
+        PUBLIC ??startConvertion
+        FUNCTION ??startConvertion,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??startConvertion::?relay`
+        FUNCTION `??startConvertion::?relay`,0203H
+        PUBWEAK ADCCON1
+        PUBWEAK ADCCON2
+        PUBWEAK ADCCON3
+        PUBWEAK ADCH
+        PUBWEAK ADCL
+        PUBWEAK APCFG
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+
+`??channelSeleted::?relay` SYMBOL "?relay", ??channelSeleted
+
+`??completedConvertion::?relay` SYMBOL "?relay", ??completedConvertion
+
+`??connectTemSensorToADC::?relay` SYMBOL "?relay", ??connectTemSensorToADC
+
+`??disableADCPin::?relay` SYMBOL "?relay", ??disableADCPin
+
+`??enableADCPin::?relay` SYMBOL "?relay", ??enableADCPin
+
+`??isInConvertion::?relay` SYMBOL "?relay", ??isInConvertion
+
+`??readResult::?relay` SYMBOL "?relay", ??readResult
+
+`??referenceVoltage::?relay` SYMBOL "?relay", ??referenceVoltage
+
+`??selectDecimationRate::?relay` SYMBOL "?relay", ??selectDecimationRate
+
+`??selectStartCondition::?relay` SYMBOL "?relay", ??selectStartCondition
+
+`??singleConversionchannelSeleted::?relay` SYMBOL "?relay", ??singleConversionchannelSeleted
+
+`??singleConversionreferenceVoltage::?relay` SYMBOL "?relay", ??singleConversionreferenceVoltage
+
+`??singleConversionselectDecimationRate::?relay` SYMBOL "?relay", ??singleConversionselectDecimationRate
+
+`??startConvertion::?relay` SYMBOL "?relay", ??startConvertion
+
+// C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ADC.c
+//    1 #include "ADC.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,0b4H
+// unsigned char volatile __sfr ADCCON1
+ADCCON1:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0b5H
+// unsigned char volatile __sfr ADCCON2
+ADCCON2:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0b6H
+// unsigned char volatile __sfr ADCCON3
+ADCCON3:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0baH
+// unsigned char volatile __sfr ADCL
+ADCL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0bbH
+// unsigned char volatile __sfr ADCH
+ADCH:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f2H
+// unsigned char volatile __sfr APCFG
+APCFG:
+        DATA8
+        DS 1
+//    2 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//    3 static uint8_t dec_rate_selected;
+dec_rate_selected:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+//    4 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//    5 uint8_t enableADCPin(uint8_t pin)
+??enableADCPin:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??enableADCPin
+        CODE
+//    6 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        PUSH      ?V0
+          CFI V0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      ?V1
+          CFI V1 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R2,A
+//    7 	if BELONG_TO_PORT0(pin)
+        MOV       A,R2
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??enableADCPin_1
+//    8 	{
+//    9 		APCFG |= (1 << (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R2
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xf2,A
+//   10 
+//   11 		return 1;
+        MOV       R1,#0x1
+        SJMP      ??enableADCPin_2
+//   12 	}
+//   13 	else return 0xFF;
+??enableADCPin_1:
+        MOV       R1,#-0x1
+??enableADCPin_2:
+        POP       ?V1
+          CFI V1 SameValue
+          CFI CFA_SP SP+-4
+        POP       ?V0
+          CFI V0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock0
+        REQUIRE APCFG
+//   14 }
+//   15 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   16 uint8_t disableADCPin(uint8_t pin)
+??disableADCPin:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??disableADCPin
+        CODE
+//   17 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        PUSH      ?V0
+          CFI V0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      ?V1
+          CFI V1 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R2,A
+//   18 	if BELONG_TO_PORT0(pin)
+        MOV       A,R2
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??disableADCPin_1
+//   19 	{
+//   20 		APCFG &= ~(1 << (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R2
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xf2,A
+//   21 
+//   22 		return 1;
+        MOV       R1,#0x1
+        SJMP      ??disableADCPin_2
+//   23 	}
+//   24 	else return 0xFF;
+??disableADCPin_1:
+        MOV       R1,#-0x1
+??disableADCPin_2:
+        POP       ?V1
+          CFI V1 SameValue
+          CFI CFA_SP SP+-4
+        POP       ?V0
+          CFI V0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock1
+        REQUIRE APCFG
+//   25 }
+//   26 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   27 uint8_t completedConvertion()
+??completedConvertion:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??completedConvertion
+        CODE
+//   28 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   29 	return (ADCCON1 & (1<<7));
+        MOV       A,0xb4
+        ANL       A,#0x80
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock2
+        REQUIRE ADCCON1
+//   30 }
+//   31 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   32 void startConvertion()
+??startConvertion:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function ??startConvertion
+        CODE
+//   33 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   34 	ADCCON1 |= (1<<6);
+        ORL       0xb4,#0x40
+//   35 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock3
+        REQUIRE ADCCON1
+//   36 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   37 uint8_t isInConvertion()
+??isInConvertion:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function ??isInConvertion
+        CODE
+//   38 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   39 	return (ADCCON1 & (1<<6));
+        MOV       A,0xb4
+        ANL       A,#0x40
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock4
+        REQUIRE ADCCON1
+//   40 }
+//   41 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   42 void selectStartCondition(uint8_t sel)
+??selectStartCondition:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function ??selectStartCondition
+        CODE
+//   43 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   44 	//clear 2 bit in ADCCON1.STSEL
+//   45 	ADCCON1 &= ~(1<<4);
+        ANL       0xb4,#0xef
+//   46 	ADCCON1 &= ~(1<<5);
+        ANL       0xb4,#0xdf
+//   47 
+//   48 	//insert 2 bit in sel into ADCCON1.STSEL	
+//   49 	ADCCON1 |= (sel<<4);
+        MOV       A,R1
+        SWAP      A
+        ANL       A,#0xf0
+        ORL       0xb4,A
+//   50 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock5
+        REQUIRE ADCCON1
+//   51 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   52 void referenceVoltage(uint8_t sel)
+??referenceVoltage:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function ??referenceVoltage
+        CODE
+//   53 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   54 	//clear 2 bit in ADCCON2.SREF
+//   55 	ADCCON2 &= ~(1<<6);
+        ANL       0xb5,#0xbf
+//   56 	ADCCON2 &= ~(1<<7);
+        ANL       0xb5,#0x7f
+//   57 
+//   58 	//insert 2 bit in sel into ADCCON2.SREF	
+//   59 	ADCCON2 |= (sel<<6);
+        MOV       A,R1
+        SWAP      A
+        RLC       A
+        RLC       A
+        ANL       A,#0xc0
+        ORL       0xb5,A
+//   60 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock6
+        REQUIRE ADCCON2
+//   61 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   62 void selectDecimationRate(uint8_t sel)
+??selectDecimationRate:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??selectDecimationRate
+        CODE
+//   63 {
+        PUSH      DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   64 	//clear 2 bit in ADCCON2.SDIV
+//   65 	ADCCON2 &= ~(1<<4);
+        ANL       0xb5,#0xef
+//   66 	ADCCON2 &= ~(1<<5);
+        ANL       0xb5,#0xdf
+//   67 
+//   68 	//insert 2 bit in sel into ADCCON2.SDIV	
+//   69 	ADCCON2 |= (sel<<4);
+        MOV       A,R1
+        SWAP      A
+        ANL       A,#0xf0
+        ORL       0xb5,A
+//   70         
+//   71         dec_rate_selected = sel;
+        MOV       A,R1
+        MOV       DPTR,#dec_rate_selected
+        MOVX      @DPTR,A
+//   72 }
+        POP       DPH
+          CFI DPH0 SameValue
+          CFI CFA_SP SP+-4
+        POP       DPL
+          CFI DPL0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock7
+        REQUIRE ADCCON2
+//   73 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   74 void channelSeleted(uint8_t sel)
+??channelSeleted:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??channelSeleted
+        CODE
+//   75 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   76 	//clear 4 bit in ADCCON2.SCH	
+//   77 	ADCCON2 &= ~(1<<0);
+        ANL       0xb5,#0xfe
+//   78 	ADCCON2 &= ~(1<<1);
+        ANL       0xb5,#0xfd
+//   79 	ADCCON2 &= ~(1<<2);
+        ANL       0xb5,#0xfb
+//   80 	ADCCON2 &= ~(1<<3);
+        ANL       0xb5,#0xf7
+//   81 
+//   82 	//insert 2 bit in sel into ADCCON2.SDIV, (sel << 0) = sel
+//   83 	ADCCON2 |= sel;
+        MOV       A,R1
+        ORL       0xb5,A
+//   84 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock8
+        REQUIRE ADCCON2
+//   85 
+//   86 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   87 void singleConversionreferenceVoltage(uint8_t sel)
+??singleConversionreferenceVoltage:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function ??singleConversionreferenceVoltage
+        CODE
+//   88 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   89 	//clear 2 bit in ADCCON3.SREF
+//   90 	ADCCON3 &= ~(1<<6);
+        ANL       0xb6,#0xbf
+//   91 	ADCCON3 &= ~(1<<7);
+        ANL       0xb6,#0x7f
+//   92 
+//   93 	//insert 2 bit in sel into ADCCON3.SREF	
+//   94 	ADCCON3 |= (sel<<6);
+        MOV       A,R1
+        SWAP      A
+        RLC       A
+        RLC       A
+        ANL       A,#0xc0
+        ORL       0xb6,A
+//   95 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock9
+        REQUIRE ADCCON3
+//   96 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   97 void singleConversionselectDecimationRate(uint8_t sel)
+??singleConversionselectDecimationRate:
+          CFI Block cfiBlock10 Using cfiCommon0
+          CFI Function ??singleConversionselectDecimationRate
+        CODE
+//   98 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   99 	//clear 2 bit in ADCCON3.SDIV
+//  100 	ADCCON3 &= ~(1<<4);
+        ANL       0xb6,#0xef
+//  101 	ADCCON3 &= ~(1<<5);
+        ANL       0xb6,#0xdf
+//  102 
+//  103 	//insert 2 bit in sel into ADCCON3.SDIV	
+//  104 	ADCCON3 |= (sel<<4);
+        MOV       A,R1
+        SWAP      A
+        ANL       A,#0xf0
+        ORL       0xb6,A
+//  105 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock10
+        REQUIRE ADCCON3
+//  106 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  107 void singleConversionchannelSeleted(uint8_t sel)
+??singleConversionchannelSeleted:
+          CFI Block cfiBlock11 Using cfiCommon0
+          CFI Function ??singleConversionchannelSeleted
+        CODE
+//  108 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  109 	//clear 4 bit in ADCCON3.SCH	
+//  110 	ADCCON3 &= ~(1<<0);
+        ANL       0xb6,#0xfe
+//  111 	ADCCON3 &= ~(1<<1);
+        ANL       0xb6,#0xfd
+//  112 	ADCCON3 &= ~(1<<2);
+        ANL       0xb6,#0xfb
+//  113 	ADCCON3 &= ~(1<<3);
+        ANL       0xb6,#0xf7
+//  114 
+//  115 	//insert 2 bit in sel into ADCCON3.SDIV, (sel << 0) = sel
+//  116 	ADCCON3 |= sel;
+        MOV       A,R1
+        ORL       0xb6,A
+//  117 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock11
+        REQUIRE ADCCON3
+//  118 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  119 void connectTemSensorToADC(uint8_t sel)
+??connectTemSensorToADC:
+          CFI Block cfiBlock12 Using cfiCommon0
+          CFI Function ??connectTemSensorToADC
+        CODE
+//  120 {
+        PUSH      DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  121 	TR0 = sel;
+        MOV       A,R1
+        MOV       DPTR,#0x624b
+        MOVX      @DPTR,A
+//  122 }
+        POP       DPH
+          CFI DPH0 SameValue
+          CFI CFA_SP SP+-4
+        POP       DPL
+          CFI DPL0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock12
+//  123 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  124 int readResult()
+??readResult:
+          CFI Block cfiBlock13 Using cfiCommon0
+          CFI Function ??readResult
+        CODE
+//  125 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0xa
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+//  126 	int result = ADCH;
+        MOV       A,0xbb
+        MOV       R2,A
+        MOV       R3,#0x0
+//  127 	result <<= 8;
+        CLR       A
+        XCH       A,R2
+        MOV       R3,A
+//  128 	result |= ADCL;
+        MOV       A,0xba
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,R0
+        ORL       A,R2
+        MOV       R2,A
+        MOV       A,R1
+        ORL       A,R3
+        MOV       R3,A
+//  129 
+//  130 	switch (dec_rate_selected)
+        MOV       DPTR,#dec_rate_selected
+        MOVX      A,@DPTR
+        JZ        ??readResult_1
+        DEC       A
+        JZ        ??readResult_2
+        DEC       A
+        JZ        ??readResult_3
+        SJMP      ??readResult_4
+//  131 	  {
+//  132 	    case DEC_RATE_64:
+//  133 	      result >>= 8;
+??readResult_1:
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       A,#0x8
+        MOV       R0,#?V0
+        LCALL     ?SS_SHR
+        MOV       R2,?V0
+        MOV       R3,?V1
+//  134 	      break;
+        SJMP      ??readResult_5
+//  135 	    case DEC_RATE_128:
+//  136 	      result >>= 6;
+??readResult_2:
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       A,#0x6
+        MOV       R0,#?V0
+        LCALL     ?SS_SHR
+        MOV       R2,?V0
+        MOV       R3,?V1
+//  137 	      break;
+        SJMP      ??readResult_5
+//  138 	    case DEC_RATE_256:
+//  139 	      result >>= 4;
+??readResult_3:
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       A,#0x4
+        MOV       R0,#?V0
+        LCALL     ?SS_SHR
+        MOV       R2,?V0
+        MOV       R3,?V1
+//  140 	      break;
+        SJMP      ??readResult_5
+//  141 	    case DEC_RATE_512:
+//  142 	    default:
+//  143 	      result >>= 2;
+??readResult_4:
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       A,#0x2
+        MOV       R0,#?V0
+        LCALL     ?SS_SHR
+        MOV       R2,?V0
+        MOV       R3,?V1
+//  144 	    break;
+//  145 	  }
+//  146 
+//  147 	return result;
+??readResult_5:
+        MOV       R7,#0x2
+        LJMP      ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock13
+        REQUIRE ADCH
+        REQUIRE ADCL
+//  148 }
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??enableADCPin::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??enableADCPin
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??disableADCPin::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??disableADCPin
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??completedConvertion::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??completedConvertion
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??startConvertion::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??startConvertion
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??isInConvertion::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??isInConvertion
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??selectStartCondition::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??selectStartCondition
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??referenceVoltage::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??referenceVoltage
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??selectDecimationRate::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??selectDecimationRate
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??channelSeleted::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??channelSeleted
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??singleConversionreferenceVoltage::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??singleConversionreferenceVoltage
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??singleConversionselectDecimationRate::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??singleConversionselectDecimationRate
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??singleConversionchannelSeleted::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??singleConversionchannelSeleted
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??connectTemSensorToADC::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??connectTemSensorToADC
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??readResult::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??readResult
+
+        END
+// 
+// 358 bytes in segment BANKED_CODE
+//  84 bytes in segment BANK_RELAYS
+//   6 bytes in segment SFR_AN
+//   1 byte  in segment XDATA_Z
+// 
+//  84 bytes of CODE     memory
+//   0 bytes of DATA     memory (+ 6 bytes shared)
+// 358 bytes of HUGECODE memory
+//   1 byte  of XDATA    memory
+//
+//Errors: none
+//Warnings: none

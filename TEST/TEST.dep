@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>602190029</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\..\..\..\..\..\Texas Instruments\Z-Stack 3.0.1\Components\hal\include\hal_defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\Texas Instruments\Z-Stack 3.0.1\Components\hal\target\CC2530EB\hal_types.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl-pli-blxd-1e16x01n.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\Texas Instruments\Z-Stack 3.0.1\Components\hal\target\CC2530EB\hal_board_cfg.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\Texas Instruments\Z-Stack 3.0.1\Components\hal\include\hal_board.h</file>
+            <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\Texas Instruments\Z-Stack 3.0.1\Components\hal\include\hal_led.h</file>
+            <file>$PROJ_DIR$\Debug\Exe\TEST.d51</file>
+            <file>$PROJ_DIR$\main.cpp</file>
+            <file>$TOOLKIT_DIR$\config\devices\Texas Instruments\lnk51ew_cc2530F256_banked.xcl</file>
+            <file>$PROJ_DIR$\Debug\List\TEST.map</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\Texas Instruments\Z-Stack 3.0.1\Components\hal\target\CC2530EB\hal_mcu.h</file>
+        </outputs>
+        <file>
+            <name>$PROJ_DIR$\Debug\Exe\TEST.d51</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 13</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 12 6 2</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\main.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 3</file>
+                </tool>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 6</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 5</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 9 7 4 14 0 1 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 1 4 14 0 8 7 9</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 13 10</file>
+                </tool>
+            </outputs>
+        </file>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

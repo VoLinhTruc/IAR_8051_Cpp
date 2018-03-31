@@ -1,0 +1,658 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.10.1.4655 for 8051               31/Mar/2018  15:48:42
+# Copyright 2004-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ADC.c
+#    Command line       =  
+#        -f C:\Users\Bico\AppData\Local\Temp\EW940E.tmp
+#        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ADC.c" -lC
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+#        --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+#        Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+#        -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+#        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_cross_call)
+#    Locale             =  Vietnamese_Vietnam.1258
+#    List file          =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List\ADC.lst
+#    Object file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj\ADC.r51
+#
+###############################################################################
+
+C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ADC.c
+      1          #include "ADC.h"
+
+   \                                 In  segment SFR_AN, at 0xb4
+   \   unsigned char volatile __sfr ADCCON1
+   \                     ADCCON1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xb5
+   \   unsigned char volatile __sfr ADCCON2
+   \                     ADCCON2:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xb6
+   \   unsigned char volatile __sfr ADCCON3
+   \                     ADCCON3:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xba
+   \   unsigned char volatile __sfr ADCL
+   \                     ADCL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xbb
+   \   unsigned char volatile __sfr ADCH
+   \                     ADCH:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf2
+   \   unsigned char volatile __sfr APCFG
+   \                     APCFG:
+   \   000000                DS 1
+      2          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+      3          static uint8_t dec_rate_selected;
+   \                     dec_rate_selected:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+      4          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      5          uint8_t enableADCPin(uint8_t pin)
+   \                     ??enableADCPin:
+      6          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   C0..         PUSH      ?V0
+   \   000002   C0..         PUSH      ?V1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   \   000004   E9           MOV       A,R1
+   \   000005   FA           MOV       R2,A
+      7          	if BELONG_TO_PORT0(pin)
+   \   000006   EA           MOV       A,R2
+   \   000007   C3           CLR       C
+   \   000008   9408         SUBB      A,#0x8
+   \   00000A   5014         JNC       ??enableADCPin_1
+      8          	{
+      9          		APCFG |= (1 << (pin - PORT0));
+   \   00000C   75..01       MOV       ?V0,#0x1
+   \   00000F   75..00       MOV       ?V1,#0x0
+   \   000012   EA           MOV       A,R2
+   \   000013   78..         MOV       R0,#?V0
+   \   000015   12....       LCALL     ?S_SHL
+   \   000018   E5..         MOV       A,?V0
+   \   00001A   42F2         ORL       0xf2,A
+     10          
+     11          		return 1;
+   \   00001C   7901         MOV       R1,#0x1
+   \   00001E   8002         SJMP      ??enableADCPin_2
+     12          	}
+     13          	else return 0xFF;
+   \                     ??enableADCPin_1:
+   \   000020   79FF         MOV       R1,#-0x1
+   \                     ??enableADCPin_2:
+   \   000022   D0..         POP       ?V1
+   \   000024   D0..         POP       ?V0
+   \   000026   02....       LJMP      ?BRET
+   \   000029                REQUIRE APCFG
+     14          }
+     15          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     16          uint8_t disableADCPin(uint8_t pin)
+   \                     ??disableADCPin:
+     17          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   C0..         PUSH      ?V0
+   \   000002   C0..         PUSH      ?V1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   \   000004   E9           MOV       A,R1
+   \   000005   FA           MOV       R2,A
+     18          	if BELONG_TO_PORT0(pin)
+   \   000006   EA           MOV       A,R2
+   \   000007   C3           CLR       C
+   \   000008   9408         SUBB      A,#0x8
+   \   00000A   5015         JNC       ??disableADCPin_1
+     19          	{
+     20          		APCFG &= ~(1 << (pin - PORT0));
+   \   00000C   75..01       MOV       ?V0,#0x1
+   \   00000F   75..00       MOV       ?V1,#0x0
+   \   000012   EA           MOV       A,R2
+   \   000013   78..         MOV       R0,#?V0
+   \   000015   12....       LCALL     ?S_SHL
+   \   000018   E5..         MOV       A,?V0
+   \   00001A   F4           CPL       A
+   \   00001B   52F2         ANL       0xf2,A
+     21          
+     22          		return 1;
+   \   00001D   7901         MOV       R1,#0x1
+   \   00001F   8002         SJMP      ??disableADCPin_2
+     23          	}
+     24          	else return 0xFF;
+   \                     ??disableADCPin_1:
+   \   000021   79FF         MOV       R1,#-0x1
+   \                     ??disableADCPin_2:
+   \   000023   D0..         POP       ?V1
+   \   000025   D0..         POP       ?V0
+   \   000027   02....       LJMP      ?BRET
+   \   00002A                REQUIRE APCFG
+     25          }
+     26          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     27          uint8_t completedConvertion()
+   \                     ??completedConvertion:
+     28          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     29          	return (ADCCON1 & (1<<7));
+   \   000000   E5B4         MOV       A,0xb4
+   \   000002   5480         ANL       A,#0x80
+   \   000004   F9           MOV       R1,A
+   \   000005   02....       LJMP      ?BRET
+   \   000008                REQUIRE ADCCON1
+     30          }
+     31          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     32          void startConvertion()
+   \                     ??startConvertion:
+     33          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     34          	ADCCON1 |= (1<<6);
+   \   000000   43B440       ORL       0xb4,#0x40
+     35          }
+   \   000003   02....       LJMP      ?BRET
+   \   000006                REQUIRE ADCCON1
+     36          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     37          uint8_t isInConvertion()
+   \                     ??isInConvertion:
+     38          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     39          	return (ADCCON1 & (1<<6));
+   \   000000   E5B4         MOV       A,0xb4
+   \   000002   5440         ANL       A,#0x40
+   \   000004   F9           MOV       R1,A
+   \   000005   02....       LJMP      ?BRET
+   \   000008                REQUIRE ADCCON1
+     40          }
+     41          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     42          void selectStartCondition(uint8_t sel)
+   \                     ??selectStartCondition:
+     43          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     44          	//clear 2 bit in ADCCON1.STSEL
+     45          	ADCCON1 &= ~(1<<4);
+   \   000000   53B4EF       ANL       0xb4,#0xef
+     46          	ADCCON1 &= ~(1<<5);
+   \   000003   53B4DF       ANL       0xb4,#0xdf
+     47          
+     48          	//insert 2 bit in sel into ADCCON1.STSEL	
+     49          	ADCCON1 |= (sel<<4);
+   \   000006   E9           MOV       A,R1
+   \   000007   C4           SWAP      A
+   \   000008   54F0         ANL       A,#0xf0
+   \   00000A   42B4         ORL       0xb4,A
+     50          }
+   \   00000C   02....       LJMP      ?BRET
+   \   00000F                REQUIRE ADCCON1
+     51          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     52          void referenceVoltage(uint8_t sel)
+   \                     ??referenceVoltage:
+     53          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     54          	//clear 2 bit in ADCCON2.SREF
+     55          	ADCCON2 &= ~(1<<6);
+   \   000000   53B5BF       ANL       0xb5,#0xbf
+     56          	ADCCON2 &= ~(1<<7);
+   \   000003   53B57F       ANL       0xb5,#0x7f
+     57          
+     58          	//insert 2 bit in sel into ADCCON2.SREF	
+     59          	ADCCON2 |= (sel<<6);
+   \   000006   E9           MOV       A,R1
+   \   000007   C4           SWAP      A
+   \   000008   33           RLC       A
+   \   000009   33           RLC       A
+   \   00000A   54C0         ANL       A,#0xc0
+   \   00000C   42B5         ORL       0xb5,A
+     60          }
+   \   00000E   02....       LJMP      ?BRET
+   \   000011                REQUIRE ADCCON2
+     61          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     62          void selectDecimationRate(uint8_t sel)
+   \                     ??selectDecimationRate:
+     63          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     64          	//clear 2 bit in ADCCON2.SDIV
+     65          	ADCCON2 &= ~(1<<4);
+   \   000004   53B5EF       ANL       0xb5,#0xef
+     66          	ADCCON2 &= ~(1<<5);
+   \   000007   53B5DF       ANL       0xb5,#0xdf
+     67          
+     68          	//insert 2 bit in sel into ADCCON2.SDIV	
+     69          	ADCCON2 |= (sel<<4);
+   \   00000A   E9           MOV       A,R1
+   \   00000B   C4           SWAP      A
+   \   00000C   54F0         ANL       A,#0xf0
+   \   00000E   42B5         ORL       0xb5,A
+     70                  
+     71                  dec_rate_selected = sel;
+   \   000010   E9           MOV       A,R1
+   \   000011   90....       MOV       DPTR,#dec_rate_selected
+   \   000014   F0           MOVX      @DPTR,A
+     72          }
+   \   000015   D083         POP       DPH
+   \   000017   D082         POP       DPL
+   \   000019   02....       LJMP      ?BRET
+   \   00001C                REQUIRE ADCCON2
+     73          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     74          void channelSeleted(uint8_t sel)
+   \                     ??channelSeleted:
+     75          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     76          	//clear 4 bit in ADCCON2.SCH	
+     77          	ADCCON2 &= ~(1<<0);
+   \   000000   53B5FE       ANL       0xb5,#0xfe
+     78          	ADCCON2 &= ~(1<<1);
+   \   000003   53B5FD       ANL       0xb5,#0xfd
+     79          	ADCCON2 &= ~(1<<2);
+   \   000006   53B5FB       ANL       0xb5,#0xfb
+     80          	ADCCON2 &= ~(1<<3);
+   \   000009   53B5F7       ANL       0xb5,#0xf7
+     81          
+     82          	//insert 2 bit in sel into ADCCON2.SDIV, (sel << 0) = sel
+     83          	ADCCON2 |= sel;
+   \   00000C   E9           MOV       A,R1
+   \   00000D   42B5         ORL       0xb5,A
+     84          }
+   \   00000F   02....       LJMP      ?BRET
+   \   000012                REQUIRE ADCCON2
+     85          
+     86          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     87          void singleConversionreferenceVoltage(uint8_t sel)
+   \                     ??singleConversionreferenceVoltage:
+     88          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     89          	//clear 2 bit in ADCCON3.SREF
+     90          	ADCCON3 &= ~(1<<6);
+   \   000000   53B6BF       ANL       0xb6,#0xbf
+     91          	ADCCON3 &= ~(1<<7);
+   \   000003   53B67F       ANL       0xb6,#0x7f
+     92          
+     93          	//insert 2 bit in sel into ADCCON3.SREF	
+     94          	ADCCON3 |= (sel<<6);
+   \   000006   E9           MOV       A,R1
+   \   000007   C4           SWAP      A
+   \   000008   33           RLC       A
+   \   000009   33           RLC       A
+   \   00000A   54C0         ANL       A,#0xc0
+   \   00000C   42B6         ORL       0xb6,A
+     95          }
+   \   00000E   02....       LJMP      ?BRET
+   \   000011                REQUIRE ADCCON3
+     96          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     97          void singleConversionselectDecimationRate(uint8_t sel)
+   \                     ??singleConversionselectDecimationRate:
+     98          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     99          	//clear 2 bit in ADCCON3.SDIV
+    100          	ADCCON3 &= ~(1<<4);
+   \   000000   53B6EF       ANL       0xb6,#0xef
+    101          	ADCCON3 &= ~(1<<5);
+   \   000003   53B6DF       ANL       0xb6,#0xdf
+    102          
+    103          	//insert 2 bit in sel into ADCCON3.SDIV	
+    104          	ADCCON3 |= (sel<<4);
+   \   000006   E9           MOV       A,R1
+   \   000007   C4           SWAP      A
+   \   000008   54F0         ANL       A,#0xf0
+   \   00000A   42B6         ORL       0xb6,A
+    105          }
+   \   00000C   02....       LJMP      ?BRET
+   \   00000F                REQUIRE ADCCON3
+    106          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    107          void singleConversionchannelSeleted(uint8_t sel)
+   \                     ??singleConversionchannelSeleted:
+    108          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    109          	//clear 4 bit in ADCCON3.SCH	
+    110          	ADCCON3 &= ~(1<<0);
+   \   000000   53B6FE       ANL       0xb6,#0xfe
+    111          	ADCCON3 &= ~(1<<1);
+   \   000003   53B6FD       ANL       0xb6,#0xfd
+    112          	ADCCON3 &= ~(1<<2);
+   \   000006   53B6FB       ANL       0xb6,#0xfb
+    113          	ADCCON3 &= ~(1<<3);
+   \   000009   53B6F7       ANL       0xb6,#0xf7
+    114          
+    115          	//insert 2 bit in sel into ADCCON3.SDIV, (sel << 0) = sel
+    116          	ADCCON3 |= sel;
+   \   00000C   E9           MOV       A,R1
+   \   00000D   42B6         ORL       0xb6,A
+    117          }
+   \   00000F   02....       LJMP      ?BRET
+   \   000012                REQUIRE ADCCON3
+    118          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    119          void connectTemSensorToADC(uint8_t sel)
+   \                     ??connectTemSensorToADC:
+    120          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    121          	TR0 = sel;
+   \   000004   E9           MOV       A,R1
+   \   000005   90624B       MOV       DPTR,#0x624b
+   \   000008   F0           MOVX      @DPTR,A
+    122          }
+   \   000009   D083         POP       DPH
+   \   00000B   D082         POP       DPL
+   \   00000D   02....       LJMP      ?BRET
+    123          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    124          int readResult()
+   \                     ??readResult:
+    125          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV       A,#-0xa
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    126          	int result = ADCH;
+   \   000005   E5BB         MOV       A,0xbb
+   \   000007   FA           MOV       R2,A
+   \   000008   7B00         MOV       R3,#0x0
+    127          	result <<= 8;
+   \   00000A   E4           CLR       A
+   \   00000B   CA           XCH       A,R2
+   \   00000C   FB           MOV       R3,A
+    128          	result |= ADCL;
+   \   00000D   E5BA         MOV       A,0xba
+   \   00000F   F8           MOV       R0,A
+   \   000010   7900         MOV       R1,#0x0
+   \   000012   E8           MOV       A,R0
+   \   000013   4A           ORL       A,R2
+   \   000014   FA           MOV       R2,A
+   \   000015   E9           MOV       A,R1
+   \   000016   4B           ORL       A,R3
+   \   000017   FB           MOV       R3,A
+    129          
+    130          	switch (dec_rate_selected)
+   \   000018   90....       MOV       DPTR,#dec_rate_selected
+   \   00001B   E0           MOVX      A,@DPTR
+   \   00001C   6008         JZ        ??readResult_1
+   \   00001E   14           DEC       A
+   \   00001F   6016         JZ        ??readResult_2
+   \   000021   14           DEC       A
+   \   000022   6024         JZ        ??readResult_3
+   \   000024   8033         SJMP      ??readResult_4
+    131          	  {
+    132          	    case DEC_RATE_64:
+    133          	      result >>= 8;
+   \                     ??readResult_1:
+   \   000026   8A..         MOV       ?V0,R2
+   \   000028   8B..         MOV       ?V1,R3
+   \   00002A   7408         MOV       A,#0x8
+   \   00002C   78..         MOV       R0,#?V0
+   \   00002E   12....       LCALL     ?SS_SHR
+   \   000031   AA..         MOV       R2,?V0
+   \   000033   AB..         MOV       R3,?V1
+    134          	      break;
+   \   000035   8031         SJMP      ??readResult_5
+    135          	    case DEC_RATE_128:
+    136          	      result >>= 6;
+   \                     ??readResult_2:
+   \   000037   8A..         MOV       ?V0,R2
+   \   000039   8B..         MOV       ?V1,R3
+   \   00003B   7406         MOV       A,#0x6
+   \   00003D   78..         MOV       R0,#?V0
+   \   00003F   12....       LCALL     ?SS_SHR
+   \   000042   AA..         MOV       R2,?V0
+   \   000044   AB..         MOV       R3,?V1
+    137          	      break;
+   \   000046   8020         SJMP      ??readResult_5
+    138          	    case DEC_RATE_256:
+    139          	      result >>= 4;
+   \                     ??readResult_3:
+   \   000048   8A..         MOV       ?V0,R2
+   \   00004A   8B..         MOV       ?V1,R3
+   \   00004C   7404         MOV       A,#0x4
+   \   00004E   78..         MOV       R0,#?V0
+   \   000050   12....       LCALL     ?SS_SHR
+   \   000053   AA..         MOV       R2,?V0
+   \   000055   AB..         MOV       R3,?V1
+    140          	      break;
+   \   000057   800F         SJMP      ??readResult_5
+    141          	    case DEC_RATE_512:
+    142          	    default:
+    143          	      result >>= 2;
+   \                     ??readResult_4:
+   \   000059   8A..         MOV       ?V0,R2
+   \   00005B   8B..         MOV       ?V1,R3
+   \   00005D   7402         MOV       A,#0x2
+   \   00005F   78..         MOV       R0,#?V0
+   \   000061   12....       LCALL     ?SS_SHR
+   \   000064   AA..         MOV       R2,?V0
+   \   000066   AB..         MOV       R3,?V1
+    144          	    break;
+    145          	  }
+    146          
+    147          	return result;
+   \                     ??readResult_5:
+   \   000068   7F02         MOV       R7,#0x2
+   \   00006A   02....       LJMP      ?BANKED_LEAVE_XDATA
+   \   00006D                REQUIRE ADCH
+   \   00006D                REQUIRE ADCL
+    148          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??enableADCPin::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??enableADCPin
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??disableADCPin::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??disableADCPin
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??completedConvertion::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??completedConvertion
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??startConvertion::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??startConvertion
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??isInConvertion::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??isInConvertion
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??selectStartCondition::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??selectStartCondition
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??referenceVoltage::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??referenceVoltage
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??selectDecimationRate::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??selectDecimationRate
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??channelSeleted::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??channelSeleted
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??singleConversionreferenceVoltage::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??singleConversionreferenceVoltage
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??singleConversionselectDecimationRate::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??singleConversionselectDecimationRate
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??singleConversionchannelSeleted::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??singleConversionchannelSeleted
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??connectTemSensorToADC::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??connectTemSensorToADC
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??readResult::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??readResult
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      0      0   channelSeleted(uint8_t)
+      0      0   completedConvertion()
+      2      0   connectTemSensorToADC(uint8_t)
+      2      0   disableADCPin(uint8_t)
+      2      0   enableADCPin(uint8_t)
+      0      0   isInConvertion()
+      0     10   readResult()
+      0      0   referenceVoltage(uint8_t)
+      2      0   selectDecimationRate(uint8_t)
+      0      0   selectStartCondition(uint8_t)
+      0      0   singleConversionchannelSeleted(uint8_t)
+      0      0   singleConversionreferenceVoltage(uint8_t)
+      0      0   singleConversionselectDecimationRate(uint8_t)
+      0      0   startConvertion()
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       1  ADCCON1
+       1  ADCCON2
+       1  ADCCON3
+       1  ADCH
+       1  ADCL
+       1  APCFG
+      18  channelSeleted(uint8_t)
+       6  channelSeleted(uint8_t)::?relay
+       8  completedConvertion()
+       6  completedConvertion()::?relay
+      16  connectTemSensorToADC(uint8_t)
+       6  connectTemSensorToADC(uint8_t)::?relay
+       1  dec_rate_selected
+      42  disableADCPin(uint8_t)
+       6  disableADCPin(uint8_t)::?relay
+      41  enableADCPin(uint8_t)
+       6  enableADCPin(uint8_t)::?relay
+       8  isInConvertion()
+       6  isInConvertion()::?relay
+     109  readResult()
+       6  readResult()::?relay
+      17  referenceVoltage(uint8_t)
+       6  referenceVoltage(uint8_t)::?relay
+      28  selectDecimationRate(uint8_t)
+       6  selectDecimationRate(uint8_t)::?relay
+      15  selectStartCondition(uint8_t)
+       6  selectStartCondition(uint8_t)::?relay
+      18  singleConversionchannelSeleted(uint8_t)
+       6  singleConversionchannelSeleted(uint8_t)::?relay
+      17  singleConversionreferenceVoltage(uint8_t)
+       6  singleConversionreferenceVoltage(uint8_t)::?relay
+      15  singleConversionselectDecimationRate(uint8_t)
+       6  singleConversionselectDecimationRate(uint8_t)::?relay
+       6  startConvertion()
+       6  startConvertion()::?relay
+
+ 
+ 358 bytes in segment BANKED_CODE
+  84 bytes in segment BANK_RELAYS
+   6 bytes in segment SFR_AN
+   1 byte  in segment XDATA_Z
+ 
+  84 bytes of CODE     memory
+   0 bytes of DATA     memory (+ 6 bytes shared)
+ 358 bytes of HUGECODE memory
+   1 byte  of XDATA    memory
+
+Errors: none
+Warnings: none

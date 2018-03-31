@@ -1,0 +1,232 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.10.1.4655 for 8051               31/Mar/2018  15:48:42
+# Copyright 2004-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\Generic.c
+#    Command line       =  
+#        -f C:\Users\Bico\AppData\Local\Temp\EW95C5.tmp
+#        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\Generic.c"
+#        -lC "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List"
+#        -lA "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+#        --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+#        Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+#        -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+#        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_cross_call)
+#    Locale             =  Vietnamese_Vietnam.1258
+#    List file          =  
+#        C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\Debug\List\Generic.lst
+#    Object file        =  
+#        C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\Debug\Obj\Generic.r51
+#
+###############################################################################
+
+C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\Generic.c
+      1          #include "Generic.h"
+      2          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      3          void delay_5us(unsigned long microSecs)
+   \                     ??delay_5us:
+      4          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000   74F0         MOV       A,#-0x10
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV       ?V0,R2
+   \   000007   8B..         MOV       ?V1,R3
+   \   000009   8C..         MOV       ?V2,R4
+   \   00000B   8D..         MOV       ?V3,R5
+   \   00000D   8009         SJMP      ??delay_5us_1
+      5            while(microSecs--)
+      6            {
+      7              asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP");
+   \                     ??delay_5us_2:
+   \   00000F   00           NOP
+   \   000010   00           NOP
+   \   000011   00           NOP
+   \   000012   00           NOP
+      8              asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP");
+   \   000013   00           NOP
+   \   000014   00           NOP
+   \   000015   00           NOP
+   \   000016   00           NOP
+      9              asm("NOP");
+   \   000017   00           NOP
+     10            }
+   \                     ??delay_5us_1:
+   \   000018   85....       MOV       ?V4,?V0
+   \   00001B   85....       MOV       ?V5,?V1
+   \   00001E   85....       MOV       ?V6,?V2
+   \   000021   85....       MOV       ?V7,?V3
+   \   000024   85....       MOV       ?V0,?V4
+   \   000027   85....       MOV       ?V1,?V5
+   \   00002A   85....       MOV       ?V2,?V6
+   \   00002D   85....       MOV       ?V3,?V7
+   \   000030   90....       MOV       DPTR,#__Constant_ffffffff
+   \   000033   78..         MOV       R0,#?V0
+   \   000035   12....       LCALL     ?L_ADD_X
+   \   000038   E5..         MOV       A,?V4
+   \   00003A   45..         ORL       A,?V5
+   \   00003C   45..         ORL       A,?V6
+   \   00003E   45..         ORL       A,?V7
+   \   000040   70CD         JNZ       ??delay_5us_2
+     11          }
+   \   000042   7F08         MOV       R7,#0x8
+   \   000044   02....       LJMP      ?BANKED_LEAVE_XDATA
+     12          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     13          void delay_ms(unsigned long milliSecs)
+   \                     ??delay_ms:
+     14          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000   74F0         MOV       A,#-0x10
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV       ?V0,R2
+   \   000007   8B..         MOV       ?V1,R3
+   \   000009   8C..         MOV       ?V2,R4
+   \   00000B   8D..         MOV       ?V3,R5
+   \   00000D   8009         SJMP      ??delay_ms_1
+     15            while(milliSecs--)
+     16            {
+     17              delay_5us(200);
+   \                     ??delay_ms_2:
+   \   00000F                ; Setup parameters for call to function delay_5us(unsigned long)
+   \   00000F   90....       MOV       DPTR,#__Constant_c8
+   \   000012   12....       LCALL     ?XLOAD_R2345
+   \   000015   12....       LCALL     `??delay_5us::?relay`; Banked call to: delay_5us(unsigned long)
+     18            }
+   \                     ??delay_ms_1:
+   \   000018   85....       MOV       ?V4,?V0
+   \   00001B   85....       MOV       ?V5,?V1
+   \   00001E   85....       MOV       ?V6,?V2
+   \   000021   85....       MOV       ?V7,?V3
+   \   000024   85....       MOV       ?V0,?V4
+   \   000027   85....       MOV       ?V1,?V5
+   \   00002A   85....       MOV       ?V2,?V6
+   \   00002D   85....       MOV       ?V3,?V7
+   \   000030   90....       MOV       DPTR,#__Constant_ffffffff
+   \   000033   78..         MOV       R0,#?V0
+   \   000035   12....       LCALL     ?L_ADD_X
+   \   000038   E5..         MOV       A,?V4
+   \   00003A   45..         ORL       A,?V5
+   \   00003C   45..         ORL       A,?V6
+   \   00003E   45..         ORL       A,?V7
+   \   000040   70CD         JNZ       ??delay_ms_2
+     19          }
+   \   000042   7F08         MOV       R7,#0x8
+   \   000044   02....       LJMP      ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+   \                     __Constant_ffffffff:
+   \   000000                DS 4
+   \   000004                REQUIRE `?<Initializer for __Constant_ffffffff>`
+   \   000004                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for __Constant_ffffffff>`:
+   \   000000   FFFFFFFF     DD 4294967295
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+   \                     __Constant_c8:
+   \   000000                DS 4
+   \   000004                REQUIRE `?<Initializer for __Constant_c8>`
+   \   000004                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for __Constant_c8>`:
+   \   000000   C8000000     DD 200
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??delay_5us::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??delay_5us
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??delay_ms::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??delay_ms
+
+   Maximum stack usage in bytes:
+
+   XSTACK Function
+   ------ --------
+     32   delay_5us(unsigned long)
+     16   delay_ms(unsigned long)
+       16   -> delay_5us(unsigned long)
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ?<Initializer for __Constant_c8>
+       4  ?<Initializer for __Constant_ffffffff>
+       4  __Constant_c8
+       4  __Constant_ffffffff
+      71  delay_5us(unsigned long)
+       6  delay_5us(unsigned long)::?relay
+      71  delay_ms(unsigned long)
+       6  delay_ms(unsigned long)::?relay
+
+ 
+ 142 bytes in segment BANKED_CODE
+  12 bytes in segment BANK_RELAYS
+   8 bytes in segment XDATA_I
+   8 bytes in segment XDATA_ID
+ 
+  12 bytes of CODE     memory (+ 8 bytes shared)
+ 142 bytes of HUGECODE memory
+   0 bytes of XDATA    memory (+ 8 bytes shared)
+
+Errors: none
+Warnings: none

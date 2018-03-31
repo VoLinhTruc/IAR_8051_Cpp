@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspace>
+    <project>
+        <path>$WS_DIR$\ArduinoStyle\Arduino_Style.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\ASM\ASM.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\LowLevelLibrary\LowLevelLibrary.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\TEST\TEST.ewp</path>
+    </project>
+    <batchBuild />
+</workspace>

@@ -1,0 +1,435 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.10.1.4655 for 8051              31/Mar/2018  15:48:42
+// Copyright 2004-2017 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GlobalINT.c
+//    Command line       =  
+//        -f C:\Users\Bico\AppData\Local\Temp\EW95D6.tmp
+//        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GlobalINT.c"
+//        -lC "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List"
+//        -lA "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List"
+//        -o "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+//        --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+//        Files (x86)\IAR Systems\Embedded Workbench
+//        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+//        -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+//        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+//        --no_cross_call)
+//    Locale             =  Vietnamese_Vietnam.1258
+//    List file          =  
+//        C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\Debug\List\GlobalINT.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME GlobalINT
+
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__register_banks", "*"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+
+        PUBLIC ??GlobalInterruptSwitch
+        FUNCTION ??GlobalInterruptSwitch,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??GlobalInterruptSwitch::?relay`
+        FUNCTION `??GlobalInterruptSwitch::?relay`,0203H
+        PUBLIC ??P0InterruptSwitch
+        FUNCTION ??P0InterruptSwitch,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??P0InterruptSwitch::?relay`
+        FUNCTION `??P0InterruptSwitch::?relay`,0203H
+        PUBLIC ??P1InterruptSwitch
+        FUNCTION ??P1InterruptSwitch,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??P1InterruptSwitch::?relay`
+        FUNCTION `??P1InterruptSwitch::?relay`,0203H
+        PUBLIC ??P2InterruptSwitch
+        FUNCTION ??P2InterruptSwitch,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??P2InterruptSwitch::?relay`
+        FUNCTION `??P2InterruptSwitch::?relay`,0203H
+        PUBLIC ??URX0InterruptSwitch
+        FUNCTION ??URX0InterruptSwitch,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??URX0InterruptSwitch::?relay`
+        FUNCTION `??URX0InterruptSwitch::?relay`,0203H
+        PUBLIC ??URX1InterruptSwitch
+        FUNCTION ??URX1InterruptSwitch,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??URX1InterruptSwitch::?relay`
+        FUNCTION `??URX1InterruptSwitch::?relay`,0203H
+        PUBWEAK IEN2
+        PUBWEAK _A_IEN0
+        PUBWEAK _A_IEN1
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+
+`??GlobalInterruptSwitch::?relay` SYMBOL "?relay", ??GlobalInterruptSwitch
+
+`??P0InterruptSwitch::?relay` SYMBOL "?relay", ??P0InterruptSwitch
+
+`??P1InterruptSwitch::?relay` SYMBOL "?relay", ??P1InterruptSwitch
+
+`??P2InterruptSwitch::?relay` SYMBOL "?relay", ??P2InterruptSwitch
+
+`??URX0InterruptSwitch::?relay` SYMBOL "?relay", ??URX0InterruptSwitch
+
+`??URX1InterruptSwitch::?relay` SYMBOL "?relay", ??URX1InterruptSwitch
+
+// C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GlobalINT.c
+//    1 #include "GlobalINT.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,09aH
+// unsigned char volatile __sfr IEN2
+IEN2:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0a8H
+// union <unnamed> volatile __sfr _A_IEN0
+_A_IEN0:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0b8H
+// union <unnamed> volatile __sfr _A_IEN1
+_A_IEN1:
+        DATA8
+        DS 1
+//    2 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//    3 void GlobalInterruptSwitch(uint8_t mode)
+??GlobalInterruptSwitch:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??GlobalInterruptSwitch
+        CODE
+//    4 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//    5 	EA = mode;
+        MOV       A,R1
+        MOV       C,0xE0 /* A   */.0
+        MOV       0xa8.7,C
+//    6 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock0
+        REQUIRE _A_IEN0
+//    7 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//    8 void P0InterruptSwitch(uint8_t mode)
+??P0InterruptSwitch:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??P0InterruptSwitch
+        CODE
+//    9 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   10 	P0IE = mode;
+        MOV       A,R1
+        MOV       C,0xE0 /* A   */.0
+        MOV       0xb8.5,C
+//   11 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock1
+        REQUIRE _A_IEN1
+//   12 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   13 void P1InterruptSwitch(uint8_t mode)
+??P1InterruptSwitch:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??P1InterruptSwitch
+        CODE
+//   14 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   15 	if(mode == ON)
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??P1InterruptSwitch_1
+//   16 		IEN2 |= (1<<4);
+        ORL       0x9a,#0x10
+        SJMP      ??P1InterruptSwitch_2
+//   17 	else if(mode == OFF)
+??P1InterruptSwitch_1:
+        MOV       A,R1
+        JNZ       ??P1InterruptSwitch_2
+//   18 		IEN2 &= ~(1<<4);
+        ANL       0x9a,#0xef
+//   19 }
+??P1InterruptSwitch_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock2
+        REQUIRE IEN2
+//   20 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   21 void P2InterruptSwitch(uint8_t mode)
+??P2InterruptSwitch:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function ??P2InterruptSwitch
+        CODE
+//   22 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   23 	if(mode == ON)
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??P2InterruptSwitch_1
+//   24 		IEN2 |= (1<<1);
+        ORL       0x9a,#0x2
+        SJMP      ??P2InterruptSwitch_2
+//   25 	else if(mode == OFF)
+??P2InterruptSwitch_1:
+        MOV       A,R1
+        JNZ       ??P2InterruptSwitch_2
+//   26 		IEN2 &= ~(1<<1);
+        ANL       0x9a,#0xfd
+//   27 }
+??P2InterruptSwitch_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock3
+        REQUIRE IEN2
+//   28 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   29 void URX0InterruptSwitch(uint8_t mode)
+??URX0InterruptSwitch:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function ??URX0InterruptSwitch
+        CODE
+//   30 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   31   	if(mode == ON)
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??URX0InterruptSwitch_1
+//   32           IEN0 |= (1<<2);
+        SETB      0xa8.2
+        SJMP      ??URX0InterruptSwitch_2
+//   33 	else if(mode == OFF)
+??URX0InterruptSwitch_1:
+        MOV       A,R1
+        JNZ       ??URX0InterruptSwitch_2
+//   34           IEN0 &= ~(1<<2);
+        CLR       0xa8.2
+//   35 }
+??URX0InterruptSwitch_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock4
+        REQUIRE _A_IEN0
+//   36 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   37 void URX1InterruptSwitch(uint8_t mode)
+??URX1InterruptSwitch:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function ??URX1InterruptSwitch
+        CODE
+//   38 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   39   	if(mode == ON)
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??URX1InterruptSwitch_1
+//   40           IEN0 |= (1<<3);
+        SETB      0xa8.3
+        SJMP      ??URX1InterruptSwitch_2
+//   41 	else if(mode == OFF)
+??URX1InterruptSwitch_1:
+        MOV       A,R1
+        JNZ       ??URX1InterruptSwitch_2
+//   42           IEN0 &= ~(1<<3);
+        CLR       0xa8.3
+//   43 }
+??URX1InterruptSwitch_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock5
+        REQUIRE _A_IEN0
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??GlobalInterruptSwitch::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??GlobalInterruptSwitch
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??P0InterruptSwitch::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??P0InterruptSwitch
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??P1InterruptSwitch::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??P1InterruptSwitch
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??P2InterruptSwitch::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??P2InterruptSwitch
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??URX0InterruptSwitch::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??URX0InterruptSwitch
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??URX1InterruptSwitch::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??URX1InterruptSwitch
+
+        END
+// 
+// 88 bytes in segment BANKED_CODE
+// 36 bytes in segment BANK_RELAYS
+//  3 bytes in segment SFR_AN
+// 
+// 36 bytes of CODE     memory
+//  0 bytes of DATA     memory (+ 3 bytes shared)
+// 88 bytes of HUGECODE memory
+//
+//Errors: none
+//Warnings: none

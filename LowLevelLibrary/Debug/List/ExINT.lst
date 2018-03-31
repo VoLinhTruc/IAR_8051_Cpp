@@ -1,0 +1,628 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.10.1.4655 for 8051               31/Mar/2018  15:48:42
+# Copyright 2004-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ExINT.c
+#    Command line       =  
+#        -f C:\Users\Bico\AppData\Local\Temp\EW940F.tmp
+#        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ExINT.c" -lC
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+#        --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+#        Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+#        -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+#        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_cross_call)
+#    Locale             =  Vietnamese_Vietnam.1258
+#    List file          =  
+#        C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\Debug\List\ExINT.lst
+#    Object file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj\ExINT.r51
+#
+###############################################################################
+
+C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\ExINT.c
+      1          #include "ExINT.h"
+
+   \                                 In  segment SFR_AN, at 0x89
+   \   unsigned char volatile __sfr P0IFG
+   \                     P0IFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x8a
+   \   unsigned char volatile __sfr P1IFG
+   \                     P1IFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x8b
+   \   unsigned char volatile __sfr P2IFG
+   \                     P2IFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x8c
+   \   unsigned char volatile __sfr PICTL
+   \                     PICTL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x8d
+   \   unsigned char volatile __sfr P1IEN
+   \                     P1IEN:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xab
+   \   unsigned char volatile __sfr P0IEN
+   \                     P0IEN:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xac
+   \   unsigned char volatile __sfr P2IEN
+   \                     P2IEN:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc0
+   \   union <unnamed> volatile __sfr _A_IRCON
+   \                     _A_IRCON:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xe8
+   \   union <unnamed> volatile __sfr _A_IRCON2
+   \                     _A_IRCON2:
+   \   000000                DS 1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \   static __banked_func __xdata_reentrant void pinClearFlag(uint8_t)
+   \                     ??pinClearFlag:
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   C0..         PUSH      ?V0
+   \   000002   C0..         PUSH      ?V1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   \   000004   E9           MOV       A,R1
+   \   000005   C3           CLR       C
+   \   000006   9408         SUBB      A,#0x8
+   \   000008   5013         JNC       ??pinClearFlag_1
+   \   00000A   75..01       MOV       ?V0,#0x1
+   \   00000D   75..00       MOV       ?V1,#0x0
+   \   000010   E9           MOV       A,R1
+   \   000011   78..         MOV       R0,#?V0
+   \   000013   12....       LCALL     ?S_SHL
+   \   000016   E5..         MOV       A,?V0
+   \   000018   F4           CPL       A
+   \   000019   5289         ANL       0x89,A
+   \   00001B   C2C5         CLR       0xc0.5
+   \                     ??pinClearFlag_1:
+   \   00001D   E9           MOV       A,R1
+   \   00001E   C3           CLR       C
+   \   00001F   9408         SUBB      A,#0x8
+   \   000021   C3           CLR       C
+   \   000022   9408         SUBB      A,#0x8
+   \   000024   5015         JNC       ??pinClearFlag_2
+   \   000026   75..01       MOV       ?V0,#0x1
+   \   000029   75..00       MOV       ?V1,#0x0
+   \   00002C   74F8         MOV       A,#-0x8
+   \   00002E   29           ADD       A,R1
+   \   00002F   78..         MOV       R0,#?V0
+   \   000031   12....       LCALL     ?S_SHL
+   \   000034   E5..         MOV       A,?V0
+   \   000036   F4           CPL       A
+   \   000037   528A         ANL       0x8a,A
+   \   000039   C2EB         CLR       0xe8.3
+   \                     ??pinClearFlag_2:
+   \   00003B   E9           MOV       A,R1
+   \   00003C   C3           CLR       C
+   \   00003D   9410         SUBB      A,#0x10
+   \   00003F   C3           CLR       C
+   \   000040   9405         SUBB      A,#0x5
+   \   000042   5015         JNC       ??pinClearFlag_3
+   \   000044   75..01       MOV       ?V0,#0x1
+   \   000047   75..00       MOV       ?V1,#0x0
+   \   00004A   74F0         MOV       A,#-0x10
+   \   00004C   29           ADD       A,R1
+   \   00004D   78..         MOV       R0,#?V0
+   \   00004F   12....       LCALL     ?S_SHL
+   \   000052   E5..         MOV       A,?V0
+   \   000054   F4           CPL       A
+   \   000055   528B         ANL       0x8b,A
+   \   000057   C2E8         CLR       0xe8.0
+   \                     ??pinClearFlag_3:
+   \   000059   D0..         POP       ?V1
+   \   00005B   D0..         POP       ?V0
+   \   00005D   02....       LJMP      ?BRET
+   \   000060                REQUIRE P0IFG
+   \   000060                REQUIRE _A_IRCON
+   \   000060                REQUIRE P1IFG
+   \   000060                REQUIRE _A_IRCON2
+   \   000060                REQUIRE P2IFG
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \   static __banked_func __xdata_reentrant void portClearFlag(uint8_t)
+   \                     ??portClearFlag:
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+   \   000000   E9           MOV       A,R1
+   \   000001   7005         JNZ       ??portClearFlag_1
+   \   000003   758900       MOV       0x89,#0x0
+   \   000006   C2C5         CLR       0xc0.5
+   \                     ??portClearFlag_1:
+   \   000008   7408         MOV       A,#0x8
+   \   00000A   69           XRL       A,R1
+   \   00000B   7005         JNZ       ??portClearFlag_2
+   \   00000D   758A00       MOV       0x8a,#0x0
+   \   000010   C2EB         CLR       0xe8.3
+   \                     ??portClearFlag_2:
+   \   000012   7410         MOV       A,#0x10
+   \   000014   69           XRL       A,R1
+   \   000015   7005         JNZ       ??portClearFlag_3
+   \   000017   758B00       MOV       0x8b,#0x0
+   \   00001A   C2E8         CLR       0xe8.0
+   \                     ??portClearFlag_3:
+   \   00001C   02....       LJMP      ?BRET
+   \   00001F                REQUIRE P0IFG
+   \   00001F                REQUIRE _A_IRCON
+   \   00001F                REQUIRE P1IFG
+   \   00001F                REQUIRE _A_IRCON2
+   \   00001F                REQUIRE P2IFG
+      2          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      3          void pinInterruptSwitch(uint8_t pin, uint8_t mode)
+   \                     ??pinInterruptSwitch:
+      4          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV       A,#-0xa
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV       A,R1
+   \   000006   FE           MOV       R6,A
+   \   000007   EA           MOV       A,R2
+   \   000008   FF           MOV       R7,A
+      5          	pinClearFlag(pin);
+   \   000009                ; Setup parameters for call to function pinClearFlag(uint8_t)
+   \   000009   EE           MOV       A,R6
+   \   00000A   F9           MOV       R1,A
+   \   00000B   12....       LCALL     `??pinClearFlag::?relay`; Banked call to: pinClearFlag(uint8_t)
+      6          
+      7          	if BELONG_TO_PORT0(pin)
+   \   00000E   EE           MOV       A,R6
+   \   00000F   C3           CLR       C
+   \   000010   9408         SUBB      A,#0x8
+   \   000012   5030         JNC       ??pinInterruptSwitch_1
+      8          	{
+      9          		if(mode == ON)
+   \   000014   7401         MOV       A,#0x1
+   \   000016   6F           XRL       A,R7
+   \   000017   7012         JNZ       ??pinInterruptSwitch_2
+     10          			P0IEN |= (1<< (pin - PORT0));
+   \   000019   75..01       MOV       ?V0,#0x1
+   \   00001C   75..00       MOV       ?V1,#0x0
+   \   00001F   EE           MOV       A,R6
+   \   000020   78..         MOV       R0,#?V0
+   \   000022   12....       LCALL     ?S_SHL
+   \   000025   E5..         MOV       A,?V0
+   \   000027   42AB         ORL       0xab,A
+   \   000029   8014         SJMP      ??pinInterruptSwitch_3
+     11          		else if(mode == OFF)
+   \                     ??pinInterruptSwitch_2:
+   \   00002B   EF           MOV       A,R7
+   \   00002C   7011         JNZ       ??pinInterruptSwitch_3
+     12          			P0IEN &= ~(1<< (pin - PORT0));
+   \   00002E   75..01       MOV       ?V0,#0x1
+   \   000031   75..00       MOV       ?V1,#0x0
+   \   000034   EE           MOV       A,R6
+   \   000035   78..         MOV       R0,#?V0
+   \   000037   12....       LCALL     ?S_SHL
+   \   00003A   E5..         MOV       A,?V0
+   \   00003C   F4           CPL       A
+   \   00003D   52AB         ANL       0xab,A
+     13          		P0InterruptSwitch(ON);
+   \                     ??pinInterruptSwitch_3:
+   \   00003F                ; Setup parameters for call to function P0InterruptSwitch(uint8_t)
+   \   00003F   7901         MOV       R1,#0x1
+   \   000041   12....       LCALL     `??P0InterruptSwitch::?relay`; Banked call to: P0InterruptSwitch(uint8_t)
+     14          	}
+     15          	if BELONG_TO_PORT1(pin)
+   \                     ??pinInterruptSwitch_1:
+   \   000044   EE           MOV       A,R6
+   \   000045   C3           CLR       C
+   \   000046   9408         SUBB      A,#0x8
+   \   000048   C3           CLR       C
+   \   000049   9408         SUBB      A,#0x8
+   \   00004B   5034         JNC       ??pinInterruptSwitch_4
+     16          	{
+     17          		if(mode == ON)
+   \   00004D   7401         MOV       A,#0x1
+   \   00004F   6F           XRL       A,R7
+   \   000050   7014         JNZ       ??pinInterruptSwitch_5
+     18          			P1IEN |= (1<< (pin - PORT1));
+   \   000052   75..01       MOV       ?V0,#0x1
+   \   000055   75..00       MOV       ?V1,#0x0
+   \   000058   74F8         MOV       A,#-0x8
+   \   00005A   2E           ADD       A,R6
+   \   00005B   78..         MOV       R0,#?V0
+   \   00005D   12....       LCALL     ?S_SHL
+   \   000060   E5..         MOV       A,?V0
+   \   000062   428D         ORL       0x8d,A
+   \   000064   8016         SJMP      ??pinInterruptSwitch_6
+     19          		else if(mode == OFF)
+   \                     ??pinInterruptSwitch_5:
+   \   000066   EF           MOV       A,R7
+   \   000067   7013         JNZ       ??pinInterruptSwitch_6
+     20          			P1IEN &= ~(1<< (pin - PORT1));
+   \   000069   75..01       MOV       ?V0,#0x1
+   \   00006C   75..00       MOV       ?V1,#0x0
+   \   00006F   74F8         MOV       A,#-0x8
+   \   000071   2E           ADD       A,R6
+   \   000072   78..         MOV       R0,#?V0
+   \   000074   12....       LCALL     ?S_SHL
+   \   000077   E5..         MOV       A,?V0
+   \   000079   F4           CPL       A
+   \   00007A   528D         ANL       0x8d,A
+     21          		P1InterruptSwitch(ON);
+   \                     ??pinInterruptSwitch_6:
+   \   00007C                ; Setup parameters for call to function P1InterruptSwitch(uint8_t)
+   \   00007C   7901         MOV       R1,#0x1
+   \   00007E   12....       LCALL     `??P1InterruptSwitch::?relay`; Banked call to: P1InterruptSwitch(uint8_t)
+     22          	}
+     23          	if BELONG_TO_PORT2(pin)
+   \                     ??pinInterruptSwitch_4:
+   \   000081   EE           MOV       A,R6
+   \   000082   C3           CLR       C
+   \   000083   9410         SUBB      A,#0x10
+   \   000085   C3           CLR       C
+   \   000086   9405         SUBB      A,#0x5
+   \   000088   5034         JNC       ??pinInterruptSwitch_7
+     24          	{
+     25          		if(mode == ON)
+   \   00008A   7401         MOV       A,#0x1
+   \   00008C   6F           XRL       A,R7
+   \   00008D   7014         JNZ       ??pinInterruptSwitch_8
+     26          			P2IEN |= (1<< (pin - PORT2));
+   \   00008F   75..01       MOV       ?V0,#0x1
+   \   000092   75..00       MOV       ?V1,#0x0
+   \   000095   74F0         MOV       A,#-0x10
+   \   000097   2E           ADD       A,R6
+   \   000098   78..         MOV       R0,#?V0
+   \   00009A   12....       LCALL     ?S_SHL
+   \   00009D   E5..         MOV       A,?V0
+   \   00009F   42AC         ORL       0xac,A
+   \   0000A1   8016         SJMP      ??pinInterruptSwitch_9
+     27          		else if(mode == OFF)
+   \                     ??pinInterruptSwitch_8:
+   \   0000A3   EF           MOV       A,R7
+   \   0000A4   7013         JNZ       ??pinInterruptSwitch_9
+     28          			P2IEN &= ~(1<< (pin - PORT2));
+   \   0000A6   75..01       MOV       ?V0,#0x1
+   \   0000A9   75..00       MOV       ?V1,#0x0
+   \   0000AC   74F0         MOV       A,#-0x10
+   \   0000AE   2E           ADD       A,R6
+   \   0000AF   78..         MOV       R0,#?V0
+   \   0000B1   12....       LCALL     ?S_SHL
+   \   0000B4   E5..         MOV       A,?V0
+   \   0000B6   F4           CPL       A
+   \   0000B7   52AC         ANL       0xac,A
+     29          		P2InterruptSwitch(ON);
+   \                     ??pinInterruptSwitch_9:
+   \   0000B9                ; Setup parameters for call to function P2InterruptSwitch(uint8_t)
+   \   0000B9   7901         MOV       R1,#0x1
+   \   0000BB   12....       LCALL     `??P2InterruptSwitch::?relay`; Banked call to: P2InterruptSwitch(uint8_t)
+     30          	}
+     31          
+     32          	GlobalInterruptSwitch(ON);
+   \                     ??pinInterruptSwitch_7:
+   \   0000BE                ; Setup parameters for call to function GlobalInterruptSwitch(uint8_t)
+   \   0000BE   7901         MOV       R1,#0x1
+   \   0000C0   12....       LCALL     `??GlobalInterruptSwitch::?relay`; Banked call to: GlobalInterruptSwitch(uint8_t)
+     33          }
+   \   0000C3   7F02         MOV       R7,#0x2
+   \   0000C5   02....       LJMP      ?BANKED_LEAVE_XDATA
+   \   0000C8                REQUIRE P0IEN
+   \   0000C8                REQUIRE P1IEN
+   \   0000C8                REQUIRE P2IEN
+     34          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     35          void portInterruptSwitch(uint8_t port, uint8_t mode)
+   \                     ??portInterruptSwitch:
+     36          {
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV       A,R1
+   \   000006   FF           MOV       R7,A
+   \   000007   EA           MOV       A,R2
+   \   000008   FE           MOV       R6,A
+     37          	portClearFlag(port);
+   \   000009                ; Setup parameters for call to function portClearFlag(uint8_t)
+   \   000009   EF           MOV       A,R7
+   \   00000A   F9           MOV       R1,A
+   \   00000B   12....       LCALL     `??portClearFlag::?relay`; Banked call to: portClearFlag(uint8_t)
+     38          
+     39          	if(port == PORT0)
+   \   00000E   EF           MOV       A,R7
+   \   00000F   7007         JNZ       ??portInterruptSwitch_1
+     40          	{
+     41          		P0IEN = mode;
+   \   000011   8EAB         MOV       0xab,R6
+     42          		P0InterruptSwitch(mode);
+   \   000013                ; Setup parameters for call to function P0InterruptSwitch(uint8_t)
+   \   000013   EE           MOV       A,R6
+   \   000014   F9           MOV       R1,A
+   \   000015   12....       LCALL     `??P0InterruptSwitch::?relay`; Banked call to: P0InterruptSwitch(uint8_t)
+     43          	}
+     44          	if(port == PORT1)
+   \                     ??portInterruptSwitch_1:
+   \   000018   7408         MOV       A,#0x8
+   \   00001A   6F           XRL       A,R7
+   \   00001B   7007         JNZ       ??portInterruptSwitch_2
+     45          	{
+     46          		P1IEN = mode;
+   \   00001D   8E8D         MOV       0x8d,R6
+     47          		P1InterruptSwitch(mode);
+   \   00001F                ; Setup parameters for call to function P1InterruptSwitch(uint8_t)
+   \   00001F   EE           MOV       A,R6
+   \   000020   F9           MOV       R1,A
+   \   000021   12....       LCALL     `??P1InterruptSwitch::?relay`; Banked call to: P1InterruptSwitch(uint8_t)
+     48          	}
+     49          	if(port == PORT2)
+   \                     ??portInterruptSwitch_2:
+   \   000024   7410         MOV       A,#0x10
+   \   000026   6F           XRL       A,R7
+   \   000027   7007         JNZ       ??portInterruptSwitch_3
+     50          	{
+     51          		P2IEN = mode;
+   \   000029   8EAC         MOV       0xac,R6
+     52          		P2InterruptSwitch(mode);
+   \   00002B                ; Setup parameters for call to function P2InterruptSwitch(uint8_t)
+   \   00002B   EE           MOV       A,R6
+   \   00002C   F9           MOV       R1,A
+   \   00002D   12....       LCALL     `??P2InterruptSwitch::?relay`; Banked call to: P2InterruptSwitch(uint8_t)
+     53          	}
+     54          
+     55          	GlobalInterruptSwitch(ON);
+   \                     ??portInterruptSwitch_3:
+   \   000030                ; Setup parameters for call to function GlobalInterruptSwitch(uint8_t)
+   \   000030   7901         MOV       R1,#0x1
+   \   000032   12....       LCALL     `??GlobalInterruptSwitch::?relay`; Banked call to: GlobalInterruptSwitch(uint8_t)
+     56          }
+   \   000035   7F01         MOV       R7,#0x1
+   \   000037   02....       LJMP      ?BANKED_LEAVE_XDATA
+   \   00003A                REQUIRE P0IEN
+   \   00003A                REQUIRE P1IEN
+   \   00003A                REQUIRE P2IEN
+     57          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     58          void egdeSelectionP0(uint8_t sel)
+   \                     ??egdeSelectionP0:
+     59          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     60          	if(sel == FALLING)
+   \   000000   E9           MOV       A,R1
+   \   000001   7005         JNZ       ??egdeSelectionP0_1
+     61          		PICTL |= 1;
+   \   000003   438C01       ORL       0x8c,#0x1
+   \   000006   8008         SJMP      ??egdeSelectionP0_2
+     62          	else if(sel == RAISING)
+   \                     ??egdeSelectionP0_1:
+   \   000008   7401         MOV       A,#0x1
+   \   00000A   69           XRL       A,R1
+   \   00000B   7003         JNZ       ??egdeSelectionP0_2
+     63          		PICTL &= ~1;
+   \   00000D   538CFE       ANL       0x8c,#0xfe
+     64          }
+   \                     ??egdeSelectionP0_2:
+   \   000010   02....       LJMP      ?BRET
+   \   000013                REQUIRE PICTL
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     65          void egdeSelectionP1_0ToP1_3(uint8_t sel)
+   \                     ??egdeSelectionP1_0ToP1_3:
+     66          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     67          	if(sel == FALLING)
+   \   000000   E9           MOV       A,R1
+   \   000001   7005         JNZ       ??egdeSelectionP1_0ToP1_3_1
+     68          		PICTL |= (1<<1);
+   \   000003   438C02       ORL       0x8c,#0x2
+   \   000006   8008         SJMP      ??egdeSelectionP1_0ToP1_3_2
+     69          	else if(sel == RAISING)
+   \                     ??egdeSelectionP1_0ToP1_3_1:
+   \   000008   7401         MOV       A,#0x1
+   \   00000A   69           XRL       A,R1
+   \   00000B   7003         JNZ       ??egdeSelectionP1_0ToP1_3_2
+     70          		PICTL &= ~(1<<1);
+   \   00000D   538CFD       ANL       0x8c,#0xfd
+     71          }
+   \                     ??egdeSelectionP1_0ToP1_3_2:
+   \   000010   02....       LJMP      ?BRET
+   \   000013                REQUIRE PICTL
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     72          void egdeSelectionP1_4ToP1_7(uint8_t sel)
+   \                     ??egdeSelectionP1_4ToP1_7:
+     73          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     74          	if(sel == FALLING)
+   \   000000   E9           MOV       A,R1
+   \   000001   7005         JNZ       ??egdeSelectionP1_4ToP1_7_1
+     75          		PICTL |= (1<<2);
+   \   000003   438C04       ORL       0x8c,#0x4
+   \   000006   8008         SJMP      ??egdeSelectionP1_4ToP1_7_2
+     76          	else if(sel == RAISING)
+   \                     ??egdeSelectionP1_4ToP1_7_1:
+   \   000008   7401         MOV       A,#0x1
+   \   00000A   69           XRL       A,R1
+   \   00000B   7003         JNZ       ??egdeSelectionP1_4ToP1_7_2
+     77          		PICTL &= ~(1<<2);
+   \   00000D   538CFB       ANL       0x8c,#0xfb
+     78          }
+   \                     ??egdeSelectionP1_4ToP1_7_2:
+   \   000010   02....       LJMP      ?BRET
+   \   000013                REQUIRE PICTL
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     79          void egdeSelectionP2_0ToP2_4(uint8_t sel)
+   \                     ??egdeSelectionP2_0ToP2_4:
+     80          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     81          	if(sel == FALLING)
+   \   000000   E9           MOV       A,R1
+   \   000001   7005         JNZ       ??egdeSelectionP2_0ToP2_4_1
+     82          		PICTL |= (1<<3);
+   \   000003   438C08       ORL       0x8c,#0x8
+   \   000006   8008         SJMP      ??egdeSelectionP2_0ToP2_4_2
+     83          	else if(sel == RAISING)
+   \                     ??egdeSelectionP2_0ToP2_4_1:
+   \   000008   7401         MOV       A,#0x1
+   \   00000A   69           XRL       A,R1
+   \   00000B   7003         JNZ       ??egdeSelectionP2_0ToP2_4_2
+     84          		PICTL &= ~(1<<3);
+   \   00000D   538CF7       ANL       0x8c,#0xf7
+     85          }
+   \                     ??egdeSelectionP2_0ToP2_4_2:
+   \   000010   02....       LJMP      ?BRET
+   \   000013                REQUIRE PICTL
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??pinClearFlag::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??pinClearFlag
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??portClearFlag::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??portClearFlag
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??pinInterruptSwitch::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??pinInterruptSwitch
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??portInterruptSwitch::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??portInterruptSwitch
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??egdeSelectionP0::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??egdeSelectionP0
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??egdeSelectionP1_0ToP1_3::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??egdeSelectionP1_0ToP1_3
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??egdeSelectionP1_4ToP1_7::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??egdeSelectionP1_4ToP1_7
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??egdeSelectionP2_0ToP2_4::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??egdeSelectionP2_0ToP2_4
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      0      0   egdeSelectionP0(uint8_t)
+      0      0   egdeSelectionP1_0ToP1_3(uint8_t)
+      0      0   egdeSelectionP1_4ToP1_7(uint8_t)
+      0      0   egdeSelectionP2_0ToP2_4(uint8_t)
+      2     10   pinClearFlag(uint8_t)
+      0     10   pinInterruptSwitch(uint8_t, uint8_t)
+        0     10   -> GlobalInterruptSwitch(uint8_t)
+        0     10   -> P0InterruptSwitch(uint8_t)
+        0     10   -> P1InterruptSwitch(uint8_t)
+        0     10   -> P2InterruptSwitch(uint8_t)
+        0     10   -> pinClearFlag(uint8_t)
+      0      9   portClearFlag(uint8_t)
+      0      9   portInterruptSwitch(uint8_t, uint8_t)
+        0      9   -> GlobalInterruptSwitch(uint8_t)
+        0      9   -> P0InterruptSwitch(uint8_t)
+        0      9   -> P1InterruptSwitch(uint8_t)
+        0      9   -> P2InterruptSwitch(uint8_t)
+        0      9   -> portClearFlag(uint8_t)
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       1  P0IEN
+       1  P0IFG
+       1  P1IEN
+       1  P1IFG
+       1  P2IEN
+       1  P2IFG
+       1  PICTL
+       1  _A_IRCON
+       1  _A_IRCON2
+      19  egdeSelectionP0(uint8_t)
+       6  egdeSelectionP0(uint8_t)::?relay
+      19  egdeSelectionP1_0ToP1_3(uint8_t)
+       6  egdeSelectionP1_0ToP1_3(uint8_t)::?relay
+      19  egdeSelectionP1_4ToP1_7(uint8_t)
+       6  egdeSelectionP1_4ToP1_7(uint8_t)::?relay
+      19  egdeSelectionP2_0ToP2_4(uint8_t)
+       6  egdeSelectionP2_0ToP2_4(uint8_t)::?relay
+      96  pinClearFlag(uint8_t)
+       6  pinClearFlag(uint8_t)::?relay
+     200  pinInterruptSwitch(uint8_t, uint8_t)
+       6  pinInterruptSwitch(uint8_t, uint8_t)::?relay
+      31  portClearFlag(uint8_t)
+       6  portClearFlag(uint8_t)::?relay
+      58  portInterruptSwitch(uint8_t, uint8_t)
+       6  portInterruptSwitch(uint8_t, uint8_t)::?relay
+
+ 
+ 461 bytes in segment BANKED_CODE
+  48 bytes in segment BANK_RELAYS
+   9 bytes in segment SFR_AN
+ 
+  48 bytes of CODE     memory
+   0 bytes of DATA     memory (+ 9 bytes shared)
+ 461 bytes of HUGECODE memory
+
+Errors: none
+Warnings: none

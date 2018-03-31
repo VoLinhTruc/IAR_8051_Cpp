@@ -1,0 +1,335 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.10.1.4655 for 8051               31/Mar/2018  15:48:42
+# Copyright 2004-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\main.cpp
+#    Command line       =  
+#        -f C:\Users\Bico\AppData\Local\Temp\EW96C2.tmp
+#        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\main.cpp" -lC
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+#        --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+#        Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+#        -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+#        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_cross_call)
+#    Locale             =  Vietnamese_Vietnam.1258
+#    List file          =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List\main.lst
+#    Object file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj\main.r51
+#
+###############################################################################
+
+C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\main.cpp
+      1          #include "Generic.h"
+
+   \                                 In  segment SFR_AN, at 0xc6
+   \   unsigned char volatile __sfr CLKCONCMD
+   \                     CLKCONCMD:
+   \   000000                DS 1
+      2          #include "GlobalINT.h"
+      3          #include "GPIO.h"
+      4          #include "UART.h"
+      5          #include "ADC.h"
+      6          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+      7          uint8_t val = 0;
+   \                     val:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+      8          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      9          void echo()
+   \                     ??echo:
+     10          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     11            char c = UART0GetData();      // lay tin hieu tu buffer sau khi nhan duoc 1 byte
+   \   000004                ; Setup parameters for call to function UART0GetData()
+   \   000004   12....       LCALL     `??UART0GetData::?relay`; Banked call to: UART0GetData()
+   \   000007   E9           MOV       A,R1
+   \   000008   F8           MOV       R0,A
+     12            val++;        // dem so lan nhan duoc du lieu, gia tri nay hien thi ra port 1
+   \   000009   90....       MOV       DPTR,#val
+   \   00000C   E0           MOVX      A,@DPTR
+   \   00000D   2401         ADD       A,#0x1
+   \   00000F   F0           MOVX      @DPTR,A
+     13          }
+   \   000010   D083         POP       DPH
+   \   000012   D082         POP       DPL
+   \   000014   02....       LJMP      ?BRET
+     14          
+
+   \                                 In  segment NEAR_CODE, align 1, keep-with-next
+     15          URX0ISRFunction(echo);  // lien ket IRS toi' ham echo
+   \                     ??urx0Int0:
+   \   000000   C0E0         PUSH      A
+   \   000002   74F2         MOV       A,#-0xe
+   \   000004   12....       LCALL     ?INTERRUPT_ENTER_XSP
+   \   000007                ; Saved register size: 14
+   \   000007                ; Auto size: 0
+   \   000007                ; Setup parameters for call to function echo()
+   \   000007   12....       LCALL     `??echo::?relay` ; Banked call to: echo()
+   \   00000A   7F01         MOV       R7,#0x1
+   \   00000C   02....       LJMP      ?INTERRUPT_LEAVE_XSP
+     16          
+     17          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     18          int main()
+   \                     main:
+     19          {
+   \   000000                ; Auto size: 0
+     20            //2 dong duoi nay la su dung XOSC 32MHz
+     21            CLKCONCMD &= ~(1<<6);
+   \   000000   53C6BF       ANL       0xc6,#0xbf
+     22            CLKCONCMD &= 0xFC;
+   \   000003   53C6FC       ANL       0xc6,#0xfc
+     23            
+     24            portFunction(PORT1, PORT_GPIO);
+   \   000006                ; Setup parameters for call to function portFunction(uint8_t, uint8_t)
+   \   000006   7A00         MOV       R2,#0x0
+   \   000008   7908         MOV       R1,#0x8
+   \   00000A   12....       LCALL     `??portFunction::?relay`; Banked call to: portFunction(uint8_t, uint8_t)
+     25            portDirect(PORT1, PORT_OUTPUT);
+   \   00000D                ; Setup parameters for call to function portDirect(uint8_t, uint8_t)
+   \   00000D   7AFF         MOV       R2,#-0x1
+   \   00000F   7908         MOV       R1,#0x8
+   \   000011   12....       LCALL     `??portDirect::?relay`; Banked call to: portDirect(uint8_t, uint8_t)
+     26            
+     27            //URX0IF = 0; //xoa co ngat
+     28            URX0InterruptSwitch(ON);      // cho phep ngat sau khi nhan 8 bit du lieu tu chan RX
+   \   000014                ; Setup parameters for call to function URX0InterruptSwitch(uint8_t)
+   \   000014   7901         MOV       R1,#0x1
+   \   000016   12....       LCALL     `??URX0InterruptSwitch::?relay`; Banked call to: URX0InterruptSwitch(uint8_t)
+     29            GlobalInterruptSwitch(ON);    // cho phep ngat toan cuc he thong
+   \   000019                ; Setup parameters for call to function GlobalInterruptSwitch(uint8_t)
+   \   000019   7901         MOV       R1,#0x1
+   \   00001B   12....       LCALL     `??GlobalInterruptSwitch::?relay`; Banked call to: GlobalInterruptSwitch(uint8_t)
+     30            pinFunction(PIN0_2, PIN_PERIPHERAL);  // cai dat pin 0_2 co chuc nang la pin ngoai vi
+   \   00001E                ; Setup parameters for call to function pinFunction(uint8_t, uint8_t)
+   \   00001E   7A01         MOV       R2,#0x1
+   \   000020   7902         MOV       R1,#0x2
+   \   000022   12....       LCALL     `??pinFunction::?relay`; Banked call to: pinFunction(uint8_t, uint8_t)
+     31            pinFunction(PIN0_3, PIN_PERIPHERAL);  // cai dat pin 0_3 co chuc nang la pin ngoai vi
+   \   000025                ; Setup parameters for call to function pinFunction(uint8_t, uint8_t)
+   \   000025   7A01         MOV       R2,#0x1
+   \   000027   7903         MOV       R1,#0x3
+   \   000029   12....       LCALL     `??pinFunction::?relay`; Banked call to: pinFunction(uint8_t, uint8_t)
+     32            UART0AssignLocation(UART0_P02_P03);   // dang ky pin TX va RX la 0_2 va 0_3, co the dang ky pin TX va RX trong port 1
+   \   00002C                ; Setup parameters for call to function UART0AssignLocation(uint8_t)
+   \   00002C   7900         MOV       R1,#0x0
+   \   00002E   12....       LCALL     `??UART0AssignLocation::?relay`; Banked call to: UART0AssignLocation(uint8_t)
+     33            UART0ModeSel(UART_MODE);      // chon che do UART, tai vi pin TX va RX trung voi chan cua SPI, mac dinh khi reset thi che do cua 2 pin nay la PIN
+   \   000031                ; Setup parameters for call to function UART0ModeSel(uint8_t)
+   \   000031   7901         MOV       R1,#0x1
+   \   000033   12....       LCALL     `??UART0ModeSel::?relay`; Banked call to: UART0ModeSel(uint8_t)
+     34            UART0SetBaud(57600);  // set baud rate, baud phu thuoc vao System Clock, baud nay duoc tinh dua tren System Clock la 32MHz
+   \   000036                ; Setup parameters for call to function UART0SetBaud(unsigned long)
+   \   000036   90....       MOV       DPTR,#__Constant_e100
+   \   000039   12....       LCALL     ?XLOAD_R2345
+   \   00003C   12....       LCALL     `??UART0SetBaud::?relay`; Banked call to: UART0SetBaud(unsigned long)
+     35            
+     36            //ADC common config
+     37            selectStartCondition(SETBIT_ST);
+   \   00003F                ; Setup parameters for call to function selectStartCondition(uint8_t)
+   \   00003F   7903         MOV       R1,#0x3
+   \   000041   12....       LCALL     `??selectStartCondition::?relay`; Banked call to: selectStartCondition(uint8_t)
+     38            referenceVoltage(AVDD5);
+   \   000044                ; Setup parameters for call to function referenceVoltage(uint8_t)
+   \   000044   7902         MOV       R1,#0x2
+   \   000046   12....       LCALL     `??referenceVoltage::?relay`; Banked call to: referenceVoltage(uint8_t)
+     39            selectDecimationRate(RESOLUTION_7BIT);
+   \   000049                ; Setup parameters for call to function selectDecimationRate(uint8_t)
+   \   000049   7900         MOV       R1,#0x0
+   \   00004B   12....       LCALL     `??selectDecimationRate::?relay`; Banked call to: selectDecimationRate(uint8_t)
+     40            //ADC pin6 config
+     41            pinFunction(PIN0_6, PIN_PERIPHERAL);
+   \   00004E                ; Setup parameters for call to function pinFunction(uint8_t, uint8_t)
+   \   00004E   7A01         MOV       R2,#0x1
+   \   000050   7906         MOV       R1,#0x6
+   \   000052   12....       LCALL     `??pinFunction::?relay`; Banked call to: pinFunction(uint8_t, uint8_t)
+     42            enableADCPin(PIN0_6);
+   \   000055                ; Setup parameters for call to function enableADCPin(uint8_t)
+   \   000055   7906         MOV       R1,#0x6
+   \   000057   12....       LCALL     `??enableADCPin::?relay`; Banked call to: enableADCPin(uint8_t)
+   \   00005A   E9           MOV       A,R1
+     43            channelSeleted(AIN6);
+   \   00005B                ; Setup parameters for call to function channelSeleted(uint8_t)
+   \   00005B   7906         MOV       R1,#0x6
+   \   00005D   12....       LCALL     `??channelSeleted::?relay`; Banked call to: channelSeleted(uint8_t)
+     44            
+     45            pinFunction(PIN0_1, PIN_GPIO);
+   \   000060                ; Setup parameters for call to function pinFunction(uint8_t, uint8_t)
+   \   000060   7A00         MOV       R2,#0x0
+   \   000062   7901         MOV       R1,#0x1
+   \   000064   12....       LCALL     `??pinFunction::?relay`; Banked call to: pinFunction(uint8_t, uint8_t)
+     46            pinDirect(PIN0_1, PIN_INPUT);
+   \   000067                ; Setup parameters for call to function pinDirect(uint8_t, uint8_t)
+   \   000067   7A00         MOV       R2,#0x0
+   \   000069   7901         MOV       R1,#0x1
+   \   00006B   12....       LCALL     `??pinDirect::?relay`; Banked call to: pinDirect(uint8_t, uint8_t)
+     47            
+     48            for(;;)
+     49            {
+     50          
+     51              //UART0FillData(CHIPID);
+     52              pinWrite(PIN1_0, 1);
+   \                     ??main_0:
+   \   00006E                ; Setup parameters for call to function pinWrite(uint8_t, uint8_t)
+   \   00006E   7A01         MOV       R2,#0x1
+   \   000070   7908         MOV       R1,#0x8
+   \   000072   12....       LCALL     `??pinWrite::?relay`; Banked call to: pinWrite(uint8_t, uint8_t)
+     53              delay_ms(500);
+   \   000075                ; Setup parameters for call to function delay_ms(unsigned long)
+   \   000075   90....       MOV       DPTR,#__Constant_1f4
+   \   000078   12....       LCALL     ?XLOAD_R2345
+   \   00007B   12....       LCALL     `??delay_ms::?relay`; Banked call to: delay_ms(unsigned long)
+     54              pinWrite(PIN1_0, 0);
+   \   00007E                ; Setup parameters for call to function pinWrite(uint8_t, uint8_t)
+   \   00007E   7A00         MOV       R2,#0x0
+   \   000080   7908         MOV       R1,#0x8
+   \   000082   12....       LCALL     `??pinWrite::?relay`; Banked call to: pinWrite(uint8_t, uint8_t)
+     55              delay_ms(500);
+   \   000085                ; Setup parameters for call to function delay_ms(unsigned long)
+   \   000085   90....       MOV       DPTR,#__Constant_1f4
+   \   000088   12....       LCALL     ?XLOAD_R2345
+   \   00008B   12....       LCALL     `??delay_ms::?relay`; Banked call to: delay_ms(unsigned long)
+   \   00008E   80DE         SJMP      ??main_0
+   \   000090                REQUIRE CLKCONCMD
+     56              
+     57            }
+     58            return 0;
+                   ^
+Warning[Pe111]: statement is unreachable
+     59          }
+
+   \                                 In  segment INTVEC, offset 0x13, root
+   \                     `??urx0Int0::??INTVEC 19`:
+   \   000013   02....       LJMP       (??urx0Int0)
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+   \                     __Constant_e100:
+   \   000000                DS 4
+   \   000004                REQUIRE `?<Initializer for __Constant_e100>`
+   \   000004                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for __Constant_e100>`:
+   \   000000   00E10000     DD 57600
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+   \                     __Constant_1f4:
+   \   000000                DS 4
+   \   000004                REQUIRE `?<Initializer for __Constant_1f4>`
+   \   000004                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for __Constant_1f4>`:
+   \   000000   F4010000     DD 500
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??echo::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??echo
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??main::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    main
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      2     14   echo()
+        2      0   -> UART0GetData()
+      0      0   main()
+        0      0   -> GlobalInterruptSwitch(uint8_t)
+        0      0   -> UART0AssignLocation(uint8_t)
+        0      0   -> UART0ModeSel(uint8_t)
+        0      0   -> UART0SetBaud(unsigned long)
+        0      0   -> URX0InterruptSwitch(uint8_t)
+        0      0   -> channelSeleted(uint8_t)
+        0      0   -> delay_ms(unsigned long)
+        0      0   -> enableADCPin(uint8_t)
+        0      0   -> pinDirect(uint8_t, uint8_t)
+        0      0   -> pinFunction(uint8_t, uint8_t)
+        0      0   -> pinWrite(uint8_t, uint8_t)
+        0      0   -> portDirect(uint8_t, uint8_t)
+        0      0   -> portFunction(uint8_t, uint8_t)
+        0      0   -> referenceVoltage(uint8_t)
+        0      0   -> selectDecimationRate(uint8_t)
+        0      0   -> selectStartCondition(uint8_t)
+      0     14   urx0Int0()
+        0     14   -> echo()
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ?<Initializer for __Constant_1f4>
+       4  ?<Initializer for __Constant_e100>
+       1  CLKCONCMD
+       4  __Constant_1f4
+       4  __Constant_e100
+      23  echo()
+       6  echo()::?relay
+     144  main()
+       6  main()::?relay
+      15  urx0Int0()
+       3  urx0Int0()::??INTVEC 19
+       1  val
+
+ 
+ 167 bytes in segment BANKED_CODE
+  12 bytes in segment BANK_RELAYS
+   3 bytes in segment INTVEC
+  15 bytes in segment NEAR_CODE
+   1 byte  in segment SFR_AN
+   8 bytes in segment XDATA_I
+   8 bytes in segment XDATA_ID
+   1 byte  in segment XDATA_Z
+ 
+  27 bytes of CODE     memory (+ 11 bytes shared)
+   0 bytes of DATA     memory (+  1 byte  shared)
+ 167 bytes of HUGECODE memory
+   1 byte  of XDATA    memory (+  8 bytes shared)
+
+Errors: none
+Warnings: 1

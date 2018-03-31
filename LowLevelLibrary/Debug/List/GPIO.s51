@@ -1,0 +1,1291 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.10.1.4655 for 8051              31/Mar/2018  15:48:42
+// Copyright 2004-2017 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GPIO.c
+//    Command line       =  
+//        -f C:\Users\Bico\AppData\Local\Temp\EW9673.tmp
+//        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GPIO.c" -lC
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+//        --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+//        Files (x86)\IAR Systems\Embedded Workbench
+//        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+//        -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+//        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+//        --no_cross_call)
+//    Locale             =  Vietnamese_Vietnam.1258
+//    List file          =  
+//        C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\Debug\List\GPIO.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME GPIO
+
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__register_banks", "*"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?S_SHL
+
+        PUBLIC ??pinDirect
+        FUNCTION ??pinDirect,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??pinDirect::?relay`
+        FUNCTION `??pinDirect::?relay`,0203H
+        PUBLIC ??pinFunction
+        FUNCTION ??pinFunction,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??pinFunction::?relay`
+        FUNCTION `??pinFunction::?relay`,0203H
+        PUBLIC ??pinPull
+        FUNCTION ??pinPull,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??pinPull::?relay`
+        FUNCTION `??pinPull::?relay`,0203H
+        PUBLIC ??pinRead
+        FUNCTION ??pinRead,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??pinRead::?relay`
+        FUNCTION `??pinRead::?relay`,0203H
+        PUBLIC ??pinWrite
+        FUNCTION ??pinWrite,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC `??pinWrite::?relay`
+        FUNCTION `??pinWrite::?relay`,0203H
+        PUBLIC ??portDirect
+        FUNCTION ??portDirect,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??portDirect::?relay`
+        FUNCTION `??portDirect::?relay`,0203H
+        PUBLIC ??portFunction
+        FUNCTION ??portFunction,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??portFunction::?relay`
+        FUNCTION `??portFunction::?relay`,0203H
+        PUBLIC ??portPull
+        FUNCTION ??portPull,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??portPull::?relay`
+        FUNCTION `??portPull::?relay`,0203H
+        PUBLIC ??portRead
+        FUNCTION ??portRead,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??portRead::?relay`
+        FUNCTION `??portRead::?relay`,0203H
+        PUBLIC ??portWrite
+        FUNCTION ??portWrite,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??portWrite::?relay`
+        FUNCTION `??portWrite::?relay`,0203H
+        PUBWEAK P0DIR
+        PUBWEAK P0INP
+        PUBWEAK P0SEL
+        PUBWEAK P1DIR
+        PUBWEAK P1INP
+        PUBWEAK P1SEL
+        PUBWEAK P2DIR
+        PUBWEAK P2INP
+        PUBWEAK P2SEL
+        PUBWEAK _A_P0
+        PUBWEAK _A_P1
+        PUBWEAK _A_P2
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+
+`??pinDirect::?relay` SYMBOL "?relay", ??pinDirect
+
+`??pinFunction::?relay` SYMBOL "?relay", ??pinFunction
+
+`??pinPull::?relay` SYMBOL "?relay", ??pinPull
+
+`??pinRead::?relay` SYMBOL "?relay", ??pinRead
+
+`??pinWrite::?relay` SYMBOL "?relay", ??pinWrite
+
+`??portDirect::?relay` SYMBOL "?relay", ??portDirect
+
+`??portFunction::?relay` SYMBOL "?relay", ??portFunction
+
+`??portPull::?relay` SYMBOL "?relay", ??portPull
+
+`??portRead::?relay` SYMBOL "?relay", ??portRead
+
+`??portWrite::?relay` SYMBOL "?relay", ??portWrite
+
+// C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GPIO.c
+//    1 #include "GPIO.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,080H
+// union <unnamed> volatile __sfr _A_P0
+_A_P0:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,08fH
+// unsigned char volatile __sfr P0INP
+P0INP:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,090H
+// union <unnamed> volatile __sfr _A_P1
+_A_P1:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0a0H
+// union <unnamed> volatile __sfr _A_P2
+_A_P2:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f3H
+// unsigned char volatile __sfr P0SEL
+P0SEL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f4H
+// unsigned char volatile __sfr P1SEL
+P1SEL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f5H
+// unsigned char volatile __sfr P2SEL
+P2SEL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f6H
+// unsigned char volatile __sfr P1INP
+P1INP:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f7H
+// unsigned char volatile __sfr P2INP
+P2INP:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0fdH
+// unsigned char volatile __sfr P0DIR
+P0DIR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0feH
+// unsigned char volatile __sfr P1DIR
+P1DIR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0ffH
+// unsigned char volatile __sfr P2DIR
+P2DIR:
+        DATA8
+        DS 1
+//    2 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//    3 void pinFunction(uint8_t pin, uint8_t func)
+??pinFunction:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??pinFunction
+        CODE
+//    4 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        PUSH      ?V0
+          CFI V0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      ?V1
+          CFI V1 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//    5 	if BELONG_TO_PORT0(pin)
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinFunction_1
+//    6 		if(func == PIN_PERIPHERAL)
+        MOV       A,#0x1
+        XRL       A,R2
+        JNZ       ??pinFunction_2
+//    7 			P0SEL |= (1<< (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xf3,A
+        SJMP      ??pinFunction_1
+//    8 		else if(func == PIN_GPIO)
+??pinFunction_2:
+        MOV       A,R2
+        JNZ       ??pinFunction_1
+//    9 			P0SEL &= ~(1<< (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xf3,A
+//   10 
+//   11 	if BELONG_TO_PORT1(pin)
+??pinFunction_1:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinFunction_3
+//   12 		if(func == PIN_PERIPHERAL)
+        MOV       A,#0x1
+        XRL       A,R2
+        JNZ       ??pinFunction_4
+//   13 			P1SEL |= (1<< (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xf4,A
+        SJMP      ??pinFunction_3
+//   14 		else if(func == PIN_GPIO)
+??pinFunction_4:
+        MOV       A,R2
+        JNZ       ??pinFunction_3
+//   15 			P1SEL &= ~(1<< (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xf4,A
+//   16 
+//   17 	if BELONG_TO_PORT2(pin)
+??pinFunction_3:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x10
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??pinFunction_5
+//   18 		if(func == PIN_PERIPHERAL)
+        MOV       A,#0x1
+        XRL       A,R2
+        JNZ       ??pinFunction_6
+//   19 			P2SEL |= (1<< (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xf5,A
+        SJMP      ??pinFunction_5
+//   20 		else if(func == PIN_GPIO)
+??pinFunction_6:
+        MOV       A,R2
+        JNZ       ??pinFunction_5
+//   21 			P2SEL &= ~(1<< (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xf5,A
+//   22 }
+??pinFunction_5:
+        POP       ?V1
+          CFI V1 SameValue
+          CFI CFA_SP SP+-4
+        POP       ?V0
+          CFI V0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock0
+        REQUIRE P0SEL
+        REQUIRE P1SEL
+        REQUIRE P2SEL
+//   23 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   24 void portFunction(uint8_t port, uint8_t func)
+??portFunction:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??portFunction
+        CODE
+//   25 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   26 	if(port == PORT0)
+        MOV       A,R1
+        JNZ       ??portFunction_1
+//   27 		P0SEL = func;
+        MOV       0xf3,R2
+//   28 	if(port == PORT1)
+??portFunction_1:
+        MOV       A,#0x8
+        XRL       A,R1
+        JNZ       ??portFunction_2
+//   29 		P1SEL = func;
+        MOV       0xf4,R2
+//   30 	if(port == PORT2)
+??portFunction_2:
+        MOV       A,#0x10
+        XRL       A,R1
+        JNZ       ??portFunction_3
+//   31 		P2SEL = func;
+        MOV       0xf5,R2
+//   32 }
+??portFunction_3:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock1
+        REQUIRE P0SEL
+        REQUIRE P1SEL
+        REQUIRE P2SEL
+//   33 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   34 void pinDirect(uint8_t pin, uint8_t dir)
+??pinDirect:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??pinDirect
+        CODE
+//   35 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        PUSH      ?V0
+          CFI V0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      ?V1
+          CFI V1 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   36 	if BELONG_TO_PORT0(pin)
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinDirect_1
+//   37 		if(dir == PIN_OUTPUT)
+        MOV       A,#0x1
+        XRL       A,R2
+        JNZ       ??pinDirect_2
+//   38 			P0DIR |= (1<< (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xfd,A
+        SJMP      ??pinDirect_1
+//   39 		else if(dir == PIN_INPUT)
+??pinDirect_2:
+        MOV       A,R2
+        JNZ       ??pinDirect_1
+//   40 			P0DIR &= ~(1<< (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xfd,A
+//   41 
+//   42 	if BELONG_TO_PORT1(pin)
+??pinDirect_1:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinDirect_3
+//   43 		if(dir == PIN_OUTPUT)
+        MOV       A,#0x1
+        XRL       A,R2
+        JNZ       ??pinDirect_4
+//   44 			P1DIR |= (1<< (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xfe,A
+        SJMP      ??pinDirect_3
+//   45 		else if(dir == PIN_INPUT)
+??pinDirect_4:
+        MOV       A,R2
+        JNZ       ??pinDirect_3
+//   46 			P1DIR &= ~(1<< (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xfe,A
+//   47 
+//   48 	if BELONG_TO_PORT2(pin)
+??pinDirect_3:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x10
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??pinDirect_5
+//   49 		if(dir == PIN_OUTPUT)
+        MOV       A,#0x1
+        XRL       A,R2
+        JNZ       ??pinDirect_6
+//   50 			P2DIR |= (1<< (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xff,A
+        SJMP      ??pinDirect_5
+//   51 		else if(dir == PIN_INPUT)
+??pinDirect_6:
+        MOV       A,R2
+        JNZ       ??pinDirect_5
+//   52 			P2DIR &= ~(1<< (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xff,A
+//   53 }
+??pinDirect_5:
+        POP       ?V1
+          CFI V1 SameValue
+          CFI CFA_SP SP+-4
+        POP       ?V0
+          CFI V0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock2
+        REQUIRE P0DIR
+        REQUIRE P1DIR
+        REQUIRE P2DIR
+//   54 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   55 void portDirect(uint8_t port, uint8_t dir)
+??portDirect:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function ??portDirect
+        CODE
+//   56 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   57 	if(port == PORT0)
+        MOV       A,R1
+        JNZ       ??portDirect_1
+//   58 		P0DIR = dir;
+        MOV       0xfd,R2
+//   59 	if(port == PORT1)
+??portDirect_1:
+        MOV       A,#0x8
+        XRL       A,R1
+        JNZ       ??portDirect_2
+//   60 		P1DIR = dir;
+        MOV       0xfe,R2
+//   61 	if(port == PORT2)
+??portDirect_2:
+        MOV       A,#0x10
+        XRL       A,R1
+        JNZ       ??portDirect_3
+//   62 		P2DIR = dir;
+        MOV       0xff,R2
+//   63 }
+??portDirect_3:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock3
+        REQUIRE P0DIR
+        REQUIRE P1DIR
+        REQUIRE P2DIR
+//   64 
+//   65 //Chu y: Tren mot Port thi tat ca cac pin dong thoi PULLUP hoac PULLDOWN, nen khi ung dung ta chi duoc define PULLUP hoac PULL_DOWN, khong duoc define ca hai
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   66 void pinPull(uint8_t pin, uint8_t pull)
+??pinPull:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function ??pinPull
+        CODE
+//   67 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        PUSH      ?V0
+          CFI V0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      ?V1
+          CFI V1 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   68 	if(pull == PIN_PULLNONE)
+        MOV       A,#0x1
+        XRL       A,R2
+        JNZ       ??pinPull_1
+//   69 	{
+//   70 		if BELONG_TO_PORT0(pin)
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinPull_2
+//   71 			P0INP |= (1 << (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0x8f,A
+//   72 
+//   73 		if BELONG_TO_PORT1(pin)
+??pinPull_2:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinPull_3
+//   74 			P1INP |= (1 << (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xf6,A
+//   75 
+//   76 		if BELONG_TO_PORT2(pin)
+??pinPull_3:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x10
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??pinPull_4
+//   77 			P2INP |= (1 << (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xf7,A
+        SJMP      ??pinPull_4
+//   78 	}
+//   79 	else if(pull != PIN_PULLNONE)
+??pinPull_1:
+        MOV       A,#0x1
+        XRL       A,R2
+        JZ        ??pinPull_4
+//   80 	{
+//   81 		#ifdef PIN_PULLUP
+//   82 		P2INP &= ~(1<<5);
+        ANL       0xf7,#0xdf
+//   83 		P2INP &= ~(1<<6);
+        ANL       0xf7,#0xbf
+//   84 		P2INP &= ~(1<<7);
+        ANL       0xf7,#0x7f
+//   85 		#endif
+//   86 
+//   87 		#ifdef PIN_PULLDOWN
+//   88 		P2INP |= (1<<5);
+//   89 		P2INP |= (1<<6);
+//   90 		P2INP |= (1<<7);
+//   91 		#endif
+//   92 
+//   93 		if BELONG_TO_PORT0(pin)
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinPull_5
+//   94 			P0INP &= ~(1 << (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0x8f,A
+//   95 
+//   96 		if BELONG_TO_PORT1(pin)
+??pinPull_5:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinPull_6
+//   97 			P1INP &= ~(1 << (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xf6,A
+//   98 
+//   99 		if BELONG_TO_PORT2(pin)
+??pinPull_6:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x10
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??pinPull_4
+//  100 			P2INP &= ~(1 << (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xf7,A
+//  101 	}
+//  102 }
+??pinPull_4:
+        POP       ?V1
+          CFI V1 SameValue
+          CFI CFA_SP SP+-4
+        POP       ?V0
+          CFI V0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock4
+        REQUIRE P0INP
+        REQUIRE P1INP
+        REQUIRE P2INP
+//  103 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  104 void portPull(uint8_t port, uint8_t pull)
+??portPull:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function ??portPull
+        CODE
+//  105 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  106 	if(pull != PORT_PULLNONE)
+        MOV       A,#-0x1
+        XRL       A,R2
+        JZ        ??portPull_1
+//  107 	{
+//  108 		#ifdef PIN_PULLUP
+//  109 		P2INP &= ~(1<<5);
+        ANL       0xf7,#0xdf
+//  110 		P2INP &= ~(1<<6);
+        ANL       0xf7,#0xbf
+//  111 		P2INP &= ~(1<<7);
+        ANL       0xf7,#0x7f
+//  112 		#endif
+//  113 
+//  114 		#ifdef PIN_PULLDOWN
+//  115 		P2INP |= (1<<5);
+//  116 		P2INP |= (1<<6);
+//  117 		P2INP |= (1<<7);
+//  118 		#endif
+//  119 	}
+//  120 
+//  121 	if(port == PORT0)
+??portPull_1:
+        MOV       A,R1
+        JNZ       ??portPull_2
+//  122 		P0INP = pull;
+        MOV       0x8f,R2
+//  123 	if(port == PORT1)
+??portPull_2:
+        MOV       A,#0x8
+        XRL       A,R1
+        JNZ       ??portPull_3
+//  124 		P1INP = pull;
+        MOV       0xf6,R2
+//  125 	if(port == PORT2)
+??portPull_3:
+        MOV       A,#0x10
+        XRL       A,R1
+        JNZ       ??portPull_4
+//  126 		P2INP = pull;
+        MOV       0xf7,R2
+//  127 }
+??portPull_4:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock5
+        REQUIRE P2INP
+        REQUIRE P0INP
+        REQUIRE P1INP
+//  128 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  129 void pinWrite(uint8_t pin, uint8_t val)
+??pinWrite:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function ??pinWrite
+        CODE
+//  130 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        PUSH      ?V0
+          CFI V0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      ?V1
+          CFI V1 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  131 	if (val)
+        MOV       A,R2
+        JZ        ??pinWrite_1
+//  132 	{
+//  133 		if BELONG_TO_PORT0(pin)
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinWrite_2
+//  134 			P0 |= (1 << (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0x80,A
+//  135 
+//  136 		if BELONG_TO_PORT1(pin)
+??pinWrite_2:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinWrite_3
+//  137 			P1 |= (1 << (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0x90,A
+//  138 
+//  139 		if BELONG_TO_PORT2(pin)
+??pinWrite_3:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x10
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??pinWrite_4
+//  140 			P2 |= (1 << (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ORL       0xa0,A
+        SJMP      ??pinWrite_4
+//  141 	}
+//  142 	else
+//  143 	{
+//  144 		if BELONG_TO_PORT0(pin)
+??pinWrite_1:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinWrite_5
+//  145 			P0 &= ~(1 << (pin - PORT0));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0x80,A
+//  146 
+//  147 		if BELONG_TO_PORT1(pin)
+??pinWrite_5:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x8
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinWrite_6
+//  148 			P1 &= ~(1 << (pin - PORT1));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0x90,A
+//  149 
+//  150 		if BELONG_TO_PORT2(pin)
+??pinWrite_6:
+        MOV       A,R1
+        CLR       C
+        SUBB      A,#0x10
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??pinWrite_4
+//  151 			P2 &= ~(1 << (pin - PORT2));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R1
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        CPL       A
+        ANL       0xa0,A
+//  152 	}
+//  153 }
+??pinWrite_4:
+        POP       ?V1
+          CFI V1 SameValue
+          CFI CFA_SP SP+-4
+        POP       ?V0
+          CFI V0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock6
+        REQUIRE _A_P0
+        REQUIRE _A_P1
+        REQUIRE _A_P2
+//  154 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  155 void portWrite(uint8_t port, uint8_t val)
+??portWrite:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??portWrite
+        CODE
+//  156 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  157 	if(port == PORT0)
+        MOV       A,R1
+        JNZ       ??portWrite_1
+//  158 		P0 = val;
+        MOV       0x80,R2
+//  159 	if(port == PORT1)
+??portWrite_1:
+        MOV       A,#0x8
+        XRL       A,R1
+        JNZ       ??portWrite_2
+//  160 		P1 = val;
+        MOV       0x90,R2
+//  161 	if(port == PORT2)
+??portWrite_2:
+        MOV       A,#0x10
+        XRL       A,R1
+        JNZ       ??portWrite_3
+//  162 		P2 = val;
+        MOV       0xa0,R2
+//  163 }
+??portWrite_3:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock7
+        REQUIRE _A_P0
+        REQUIRE _A_P1
+        REQUIRE _A_P2
+//  164 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  165 uint8_t pinRead(uint8_t pin)
+??pinRead:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??pinRead
+        CODE
+//  166 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        PUSH      ?V0
+          CFI V0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      ?V1
+          CFI V1 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R2,A
+//  167 	uint8_t val;
+//  168 
+//  169 	if BELONG_TO_PORT0(pin)
+        MOV       A,R2
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinRead_1
+//  170 		val = (P0 & (1 << (pin - PORT0)));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R2
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ANL       A,0x80
+        MOV       R1,A
+//  171 
+//  172 	if BELONG_TO_PORT1(pin)
+??pinRead_1:
+        MOV       A,R2
+        CLR       C
+        SUBB      A,#0x8
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??pinRead_2
+//  173 		val = (P1 & (1 << (pin - PORT1)));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x8
+        ADD       A,R2
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ANL       A,0x90
+        MOV       R1,A
+//  174 
+//  175 	if BELONG_TO_PORT2(pin)
+??pinRead_2:
+        MOV       A,R2
+        CLR       C
+        SUBB      A,#0x10
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??pinRead_3
+//  176 		val = (P2 & (1 << (pin - PORT2)));
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,#-0x10
+        ADD       A,R2
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        ANL       A,0xa0
+        MOV       R1,A
+//  177 
+//  178 	return val;
+??pinRead_3:
+        POP       ?V1
+          CFI V1 SameValue
+          CFI CFA_SP SP+-4
+        POP       ?V0
+          CFI V0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock8
+        REQUIRE _A_P0
+        REQUIRE _A_P1
+        REQUIRE _A_P2
+//  179 }
+//  180 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  181 uint8_t portRead(uint8_t port)
+??portRead:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function ??portRead
+        CODE
+//  182 {
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R0,A
+//  183 	uint8_t val;
+//  184 
+//  185 	if(port == PORT0)
+        MOV       A,R0
+        JNZ       ??portRead_1
+//  186 		val = P0;
+        MOV       R1,0x80+0x0
+//  187 	if(port == PORT1)
+??portRead_1:
+        MOV       A,#0x8
+        XRL       A,R0
+        JNZ       ??portRead_2
+//  188 		val = P1;
+        MOV       R1,0x90+0x0
+//  189 	if(port == PORT2)
+??portRead_2:
+        MOV       A,#0x10
+        XRL       A,R0
+        JNZ       ??portRead_3
+//  190 		val = P2;
+        MOV       R1,0xa0+0x0
+//  191 	
+//  192 	return val;
+??portRead_3:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock9
+        REQUIRE _A_P0
+        REQUIRE _A_P1
+        REQUIRE _A_P2
+//  193 }
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??pinFunction::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??pinFunction
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??portFunction::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??portFunction
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??pinDirect::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??pinDirect
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??portDirect::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??portDirect
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??pinPull::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??pinPull
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??portPull::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??portPull
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??pinWrite::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??pinWrite
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??portWrite::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??portWrite
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??pinRead::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??pinRead
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??portRead::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??portRead
+
+        END
+// 
+// 920 bytes in segment BANKED_CODE
+//  60 bytes in segment BANK_RELAYS
+//  12 bytes in segment SFR_AN
+// 
+//  60 bytes of CODE     memory
+//   0 bytes of DATA     memory (+ 12 bytes shared)
+// 920 bytes of HUGECODE memory
+//
+//Errors: none
+//Warnings: none

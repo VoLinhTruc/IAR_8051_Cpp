@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>2365181645</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\ExINT.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\GlobalINT.r51</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\inc\UART.h</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\scr\GlobalINT.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\UART.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\GPIO.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\CCINO_GPIO.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\GlobalINT.pbi</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\scr\GPIO.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\ADC.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\inc\GlobalINT.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\GPIO.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\ADC.r51</file>
+            <file>$TOOLKIT_DIR$\config\devices\Texas Instruments\lnk51ew_cc2530F256_banked.xcl</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\scr\Generic.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\Generic.pbi</file>
+            <file>$PROJ_DIR$\Debug\Exe\Arduino_Style.d51</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\inc\ExINT.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\Generic.r51</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\inc\ADC.h</file>
+            <file>$PROJ_DIR$\main.cpp</file>
+            <file>$PROJ_DIR$\inc\Logic_Math.h</file>
+            <file>$PROJ_DIR$\scr\CCINO_GPIO.c</file>
+            <file>$PROJ_DIR$\Debug\Exe\Arduino_Style.hex</file>
+            <file>$PROJ_DIR$\Debug\List\Arduino_Style.map</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\inc\GPIO.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\scr\ExINT.c</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\scr\ADC.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\src\GPIO.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\ExINT.pbi</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl-pli-blxd-1e16x01n.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\CCINO_GPIO.pbi</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\src\Generic.c</file>
+            <file>$PROJ_DIR$\inc\Bico_Port.h</file>
+            <file>$PROJ_DIR$\inc\CCINO_GPIO.h</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\src\ADC.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\UART.pbi</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\inc\Generic.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\CCINO_GPIO.r51</file>
+            <file>$PROJ_DIR$\inc\Bico_Seg7.h</file>
+            <file>$PROJ_DIR$\inc\Algebra_Math.h</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\src\ExINT.c</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\src\UART.c</file>
+            <file>$PROJ_DIR$\..\LowLevelLibrary\src\GlobalINT.c</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 25 26</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\scr\GlobalINT.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 8</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0 41 12</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\scr\GPIO.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 13</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0 41 27</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\scr\Generic.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 17</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0 41</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Debug\Exe\Arduino_Style.d51</name>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 15 14 42 1 20 2 6 28 5 34</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\main.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 31</file>
+                </tool>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 28</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 11</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 38 27 41 0 43 37 23 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0 43 44 23 27 41 37 38</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\scr\CCINO_GPIO.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 7</file>
+                </tool>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 42</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 35</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 38 27 41 0</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41 0 27 38</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Debug\Exe\Arduino_Style.hex</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 26</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 15 14 42 1 20 2 6 28 5 34</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\scr\ExINT.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 33</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\scr\ADC.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 10</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\src\GPIO.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 6</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 13</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 27 41 0</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0 41 27</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\src\Generic.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 20</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 17</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 41 0</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0 41</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\src\ADC.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 14</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 10</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 21 27 41 0</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 27 0 41 21</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\src\ExINT.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 1</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 33</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 19 27 41 0 12</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41 0 27 19 12</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\src\UART.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 5</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 40</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 3 41 0</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 3 41 0</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\LowLevelLibrary\src\GlobalINT.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 2</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 8</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 12 41 0</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0 41 12</file>
+                </tool>
+            </inputs>
+        </file>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

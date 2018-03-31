@@ -1,0 +1,1645 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.10.1.4655 for 8051              31/Mar/2018  15:48:42
+// Copyright 2004-2017 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\UART.c
+//    Command line       =  
+//        -f C:\Users\Bico\AppData\Local\Temp\EW978E.tmp
+//        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\UART.c" -lC
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+//        --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+//        Files (x86)\IAR Systems\Embedded Workbench
+//        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+//        -I "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+//        "C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+//        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+//        --no_cross_call)
+//    Locale             =  Vietnamese_Vietnam.1258
+//    List file          =  
+//        C:\Users\Bico\Desktop\IAR 8051
+//        C++\LowLevelLibrary\Debug\List\UART.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME UART
+
+        RTMODEL "__SystemLibrary", "DLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__register_banks", "*"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?V2
+        EXTERN ?V3
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?UL_SWITCH_SPARSE
+
+        PUBLIC ??UART0AssignLocation
+        FUNCTION ??UART0AssignLocation,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART0AssignLocation::?relay`
+        FUNCTION `??UART0AssignLocation::?relay`,0203H
+        PUBLIC ??UART0DiscardDataBuff
+        FUNCTION ??UART0DiscardDataBuff,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART0DiscardDataBuff::?relay`
+        FUNCTION `??UART0DiscardDataBuff::?relay`,0203H
+        PUBLIC ??UART0FillData
+        FUNCTION ??UART0FillData,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART0FillData::?relay`
+        FUNCTION `??UART0FillData::?relay`,0203H
+        PUBLIC ??UART0GetData
+        FUNCTION ??UART0GetData,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART0GetData::?relay`
+        FUNCTION `??UART0GetData::?relay`,0203H
+        PUBLIC ??UART0IsBusy
+        FUNCTION ??UART0IsBusy,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART0IsBusy::?relay`
+        FUNCTION `??UART0IsBusy::?relay`,0203H
+        PUBLIC ??UART0IsReceiving
+        FUNCTION ??UART0IsReceiving,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART0IsReceiving::?relay`
+        FUNCTION `??UART0IsReceiving::?relay`,0203H
+        PUBLIC ??UART0ModeSel
+        FUNCTION ??UART0ModeSel,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART0ModeSel::?relay`
+        FUNCTION `??UART0ModeSel::?relay`,0203H
+        PUBLIC ??UART0ReceiverEn
+        FUNCTION ??UART0ReceiverEn,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART0ReceiverEn::?relay`
+        FUNCTION `??UART0ReceiverEn::?relay`,0203H
+        PUBLIC ??UART0SetBaud
+        FUNCTION ??UART0SetBaud,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC `??UART0SetBaud::?relay`
+        FUNCTION `??UART0SetBaud::?relay`,0203H
+        PUBLIC ??UART0TranmissionCompleted
+        FUNCTION ??UART0TranmissionCompleted,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART0TranmissionCompleted::?relay`
+        FUNCTION `??UART0TranmissionCompleted::?relay`,0203H
+        PUBLIC ??UART1AssignLocation
+        FUNCTION ??UART1AssignLocation,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART1AssignLocation::?relay`
+        FUNCTION `??UART1AssignLocation::?relay`,0203H
+        PUBLIC ??UART1DiscardDataBuff
+        FUNCTION ??UART1DiscardDataBuff,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART1DiscardDataBuff::?relay`
+        FUNCTION `??UART1DiscardDataBuff::?relay`,0203H
+        PUBLIC ??UART1FillData
+        FUNCTION ??UART1FillData,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART1FillData::?relay`
+        FUNCTION `??UART1FillData::?relay`,0203H
+        PUBLIC ??UART1GetData
+        FUNCTION ??UART1GetData,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART1GetData::?relay`
+        FUNCTION `??UART1GetData::?relay`,0203H
+        PUBLIC ??UART1IsBusy
+        FUNCTION ??UART1IsBusy,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART1IsBusy::?relay`
+        FUNCTION `??UART1IsBusy::?relay`,0203H
+        PUBLIC ??UART1IsReceiving
+        FUNCTION ??UART1IsReceiving,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART1IsReceiving::?relay`
+        FUNCTION `??UART1IsReceiving::?relay`,0203H
+        PUBLIC ??UART1ModeSel
+        FUNCTION ??UART1ModeSel,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART1ModeSel::?relay`
+        FUNCTION `??UART1ModeSel::?relay`,0203H
+        PUBLIC ??UART1ReceiverEn
+        FUNCTION ??UART1ReceiverEn,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART1ReceiverEn::?relay`
+        FUNCTION `??UART1ReceiverEn::?relay`,0203H
+        PUBLIC ??UART1SetBaud
+        FUNCTION ??UART1SetBaud,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC `??UART1SetBaud::?relay`
+        FUNCTION `??UART1SetBaud::?relay`,0203H
+        PUBLIC ??UART1TranmissionCompleted
+        FUNCTION ??UART1TranmissionCompleted,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC `??UART1TranmissionCompleted::?relay`
+        FUNCTION `??UART1TranmissionCompleted::?relay`,0203H
+        PUBWEAK PERCFG
+        PUBWEAK U0BAUD
+        PUBWEAK U0CSR
+        PUBWEAK U0DBUF
+        PUBWEAK U0GCR
+        PUBWEAK U1BAUD
+        PUBWEAK U1DBUF
+        PUBWEAK U1GCR
+        PUBWEAK _A_U1CSR
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+
+`??UART0AssignLocation::?relay` SYMBOL "?relay", ??UART0AssignLocation
+
+`??UART0DiscardDataBuff::?relay` SYMBOL "?relay", ??UART0DiscardDataBuff
+
+`??UART0FillData::?relay` SYMBOL "?relay", ??UART0FillData
+
+`??UART0GetData::?relay` SYMBOL "?relay", ??UART0GetData
+
+`??UART0IsBusy::?relay` SYMBOL "?relay", ??UART0IsBusy
+
+`??UART0IsReceiving::?relay` SYMBOL "?relay", ??UART0IsReceiving
+
+`??UART0ModeSel::?relay` SYMBOL "?relay", ??UART0ModeSel
+
+`??UART0ReceiverEn::?relay` SYMBOL "?relay", ??UART0ReceiverEn
+
+`??UART0SetBaud::?relay` SYMBOL "?relay", ??UART0SetBaud
+
+`??UART0TranmissionCompleted::?relay` SYMBOL "?relay", ??UART0TranmissionCompleted
+
+`??UART1AssignLocation::?relay` SYMBOL "?relay", ??UART1AssignLocation
+
+`??UART1DiscardDataBuff::?relay` SYMBOL "?relay", ??UART1DiscardDataBuff
+
+`??UART1FillData::?relay` SYMBOL "?relay", ??UART1FillData
+
+`??UART1GetData::?relay` SYMBOL "?relay", ??UART1GetData
+
+`??UART1IsBusy::?relay` SYMBOL "?relay", ??UART1IsBusy
+
+`??UART1IsReceiving::?relay` SYMBOL "?relay", ??UART1IsReceiving
+
+`??UART1ModeSel::?relay` SYMBOL "?relay", ??UART1ModeSel
+
+`??UART1ReceiverEn::?relay` SYMBOL "?relay", ??UART1ReceiverEn
+
+`??UART1SetBaud::?relay` SYMBOL "?relay", ??UART1SetBaud
+
+`??UART1TranmissionCompleted::?relay` SYMBOL "?relay", ??UART1TranmissionCompleted
+
+// C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\UART.c
+//    1 #include "UART.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,086H
+// unsigned char volatile __sfr U0CSR
+U0CSR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c1H
+// unsigned char volatile __sfr U0DBUF
+U0DBUF:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c2H
+// unsigned char volatile __sfr U0BAUD
+U0BAUD:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c5H
+// unsigned char volatile __sfr U0GCR
+U0GCR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f1H
+// unsigned char volatile __sfr PERCFG
+PERCFG:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f8H
+// union <unnamed> volatile __sfr _A_U1CSR
+_A_U1CSR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f9H
+// unsigned char volatile __sfr U1DBUF
+U1DBUF:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0faH
+// unsigned char volatile __sfr U1BAUD
+U1BAUD:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0fcH
+// unsigned char volatile __sfr U1GCR
+U1GCR:
+        DATA8
+        DS 1
+//    2 
+//    3 // UART0
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//    4 void UART0AssignLocation(uint8_t sel)	//PERCFG.U0CFG, See table 7.1
+??UART0AssignLocation:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ??UART0AssignLocation
+        CODE
+//    5 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//    6 	if(sel == UART0_P14_P15)
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??UART0AssignLocation_1
+//    7 		PERCFG |= sel;
+        MOV       A,R1
+        ORL       0xf1,A
+        SJMP      ??UART0AssignLocation_2
+//    8 	else if(sel == UART0_P02_P03)
+??UART0AssignLocation_1:
+        MOV       A,R1
+        JNZ       ??UART0AssignLocation_2
+//    9 		PERCFG &= ~sel;
+        MOV       A,R1
+        CPL       A
+        ANL       0xf1,A
+//   10 }
+??UART0AssignLocation_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock0
+        REQUIRE PERCFG
+//   11 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   12 void UART0ModeSel(uint8_t mode)	//MODE
+??UART0ModeSel:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ??UART0ModeSel
+        CODE
+//   13 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   14 	if(mode == UART_MODE)
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??UART0ModeSel_1
+//   15 		U0CSR |= (mode << 7);
+        MOV       A,R1
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        RRC       A
+        RRC       A
+        ANL       A,#0x80
+        ORL       0x86,A
+//   16 }
+??UART0ModeSel_1:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock1
+        REQUIRE U0CSR
+//   17 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   18 void UART0ReceiverEn(uint8_t sel)	//RE
+??UART0ReceiverEn:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function ??UART0ReceiverEn
+        CODE
+//   19 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   20 	if(sel)
+        MOV       A,R1
+        JZ        ??UART0ReceiverEn_1
+//   21 	{
+//   22 		U0CSR |= (sel << 6);
+        MOV       A,R1
+        SWAP      A
+        RLC       A
+        RLC       A
+        ANL       A,#0xc0
+        ORL       0x86,A
+        SJMP      ??UART0ReceiverEn_2
+//   23 	}
+//   24 	else
+//   25 	{
+//   26 		U0CSR &= ~(sel << 6);
+??UART0ReceiverEn_1:
+        MOV       A,R1
+        SWAP      A
+        RLC       A
+        RLC       A
+        ANL       A,#0xc0
+        CPL       A
+        ANL       0x86,A
+//   27 	}
+//   28 }
+??UART0ReceiverEn_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock2
+        REQUIRE U0CSR
+//   29 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   30 void UART0DiscardDataBuff()	//write to RX_BYTE
+??UART0DiscardDataBuff:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function ??UART0DiscardDataBuff
+        CODE
+//   31 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   32 	U0CSR &= ~(1 << 2);
+        ANL       0x86,#0xfb
+//   33 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock3
+        REQUIRE U0CSR
+//   34 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   35 uint8_t UART0IsReceiving()	//read from RX_BYTE
+??UART0IsReceiving:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function ??UART0IsReceiving
+        CODE
+//   36 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   37 	return U0CSR & (1 << 2);
+        MOV       A,0x86
+        ANL       A,#0x4
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock4
+        REQUIRE U0CSR
+//   38 }
+//   39 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   40 uint8_t UART0TranmissionCompleted()	//TX_BYTE
+??UART0TranmissionCompleted:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function ??UART0TranmissionCompleted
+        CODE
+//   41 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   42 	return U0CSR & (1 << 1);
+        MOV       A,0x86
+        ANL       A,#0x2
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock5
+        REQUIRE U0CSR
+//   43 }
+//   44 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   45 uint8_t UART0IsBusy()	//ACTIVE
+??UART0IsBusy:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function ??UART0IsBusy
+        CODE
+//   46 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   47 	return U0CSR & 1;
+        MOV       A,0x86
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock6
+        REQUIRE U0CSR
+//   48 }
+//   49 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   50 void UART0SetBaud(unsigned long baud)	//BAUD bit and U0BAUD reg
+??UART0SetBaud:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function ??UART0SetBaud
+        CODE
+//   51 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV       A,#-0xc
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+//   52 	switch(baud)
+        MOV       R0,#?V0
+        LCALL     ?UL_SWITCH_SPARSE
+`?<Jumptable for UART0SetBaud>_0`:
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        0
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        11
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        2400
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_1
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        4800
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_2
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        9600
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_3
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        14400
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_4
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        19200
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_5
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        28800
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_6
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        38400
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_7
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        57600
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_8
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        76800
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_9
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        115200
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_10
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        230400
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_11
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART0SetBaud_12
+        CODE
+//   53 	{
+//   54 		case 2400: 
+//   55 		{
+//   56 			U0BAUD = 59;
+??UART0SetBaud_1:
+        MOV       0xc2,#0x3b
+//   57 			U0GCR = 6;
+        MOV       0xc5,#0x6
+//   58                         break;
+        SJMP      ??UART0SetBaud_12
+//   59 		}
+//   60 
+//   61 		case 4800: 
+//   62 		{
+//   63 			U0BAUD = 59;
+??UART0SetBaud_2:
+        MOV       0xc2,#0x3b
+//   64 			U0GCR = 7;
+        MOV       0xc5,#0x7
+//   65                         break;
+        SJMP      ??UART0SetBaud_12
+//   66 		}
+//   67 
+//   68 		case 9600: 
+//   69 		{
+//   70 			U0BAUD = 59;
+??UART0SetBaud_3:
+        MOV       0xc2,#0x3b
+//   71 			U0GCR = 8;
+        MOV       0xc5,#0x8
+//   72                         break;
+        SJMP      ??UART0SetBaud_12
+//   73 		}
+//   74 
+//   75 		case 14400: 
+//   76 		{
+//   77 			U0BAUD = 216;
+??UART0SetBaud_4:
+        MOV       0xc2,#-0x28
+//   78 			U0GCR = 8;
+        MOV       0xc5,#0x8
+//   79                         break;
+        SJMP      ??UART0SetBaud_12
+//   80 		}
+//   81 
+//   82 		case 19200: 
+//   83 		{
+//   84 			U0BAUD = 59;
+??UART0SetBaud_5:
+        MOV       0xc2,#0x3b
+//   85 			U0GCR = 9;
+        MOV       0xc5,#0x9
+//   86                         break;
+        SJMP      ??UART0SetBaud_12
+//   87 		}
+//   88 
+//   89 		case 28800: 
+//   90 		{
+//   91 			U0BAUD = 216;
+??UART0SetBaud_6:
+        MOV       0xc2,#-0x28
+//   92 			U0GCR = 9;
+        MOV       0xc5,#0x9
+//   93                         break;
+        SJMP      ??UART0SetBaud_12
+//   94 		}
+//   95 
+//   96 		case 38400: 
+//   97 		{
+//   98 			U0BAUD = 59;
+??UART0SetBaud_7:
+        MOV       0xc2,#0x3b
+//   99 			U0GCR = 10;
+        MOV       0xc5,#0xa
+//  100                         break;		}
+        SJMP      ??UART0SetBaud_12
+//  101 
+//  102 		case 57600: 
+//  103 		{
+//  104 			U0BAUD = 216;
+??UART0SetBaud_8:
+        MOV       0xc2,#-0x28
+//  105 			U0GCR = 10;
+        MOV       0xc5,#0xa
+//  106                         break;
+        SJMP      ??UART0SetBaud_12
+//  107 		}
+//  108 
+//  109 		case 76800: 
+//  110 		{
+//  111 			U0BAUD = 59;
+??UART0SetBaud_9:
+        MOV       0xc2,#0x3b
+//  112 			U0GCR = 11;
+        MOV       0xc5,#0xb
+//  113                         break;
+        SJMP      ??UART0SetBaud_12
+//  114 		}
+//  115 
+//  116 		case 115200: 
+//  117 		{
+//  118 			U0BAUD = 216;
+??UART0SetBaud_10:
+        MOV       0xc2,#-0x28
+//  119 			U0GCR = 11;
+        MOV       0xc5,#0xb
+//  120                         break;
+        SJMP      ??UART0SetBaud_12
+//  121 		}
+//  122 
+//  123 		case 230400: 
+//  124 		{
+//  125 			U0BAUD = 216;
+??UART0SetBaud_11:
+        MOV       0xc2,#-0x28
+//  126 			U0GCR = 12;
+        MOV       0xc5,#0xc
+//  127                         break;
+//  128 		}
+//  129 	}
+//  130 }
+??UART0SetBaud_12:
+        MOV       R7,#0x4
+        LJMP      ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock7
+        REQUIRE U0BAUD
+        REQUIRE U0GCR
+//  131 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  132 uint8_t UART0GetData()	//DATA reg
+??UART0GetData:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function ??UART0GetData
+        CODE
+//  133 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  134 	return U0DBUF;
+        MOV       A,0xc1
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock8
+        REQUIRE U0DBUF
+//  135 }
+//  136 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  137 void UART0FillData(uint8_t data)	//DATA reg
+??UART0FillData:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function ??UART0FillData
+        CODE
+//  138 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  139 	U0DBUF = data;
+        MOV       0xc1,R1
+//  140 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock9
+        REQUIRE U0DBUF
+//  141 
+//  142 
+//  143 
+//  144 
+//  145 
+//  146 
+//  147 // UART1
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  148 void UART1AssignLocation(uint8_t sel)	//PERCFG.U1CFG, See table 7.1
+??UART1AssignLocation:
+          CFI Block cfiBlock10 Using cfiCommon0
+          CFI Function ??UART1AssignLocation
+        CODE
+//  149 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  150 	if(sel == UART1_P07_P06)
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??UART1AssignLocation_1
+//  151 		PERCFG |= (sel << 1);
+        MOV       A,R1
+        CLR       C
+        RLC       A
+        ORL       0xf1,A
+        SJMP      ??UART1AssignLocation_2
+//  152 	else if(sel == UART1_P05_P04)
+??UART1AssignLocation_1:
+        MOV       A,R1
+        JNZ       ??UART1AssignLocation_2
+//  153 		PERCFG &= ~(sel << 1);
+        MOV       A,R1
+        CLR       C
+        RLC       A
+        CPL       A
+        ANL       0xf1,A
+//  154 }
+??UART1AssignLocation_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock10
+        REQUIRE PERCFG
+//  155 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  156 void UART1ModeSel(uint8_t mode)	//MODE
+??UART1ModeSel:
+          CFI Block cfiBlock11 Using cfiCommon0
+          CFI Function ??UART1ModeSel
+        CODE
+//  157 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  158 	if(mode == UART_MODE)
+        MOV       A,#0x1
+        XRL       A,R1
+        JNZ       ??UART1ModeSel_1
+//  159 		U1CSR |= (mode << 7);
+        MOV       A,R1
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        RRC       A
+        RRC       A
+        ANL       A,#0x80
+        ORL       0xf8,A
+//  160 }
+??UART1ModeSel_1:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock11
+        REQUIRE _A_U1CSR
+//  161 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  162 void UART1ReceiverEn(uint8_t sel)	//RE
+??UART1ReceiverEn:
+          CFI Block cfiBlock12 Using cfiCommon0
+          CFI Function ??UART1ReceiverEn
+        CODE
+//  163 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  164 	if(sel)
+        MOV       A,R1
+        JZ        ??UART1ReceiverEn_1
+//  165 	{
+//  166 		U1CSR |= (sel << 6);
+        MOV       A,R1
+        SWAP      A
+        RLC       A
+        RLC       A
+        ANL       A,#0xc0
+        ORL       0xf8,A
+        SJMP      ??UART1ReceiverEn_2
+//  167 	}
+//  168 	else
+//  169 	{
+//  170 		U1CSR &= ~(sel << 6);
+??UART1ReceiverEn_1:
+        MOV       A,R1
+        SWAP      A
+        RLC       A
+        RLC       A
+        ANL       A,#0xc0
+        CPL       A
+        ANL       0xf8,A
+//  171 	}
+//  172 }
+??UART1ReceiverEn_2:
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock12
+        REQUIRE _A_U1CSR
+//  173 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  174 void UART1DiscardDataBuff()	//write to RX_BYTE
+??UART1DiscardDataBuff:
+          CFI Block cfiBlock13 Using cfiCommon0
+          CFI Function ??UART1DiscardDataBuff
+        CODE
+//  175 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  176 	U1CSR &= ~(1 << 2);
+        CLR       0xf8.2
+//  177 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock13
+        REQUIRE _A_U1CSR
+//  178 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  179 uint8_t UART1IsReceiving()	//read from RX_BYTE
+??UART1IsReceiving:
+          CFI Block cfiBlock14 Using cfiCommon0
+          CFI Function ??UART1IsReceiving
+        CODE
+//  180 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  181 	return U1CSR & (1 << 2);
+        MOV       A,0xf8
+        ANL       A,#0x4
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock14
+        REQUIRE _A_U1CSR
+//  182 }
+//  183 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  184 uint8_t UART1TranmissionCompleted()	//TX_BYTE
+??UART1TranmissionCompleted:
+          CFI Block cfiBlock15 Using cfiCommon0
+          CFI Function ??UART1TranmissionCompleted
+        CODE
+//  185 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  186 	return U1CSR & (1 << 1);
+        MOV       A,0xf8
+        ANL       A,#0x2
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock15
+        REQUIRE _A_U1CSR
+//  187 }
+//  188 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  189 uint8_t UART1IsBusy()	//ACTIVE
+??UART1IsBusy:
+          CFI Block cfiBlock16 Using cfiCommon0
+          CFI Function ??UART1IsBusy
+        CODE
+//  190 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  191 	return U1CSR & 1;
+        MOV       C,0xf8.0
+        CLR       A
+        RLC       A
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock16
+        REQUIRE _A_U1CSR
+//  192 }
+//  193 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  194 void UART1SetBaud(unsigned long baud)	//BAUD bit and U1BAUD reg
+??UART1SetBaud:
+          CFI Block cfiBlock17 Using cfiCommon0
+          CFI Function ??UART1SetBaud
+        CODE
+//  195 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV       A,#-0xc
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+//  196 	switch(baud)
+        MOV       R0,#?V0
+        LCALL     ?UL_SWITCH_SPARSE
+`?<Jumptable for UART1SetBaud>_0`:
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        0
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        11
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        2400
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_1
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        4800
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_2
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        9600
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_3
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        14400
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_4
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        19200
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_5
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        28800
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_6
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        38400
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_7
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        57600
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_8
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        76800
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_9
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        115200
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_10
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DATA
+        DATA32
+        DD        230400
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_11
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??UART1SetBaud_12
+        CODE
+//  197 	{
+//  198 		case 2400: 
+//  199 		{
+//  200 			U1BAUD = 59;
+??UART1SetBaud_1:
+        MOV       0xfa,#0x3b
+//  201 			U1GCR = 6;
+        MOV       0xfc,#0x6
+//  202                         break;
+        SJMP      ??UART1SetBaud_12
+//  203 		}
+//  204 
+//  205 		case 4800: 
+//  206 		{
+//  207 			U1BAUD = 59;
+??UART1SetBaud_2:
+        MOV       0xfa,#0x3b
+//  208 			U1GCR = 7;
+        MOV       0xfc,#0x7
+//  209                         break;
+        SJMP      ??UART1SetBaud_12
+//  210 		}
+//  211 
+//  212 		case 9600: 
+//  213 		{
+//  214 			U1BAUD = 59;
+??UART1SetBaud_3:
+        MOV       0xfa,#0x3b
+//  215 			U1GCR = 8;
+        MOV       0xfc,#0x8
+//  216                         break;
+        SJMP      ??UART1SetBaud_12
+//  217 		}
+//  218 
+//  219 		case 14400: 
+//  220 		{
+//  221 			U1BAUD = 216;
+??UART1SetBaud_4:
+        MOV       0xfa,#-0x28
+//  222 			U1GCR = 8;
+        MOV       0xfc,#0x8
+//  223                         break;
+        SJMP      ??UART1SetBaud_12
+//  224 		}
+//  225 
+//  226 		case 19200: 
+//  227 		{
+//  228 			U1BAUD = 59;
+??UART1SetBaud_5:
+        MOV       0xfa,#0x3b
+//  229 			U1GCR = 9;
+        MOV       0xfc,#0x9
+//  230                         break;
+        SJMP      ??UART1SetBaud_12
+//  231 		}
+//  232 
+//  233 		case 28800: 
+//  234 		{
+//  235 			U1BAUD = 216;
+??UART1SetBaud_6:
+        MOV       0xfa,#-0x28
+//  236 			U1GCR = 9;
+        MOV       0xfc,#0x9
+//  237                         break;
+        SJMP      ??UART1SetBaud_12
+//  238 		}
+//  239 
+//  240 		case 38400: 
+//  241 		{
+//  242 			U1BAUD = 59;
+??UART1SetBaud_7:
+        MOV       0xfa,#0x3b
+//  243 			U1GCR = 10;		
+        MOV       0xfc,#0xa
+//  244                         break;
+        SJMP      ??UART1SetBaud_12
+//  245                 }
+//  246 
+//  247 		case 57600: 
+//  248 		{
+//  249 			U1BAUD = 216;
+??UART1SetBaud_8:
+        MOV       0xfa,#-0x28
+//  250 			U1GCR = 10;
+        MOV       0xfc,#0xa
+//  251                         break;
+        SJMP      ??UART1SetBaud_12
+//  252 		}
+//  253 
+//  254 		case 76800: 
+//  255 		{
+//  256 			U1BAUD = 59;
+??UART1SetBaud_9:
+        MOV       0xfa,#0x3b
+//  257 			U1GCR = 11;
+        MOV       0xfc,#0xb
+//  258                         break;
+        SJMP      ??UART1SetBaud_12
+//  259 		}
+//  260 
+//  261 		case 115200: 
+//  262 		{
+//  263 			U1BAUD = 216;
+??UART1SetBaud_10:
+        MOV       0xfa,#-0x28
+//  264 			U1GCR = 11;
+        MOV       0xfc,#0xb
+//  265                         break;
+        SJMP      ??UART1SetBaud_12
+//  266 		}
+//  267 
+//  268 		case 230400: 
+//  269 		{
+//  270 			U1BAUD = 216;
+??UART1SetBaud_11:
+        MOV       0xfa,#-0x28
+//  271 			U1GCR = 12;
+        MOV       0xfc,#0xc
+//  272                         break;
+//  273 		}
+//  274 	}
+//  275 }
+??UART1SetBaud_12:
+        MOV       R7,#0x4
+        LJMP      ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock17
+        REQUIRE U1BAUD
+        REQUIRE U1GCR
+//  276 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  277 uint8_t UART1GetData()	//DATA reg
+??UART1GetData:
+          CFI Block cfiBlock18 Using cfiCommon0
+          CFI Function ??UART1GetData
+        CODE
+//  278 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  279 	return U1DBUF;
+        MOV       A,0xf9
+        MOV       R1,A
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock18
+        REQUIRE U1DBUF
+//  280 }
+//  281 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  282 void UART1FillData(uint8_t data)	//DATA reg
+??UART1FillData:
+          CFI Block cfiBlock19 Using cfiCommon0
+          CFI Function ??UART1FillData
+        CODE
+//  283 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  284 	U1DBUF = data;
+        MOV       0xf9,R1
+//  285 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock19
+        REQUIRE U1DBUF
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0AssignLocation::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0AssignLocation
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0ModeSel::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0ModeSel
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0ReceiverEn::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0ReceiverEn
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0DiscardDataBuff::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0DiscardDataBuff
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0IsReceiving::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0IsReceiving
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0TranmissionCompleted::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0TranmissionCompleted
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0IsBusy::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0IsBusy
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0SetBaud::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0SetBaud
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0GetData::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0GetData
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART0FillData::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART0FillData
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1AssignLocation::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1AssignLocation
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1ModeSel::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1ModeSel
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1ReceiverEn::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1ReceiverEn
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1DiscardDataBuff::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1DiscardDataBuff
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1IsReceiving::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1IsReceiving
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1TranmissionCompleted::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1TranmissionCompleted
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1IsBusy::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1IsBusy
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1SetBaud::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1SetBaud
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1GetData::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1GetData
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??UART1FillData::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ??UART1FillData
+
+        END
+// 
+// 585 bytes in segment BANKED_CODE
+// 120 bytes in segment BANK_RELAYS
+//   9 bytes in segment SFR_AN
+// 
+// 120 bytes of CODE     memory
+//   0 bytes of DATA     memory (+ 9 bytes shared)
+// 585 bytes of HUGECODE memory
+//
+//Errors: none
+//Warnings: none

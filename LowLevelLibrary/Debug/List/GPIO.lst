@@ -1,0 +1,1032 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.10.1.4655 for 8051               31/Mar/2018  15:48:42
+# Copyright 2004-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GPIO.c
+#    Command line       =  
+#        -f C:\Users\Bico\AppData\Local\Temp\EW9673.tmp
+#        ("C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GPIO.c" -lC
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -lA
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List" -o
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj" -e
+#        --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:\Program
+#        Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\8051\LIB\DLIB\dl8051Normal.h" -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\LowLevelLibrary\inc\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\..\ArduinoJson\"
+#        -I "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Data\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Deserialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Polyfills\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\Serialization\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\StringTraits\" -I
+#        "C:\Users\Bico\Desktop\IAR 8051
+#        C++\LowLevelLibrary\..\ArduinoJson\ArduinoJson\TypeTraits\" -Ol
+#        --eec++ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_cross_call)
+#    Locale             =  Vietnamese_Vietnam.1258
+#    List file          =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\List\GPIO.lst
+#    Object file        =  
+#        C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\Debug\Obj\GPIO.r51
+#
+###############################################################################
+
+C:\Users\Bico\Desktop\IAR 8051 C++\LowLevelLibrary\src\GPIO.c
+      1          #include "GPIO.h"
+
+   \                                 In  segment SFR_AN, at 0x80
+   \   union <unnamed> volatile __sfr _A_P0
+   \                     _A_P0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x8f
+   \   unsigned char volatile __sfr P0INP
+   \                     P0INP:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x90
+   \   union <unnamed> volatile __sfr _A_P1
+   \                     _A_P1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xa0
+   \   union <unnamed> volatile __sfr _A_P2
+   \                     _A_P2:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf3
+   \   unsigned char volatile __sfr P0SEL
+   \                     P0SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf4
+   \   unsigned char volatile __sfr P1SEL
+   \                     P1SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf5
+   \   unsigned char volatile __sfr P2SEL
+   \                     P2SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf6
+   \   unsigned char volatile __sfr P1INP
+   \                     P1INP:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf7
+   \   unsigned char volatile __sfr P2INP
+   \                     P2INP:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfd
+   \   unsigned char volatile __sfr P0DIR
+   \                     P0DIR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfe
+   \   unsigned char volatile __sfr P1DIR
+   \                     P1DIR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xff
+   \   unsigned char volatile __sfr P2DIR
+   \                     P2DIR:
+   \   000000                DS 1
+      2          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      3          void pinFunction(uint8_t pin, uint8_t func)
+   \                     ??pinFunction:
+      4          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   C0..         PUSH      ?V0
+   \   000002   C0..         PUSH      ?V1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+      5          	if BELONG_TO_PORT0(pin)
+   \   000004   E9           MOV       A,R1
+   \   000005   C3           CLR       C
+   \   000006   9408         SUBB      A,#0x8
+   \   000008   502B         JNC       ??pinFunction_1
+      6          		if(func == PIN_PERIPHERAL)
+   \   00000A   7401         MOV       A,#0x1
+   \   00000C   6A           XRL       A,R2
+   \   00000D   7012         JNZ       ??pinFunction_2
+      7          			P0SEL |= (1<< (pin - PORT0));
+   \   00000F   75..01       MOV       ?V0,#0x1
+   \   000012   75..00       MOV       ?V1,#0x0
+   \   000015   E9           MOV       A,R1
+   \   000016   78..         MOV       R0,#?V0
+   \   000018   12....       LCALL     ?S_SHL
+   \   00001B   E5..         MOV       A,?V0
+   \   00001D   42F3         ORL       0xf3,A
+   \   00001F   8014         SJMP      ??pinFunction_1
+      8          		else if(func == PIN_GPIO)
+   \                     ??pinFunction_2:
+   \   000021   EA           MOV       A,R2
+   \   000022   7011         JNZ       ??pinFunction_1
+      9          			P0SEL &= ~(1<< (pin - PORT0));
+   \   000024   75..01       MOV       ?V0,#0x1
+   \   000027   75..00       MOV       ?V1,#0x0
+   \   00002A   E9           MOV       A,R1
+   \   00002B   78..         MOV       R0,#?V0
+   \   00002D   12....       LCALL     ?S_SHL
+   \   000030   E5..         MOV       A,?V0
+   \   000032   F4           CPL       A
+   \   000033   52F3         ANL       0xf3,A
+     10          
+     11          	if BELONG_TO_PORT1(pin)
+   \                     ??pinFunction_1:
+   \   000035   E9           MOV       A,R1
+   \   000036   C3           CLR       C
+   \   000037   9408         SUBB      A,#0x8
+   \   000039   C3           CLR       C
+   \   00003A   9408         SUBB      A,#0x8
+   \   00003C   502F         JNC       ??pinFunction_3
+     12          		if(func == PIN_PERIPHERAL)
+   \   00003E   7401         MOV       A,#0x1
+   \   000040   6A           XRL       A,R2
+   \   000041   7014         JNZ       ??pinFunction_4
+     13          			P1SEL |= (1<< (pin - PORT1));
+   \   000043   75..01       MOV       ?V0,#0x1
+   \   000046   75..00       MOV       ?V1,#0x0
+   \   000049   74F8         MOV       A,#-0x8
+   \   00004B   29           ADD       A,R1
+   \   00004C   78..         MOV       R0,#?V0
+   \   00004E   12....       LCALL     ?S_SHL
+   \   000051   E5..         MOV       A,?V0
+   \   000053   42F4         ORL       0xf4,A
+   \   000055   8016         SJMP      ??pinFunction_3
+     14          		else if(func == PIN_GPIO)
+   \                     ??pinFunction_4:
+   \   000057   EA           MOV       A,R2
+   \   000058   7013         JNZ       ??pinFunction_3
+     15          			P1SEL &= ~(1<< (pin - PORT1));
+   \   00005A   75..01       MOV       ?V0,#0x1
+   \   00005D   75..00       MOV       ?V1,#0x0
+   \   000060   74F8         MOV       A,#-0x8
+   \   000062   29           ADD       A,R1
+   \   000063   78..         MOV       R0,#?V0
+   \   000065   12....       LCALL     ?S_SHL
+   \   000068   E5..         MOV       A,?V0
+   \   00006A   F4           CPL       A
+   \   00006B   52F4         ANL       0xf4,A
+     16          
+     17          	if BELONG_TO_PORT2(pin)
+   \                     ??pinFunction_3:
+   \   00006D   E9           MOV       A,R1
+   \   00006E   C3           CLR       C
+   \   00006F   9410         SUBB      A,#0x10
+   \   000071   C3           CLR       C
+   \   000072   9405         SUBB      A,#0x5
+   \   000074   502F         JNC       ??pinFunction_5
+     18          		if(func == PIN_PERIPHERAL)
+   \   000076   7401         MOV       A,#0x1
+   \   000078   6A           XRL       A,R2
+   \   000079   7014         JNZ       ??pinFunction_6
+     19          			P2SEL |= (1<< (pin - PORT2));
+   \   00007B   75..01       MOV       ?V0,#0x1
+   \   00007E   75..00       MOV       ?V1,#0x0
+   \   000081   74F0         MOV       A,#-0x10
+   \   000083   29           ADD       A,R1
+   \   000084   78..         MOV       R0,#?V0
+   \   000086   12....       LCALL     ?S_SHL
+   \   000089   E5..         MOV       A,?V0
+   \   00008B   42F5         ORL       0xf5,A
+   \   00008D   8016         SJMP      ??pinFunction_5
+     20          		else if(func == PIN_GPIO)
+   \                     ??pinFunction_6:
+   \   00008F   EA           MOV       A,R2
+   \   000090   7013         JNZ       ??pinFunction_5
+     21          			P2SEL &= ~(1<< (pin - PORT2));
+   \   000092   75..01       MOV       ?V0,#0x1
+   \   000095   75..00       MOV       ?V1,#0x0
+   \   000098   74F0         MOV       A,#-0x10
+   \   00009A   29           ADD       A,R1
+   \   00009B   78..         MOV       R0,#?V0
+   \   00009D   12....       LCALL     ?S_SHL
+   \   0000A0   E5..         MOV       A,?V0
+   \   0000A2   F4           CPL       A
+   \   0000A3   52F5         ANL       0xf5,A
+     22          }
+   \                     ??pinFunction_5:
+   \   0000A5   D0..         POP       ?V1
+   \   0000A7   D0..         POP       ?V0
+   \   0000A9   02....       LJMP      ?BRET
+   \   0000AC                REQUIRE P0SEL
+   \   0000AC                REQUIRE P1SEL
+   \   0000AC                REQUIRE P2SEL
+     23          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     24          void portFunction(uint8_t port, uint8_t func)
+   \                     ??portFunction:
+     25          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     26          	if(port == PORT0)
+   \   000000   E9           MOV       A,R1
+   \   000001   7002         JNZ       ??portFunction_1
+     27          		P0SEL = func;
+   \   000003   8AF3         MOV       0xf3,R2
+     28          	if(port == PORT1)
+   \                     ??portFunction_1:
+   \   000005   7408         MOV       A,#0x8
+   \   000007   69           XRL       A,R1
+   \   000008   7002         JNZ       ??portFunction_2
+     29          		P1SEL = func;
+   \   00000A   8AF4         MOV       0xf4,R2
+     30          	if(port == PORT2)
+   \                     ??portFunction_2:
+   \   00000C   7410         MOV       A,#0x10
+   \   00000E   69           XRL       A,R1
+   \   00000F   7002         JNZ       ??portFunction_3
+     31          		P2SEL = func;
+   \   000011   8AF5         MOV       0xf5,R2
+     32          }
+   \                     ??portFunction_3:
+   \   000013   02....       LJMP      ?BRET
+   \   000016                REQUIRE P0SEL
+   \   000016                REQUIRE P1SEL
+   \   000016                REQUIRE P2SEL
+     33          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     34          void pinDirect(uint8_t pin, uint8_t dir)
+   \                     ??pinDirect:
+     35          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   C0..         PUSH      ?V0
+   \   000002   C0..         PUSH      ?V1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     36          	if BELONG_TO_PORT0(pin)
+   \   000004   E9           MOV       A,R1
+   \   000005   C3           CLR       C
+   \   000006   9408         SUBB      A,#0x8
+   \   000008   502B         JNC       ??pinDirect_1
+     37          		if(dir == PIN_OUTPUT)
+   \   00000A   7401         MOV       A,#0x1
+   \   00000C   6A           XRL       A,R2
+   \   00000D   7012         JNZ       ??pinDirect_2
+     38          			P0DIR |= (1<< (pin - PORT0));
+   \   00000F   75..01       MOV       ?V0,#0x1
+   \   000012   75..00       MOV       ?V1,#0x0
+   \   000015   E9           MOV       A,R1
+   \   000016   78..         MOV       R0,#?V0
+   \   000018   12....       LCALL     ?S_SHL
+   \   00001B   E5..         MOV       A,?V0
+   \   00001D   42FD         ORL       0xfd,A
+   \   00001F   8014         SJMP      ??pinDirect_1
+     39          		else if(dir == PIN_INPUT)
+   \                     ??pinDirect_2:
+   \   000021   EA           MOV       A,R2
+   \   000022   7011         JNZ       ??pinDirect_1
+     40          			P0DIR &= ~(1<< (pin - PORT0));
+   \   000024   75..01       MOV       ?V0,#0x1
+   \   000027   75..00       MOV       ?V1,#0x0
+   \   00002A   E9           MOV       A,R1
+   \   00002B   78..         MOV       R0,#?V0
+   \   00002D   12....       LCALL     ?S_SHL
+   \   000030   E5..         MOV       A,?V0
+   \   000032   F4           CPL       A
+   \   000033   52FD         ANL       0xfd,A
+     41          
+     42          	if BELONG_TO_PORT1(pin)
+   \                     ??pinDirect_1:
+   \   000035   E9           MOV       A,R1
+   \   000036   C3           CLR       C
+   \   000037   9408         SUBB      A,#0x8
+   \   000039   C3           CLR       C
+   \   00003A   9408         SUBB      A,#0x8
+   \   00003C   502F         JNC       ??pinDirect_3
+     43          		if(dir == PIN_OUTPUT)
+   \   00003E   7401         MOV       A,#0x1
+   \   000040   6A           XRL       A,R2
+   \   000041   7014         JNZ       ??pinDirect_4
+     44          			P1DIR |= (1<< (pin - PORT1));
+   \   000043   75..01       MOV       ?V0,#0x1
+   \   000046   75..00       MOV       ?V1,#0x0
+   \   000049   74F8         MOV       A,#-0x8
+   \   00004B   29           ADD       A,R1
+   \   00004C   78..         MOV       R0,#?V0
+   \   00004E   12....       LCALL     ?S_SHL
+   \   000051   E5..         MOV       A,?V0
+   \   000053   42FE         ORL       0xfe,A
+   \   000055   8016         SJMP      ??pinDirect_3
+     45          		else if(dir == PIN_INPUT)
+   \                     ??pinDirect_4:
+   \   000057   EA           MOV       A,R2
+   \   000058   7013         JNZ       ??pinDirect_3
+     46          			P1DIR &= ~(1<< (pin - PORT1));
+   \   00005A   75..01       MOV       ?V0,#0x1
+   \   00005D   75..00       MOV       ?V1,#0x0
+   \   000060   74F8         MOV       A,#-0x8
+   \   000062   29           ADD       A,R1
+   \   000063   78..         MOV       R0,#?V0
+   \   000065   12....       LCALL     ?S_SHL
+   \   000068   E5..         MOV       A,?V0
+   \   00006A   F4           CPL       A
+   \   00006B   52FE         ANL       0xfe,A
+     47          
+     48          	if BELONG_TO_PORT2(pin)
+   \                     ??pinDirect_3:
+   \   00006D   E9           MOV       A,R1
+   \   00006E   C3           CLR       C
+   \   00006F   9410         SUBB      A,#0x10
+   \   000071   C3           CLR       C
+   \   000072   9405         SUBB      A,#0x5
+   \   000074   502F         JNC       ??pinDirect_5
+     49          		if(dir == PIN_OUTPUT)
+   \   000076   7401         MOV       A,#0x1
+   \   000078   6A           XRL       A,R2
+   \   000079   7014         JNZ       ??pinDirect_6
+     50          			P2DIR |= (1<< (pin - PORT2));
+   \   00007B   75..01       MOV       ?V0,#0x1
+   \   00007E   75..00       MOV       ?V1,#0x0
+   \   000081   74F0         MOV       A,#-0x10
+   \   000083   29           ADD       A,R1
+   \   000084   78..         MOV       R0,#?V0
+   \   000086   12....       LCALL     ?S_SHL
+   \   000089   E5..         MOV       A,?V0
+   \   00008B   42FF         ORL       0xff,A
+   \   00008D   8016         SJMP      ??pinDirect_5
+     51          		else if(dir == PIN_INPUT)
+   \                     ??pinDirect_6:
+   \   00008F   EA           MOV       A,R2
+   \   000090   7013         JNZ       ??pinDirect_5
+     52          			P2DIR &= ~(1<< (pin - PORT2));
+   \   000092   75..01       MOV       ?V0,#0x1
+   \   000095   75..00       MOV       ?V1,#0x0
+   \   000098   74F0         MOV       A,#-0x10
+   \   00009A   29           ADD       A,R1
+   \   00009B   78..         MOV       R0,#?V0
+   \   00009D   12....       LCALL     ?S_SHL
+   \   0000A0   E5..         MOV       A,?V0
+   \   0000A2   F4           CPL       A
+   \   0000A3   52FF         ANL       0xff,A
+     53          }
+   \                     ??pinDirect_5:
+   \   0000A5   D0..         POP       ?V1
+   \   0000A7   D0..         POP       ?V0
+   \   0000A9   02....       LJMP      ?BRET
+   \   0000AC                REQUIRE P0DIR
+   \   0000AC                REQUIRE P1DIR
+   \   0000AC                REQUIRE P2DIR
+     54          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     55          void portDirect(uint8_t port, uint8_t dir)
+   \                     ??portDirect:
+     56          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     57          	if(port == PORT0)
+   \   000000   E9           MOV       A,R1
+   \   000001   7002         JNZ       ??portDirect_1
+     58          		P0DIR = dir;
+   \   000003   8AFD         MOV       0xfd,R2
+     59          	if(port == PORT1)
+   \                     ??portDirect_1:
+   \   000005   7408         MOV       A,#0x8
+   \   000007   69           XRL       A,R1
+   \   000008   7002         JNZ       ??portDirect_2
+     60          		P1DIR = dir;
+   \   00000A   8AFE         MOV       0xfe,R2
+     61          	if(port == PORT2)
+   \                     ??portDirect_2:
+   \   00000C   7410         MOV       A,#0x10
+   \   00000E   69           XRL       A,R1
+   \   00000F   7002         JNZ       ??portDirect_3
+     62          		P2DIR = dir;
+   \   000011   8AFF         MOV       0xff,R2
+     63          }
+   \                     ??portDirect_3:
+   \   000013   02....       LJMP      ?BRET
+   \   000016                REQUIRE P0DIR
+   \   000016                REQUIRE P1DIR
+   \   000016                REQUIRE P2DIR
+     64          
+     65          //Chu y: Tren mot Port thi tat ca cac pin dong thoi PULLUP hoac PULLDOWN, nen khi ung dung ta chi duoc define PULLUP hoac PULL_DOWN, khong duoc define ca hai
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     66          void pinPull(uint8_t pin, uint8_t pull)
+   \                     ??pinPull:
+     67          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   C0..         PUSH      ?V0
+   \   000002   C0..         PUSH      ?V1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     68          	if(pull == PIN_PULLNONE)
+   \   000004   7401         MOV       A,#0x1
+   \   000006   6A           XRL       A,R2
+   \   000007   704E         JNZ       ??pinPull_1
+     69          	{
+     70          		if BELONG_TO_PORT0(pin)
+   \   000009   E9           MOV       A,R1
+   \   00000A   C3           CLR       C
+   \   00000B   9408         SUBB      A,#0x8
+   \   00000D   5010         JNC       ??pinPull_2
+     71          			P0INP |= (1 << (pin - PORT0));
+   \   00000F   75..01       MOV       ?V0,#0x1
+   \   000012   75..00       MOV       ?V1,#0x0
+   \   000015   E9           MOV       A,R1
+   \   000016   78..         MOV       R0,#?V0
+   \   000018   12....       LCALL     ?S_SHL
+   \   00001B   E5..         MOV       A,?V0
+   \   00001D   428F         ORL       0x8f,A
+     72          
+     73          		if BELONG_TO_PORT1(pin)
+   \                     ??pinPull_2:
+   \   00001F   E9           MOV       A,R1
+   \   000020   C3           CLR       C
+   \   000021   9408         SUBB      A,#0x8
+   \   000023   C3           CLR       C
+   \   000024   9408         SUBB      A,#0x8
+   \   000026   5012         JNC       ??pinPull_3
+     74          			P1INP |= (1 << (pin - PORT1));
+   \   000028   75..01       MOV       ?V0,#0x1
+   \   00002B   75..00       MOV       ?V1,#0x0
+   \   00002E   74F8         MOV       A,#-0x8
+   \   000030   29           ADD       A,R1
+   \   000031   78..         MOV       R0,#?V0
+   \   000033   12....       LCALL     ?S_SHL
+   \   000036   E5..         MOV       A,?V0
+   \   000038   42F6         ORL       0xf6,A
+     75          
+     76          		if BELONG_TO_PORT2(pin)
+   \                     ??pinPull_3:
+   \   00003A   E9           MOV       A,R1
+   \   00003B   C3           CLR       C
+   \   00003C   9410         SUBB      A,#0x10
+   \   00003E   C3           CLR       C
+   \   00003F   9405         SUBB      A,#0x5
+   \   000041   5071         JNC       ??pinPull_4
+     77          			P2INP |= (1 << (pin - PORT2));
+   \   000043   75..01       MOV       ?V0,#0x1
+   \   000046   75..00       MOV       ?V1,#0x0
+   \   000049   74F0         MOV       A,#-0x10
+   \   00004B   29           ADD       A,R1
+   \   00004C   78..         MOV       R0,#?V0
+   \   00004E   12....       LCALL     ?S_SHL
+   \   000051   E5..         MOV       A,?V0
+   \   000053   42F7         ORL       0xf7,A
+   \   000055   805D         SJMP      ??pinPull_4
+     78          	}
+     79          	else if(pull != PIN_PULLNONE)
+   \                     ??pinPull_1:
+   \   000057   7401         MOV       A,#0x1
+   \   000059   6A           XRL       A,R2
+   \   00005A   6058         JZ        ??pinPull_4
+     80          	{
+     81          		#ifdef PIN_PULLUP
+     82          		P2INP &= ~(1<<5);
+   \   00005C   53F7DF       ANL       0xf7,#0xdf
+     83          		P2INP &= ~(1<<6);
+   \   00005F   53F7BF       ANL       0xf7,#0xbf
+     84          		P2INP &= ~(1<<7);
+   \   000062   53F77F       ANL       0xf7,#0x7f
+     85          		#endif
+     86          
+     87          		#ifdef PIN_PULLDOWN
+     88          		P2INP |= (1<<5);
+     89          		P2INP |= (1<<6);
+     90          		P2INP |= (1<<7);
+     91          		#endif
+     92          
+     93          		if BELONG_TO_PORT0(pin)
+   \   000065   E9           MOV       A,R1
+   \   000066   C3           CLR       C
+   \   000067   9408         SUBB      A,#0x8
+   \   000069   5011         JNC       ??pinPull_5
+     94          			P0INP &= ~(1 << (pin - PORT0));
+   \   00006B   75..01       MOV       ?V0,#0x1
+   \   00006E   75..00       MOV       ?V1,#0x0
+   \   000071   E9           MOV       A,R1
+   \   000072   78..         MOV       R0,#?V0
+   \   000074   12....       LCALL     ?S_SHL
+   \   000077   E5..         MOV       A,?V0
+   \   000079   F4           CPL       A
+   \   00007A   528F         ANL       0x8f,A
+     95          
+     96          		if BELONG_TO_PORT1(pin)
+   \                     ??pinPull_5:
+   \   00007C   E9           MOV       A,R1
+   \   00007D   C3           CLR       C
+   \   00007E   9408         SUBB      A,#0x8
+   \   000080   C3           CLR       C
+   \   000081   9408         SUBB      A,#0x8
+   \   000083   5013         JNC       ??pinPull_6
+     97          			P1INP &= ~(1 << (pin - PORT1));
+   \   000085   75..01       MOV       ?V0,#0x1
+   \   000088   75..00       MOV       ?V1,#0x0
+   \   00008B   74F8         MOV       A,#-0x8
+   \   00008D   29           ADD       A,R1
+   \   00008E   78..         MOV       R0,#?V0
+   \   000090   12....       LCALL     ?S_SHL
+   \   000093   E5..         MOV       A,?V0
+   \   000095   F4           CPL       A
+   \   000096   52F6         ANL       0xf6,A
+     98          
+     99          		if BELONG_TO_PORT2(pin)
+   \                     ??pinPull_6:
+   \   000098   E9           MOV       A,R1
+   \   000099   C3           CLR       C
+   \   00009A   9410         SUBB      A,#0x10
+   \   00009C   C3           CLR       C
+   \   00009D   9405         SUBB      A,#0x5
+   \   00009F   5013         JNC       ??pinPull_4
+    100          			P2INP &= ~(1 << (pin - PORT2));
+   \   0000A1   75..01       MOV       ?V0,#0x1
+   \   0000A4   75..00       MOV       ?V1,#0x0
+   \   0000A7   74F0         MOV       A,#-0x10
+   \   0000A9   29           ADD       A,R1
+   \   0000AA   78..         MOV       R0,#?V0
+   \   0000AC   12....       LCALL     ?S_SHL
+   \   0000AF   E5..         MOV       A,?V0
+   \   0000B1   F4           CPL       A
+   \   0000B2   52F7         ANL       0xf7,A
+    101          	}
+    102          }
+   \                     ??pinPull_4:
+   \   0000B4   D0..         POP       ?V1
+   \   0000B6   D0..         POP       ?V0
+   \   0000B8   02....       LJMP      ?BRET
+   \   0000BB                REQUIRE P0INP
+   \   0000BB                REQUIRE P1INP
+   \   0000BB                REQUIRE P2INP
+    103          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    104          void portPull(uint8_t port, uint8_t pull)
+   \                     ??portPull:
+    105          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    106          	if(pull != PORT_PULLNONE)
+   \   000000   74FF         MOV       A,#-0x1
+   \   000002   6A           XRL       A,R2
+   \   000003   6009         JZ        ??portPull_1
+    107          	{
+    108          		#ifdef PIN_PULLUP
+    109          		P2INP &= ~(1<<5);
+   \   000005   53F7DF       ANL       0xf7,#0xdf
+    110          		P2INP &= ~(1<<6);
+   \   000008   53F7BF       ANL       0xf7,#0xbf
+    111          		P2INP &= ~(1<<7);
+   \   00000B   53F77F       ANL       0xf7,#0x7f
+    112          		#endif
+    113          
+    114          		#ifdef PIN_PULLDOWN
+    115          		P2INP |= (1<<5);
+    116          		P2INP |= (1<<6);
+    117          		P2INP |= (1<<7);
+    118          		#endif
+    119          	}
+    120          
+    121          	if(port == PORT0)
+   \                     ??portPull_1:
+   \   00000E   E9           MOV       A,R1
+   \   00000F   7002         JNZ       ??portPull_2
+    122          		P0INP = pull;
+   \   000011   8A8F         MOV       0x8f,R2
+    123          	if(port == PORT1)
+   \                     ??portPull_2:
+   \   000013   7408         MOV       A,#0x8
+   \   000015   69           XRL       A,R1
+   \   000016   7002         JNZ       ??portPull_3
+    124          		P1INP = pull;
+   \   000018   8AF6         MOV       0xf6,R2
+    125          	if(port == PORT2)
+   \                     ??portPull_3:
+   \   00001A   7410         MOV       A,#0x10
+   \   00001C   69           XRL       A,R1
+   \   00001D   7002         JNZ       ??portPull_4
+    126          		P2INP = pull;
+   \   00001F   8AF7         MOV       0xf7,R2
+    127          }
+   \                     ??portPull_4:
+   \   000021   02....       LJMP      ?BRET
+   \   000024                REQUIRE P2INP
+   \   000024                REQUIRE P0INP
+   \   000024                REQUIRE P1INP
+    128          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    129          void pinWrite(uint8_t pin, uint8_t val)
+   \                     ??pinWrite:
+    130          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   C0..         PUSH      ?V0
+   \   000002   C0..         PUSH      ?V1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    131          	if (val)
+   \   000004   EA           MOV       A,R2
+   \   000005   604E         JZ        ??pinWrite_1
+    132          	{
+    133          		if BELONG_TO_PORT0(pin)
+   \   000007   E9           MOV       A,R1
+   \   000008   C3           CLR       C
+   \   000009   9408         SUBB      A,#0x8
+   \   00000B   5010         JNC       ??pinWrite_2
+    134          			P0 |= (1 << (pin - PORT0));
+   \   00000D   75..01       MOV       ?V0,#0x1
+   \   000010   75..00       MOV       ?V1,#0x0
+   \   000013   E9           MOV       A,R1
+   \   000014   78..         MOV       R0,#?V0
+   \   000016   12....       LCALL     ?S_SHL
+   \   000019   E5..         MOV       A,?V0
+   \   00001B   4280         ORL       0x80,A
+    135          
+    136          		if BELONG_TO_PORT1(pin)
+   \                     ??pinWrite_2:
+   \   00001D   E9           MOV       A,R1
+   \   00001E   C3           CLR       C
+   \   00001F   9408         SUBB      A,#0x8
+   \   000021   C3           CLR       C
+   \   000022   9408         SUBB      A,#0x8
+   \   000024   5012         JNC       ??pinWrite_3
+    137          			P1 |= (1 << (pin - PORT1));
+   \   000026   75..01       MOV       ?V0,#0x1
+   \   000029   75..00       MOV       ?V1,#0x0
+   \   00002C   74F8         MOV       A,#-0x8
+   \   00002E   29           ADD       A,R1
+   \   00002F   78..         MOV       R0,#?V0
+   \   000031   12....       LCALL     ?S_SHL
+   \   000034   E5..         MOV       A,?V0
+   \   000036   4290         ORL       0x90,A
+    138          
+    139          		if BELONG_TO_PORT2(pin)
+   \                     ??pinWrite_3:
+   \   000038   E9           MOV       A,R1
+   \   000039   C3           CLR       C
+   \   00003A   9410         SUBB      A,#0x10
+   \   00003C   C3           CLR       C
+   \   00003D   9405         SUBB      A,#0x5
+   \   00003F   5063         JNC       ??pinWrite_4
+    140          			P2 |= (1 << (pin - PORT2));
+   \   000041   75..01       MOV       ?V0,#0x1
+   \   000044   75..00       MOV       ?V1,#0x0
+   \   000047   74F0         MOV       A,#-0x10
+   \   000049   29           ADD       A,R1
+   \   00004A   78..         MOV       R0,#?V0
+   \   00004C   12....       LCALL     ?S_SHL
+   \   00004F   E5..         MOV       A,?V0
+   \   000051   42A0         ORL       0xa0,A
+   \   000053   804F         SJMP      ??pinWrite_4
+    141          	}
+    142          	else
+    143          	{
+    144          		if BELONG_TO_PORT0(pin)
+   \                     ??pinWrite_1:
+   \   000055   E9           MOV       A,R1
+   \   000056   C3           CLR       C
+   \   000057   9408         SUBB      A,#0x8
+   \   000059   5011         JNC       ??pinWrite_5
+    145          			P0 &= ~(1 << (pin - PORT0));
+   \   00005B   75..01       MOV       ?V0,#0x1
+   \   00005E   75..00       MOV       ?V1,#0x0
+   \   000061   E9           MOV       A,R1
+   \   000062   78..         MOV       R0,#?V0
+   \   000064   12....       LCALL     ?S_SHL
+   \   000067   E5..         MOV       A,?V0
+   \   000069   F4           CPL       A
+   \   00006A   5280         ANL       0x80,A
+    146          
+    147          		if BELONG_TO_PORT1(pin)
+   \                     ??pinWrite_5:
+   \   00006C   E9           MOV       A,R1
+   \   00006D   C3           CLR       C
+   \   00006E   9408         SUBB      A,#0x8
+   \   000070   C3           CLR       C
+   \   000071   9408         SUBB      A,#0x8
+   \   000073   5013         JNC       ??pinWrite_6
+    148          			P1 &= ~(1 << (pin - PORT1));
+   \   000075   75..01       MOV       ?V0,#0x1
+   \   000078   75..00       MOV       ?V1,#0x0
+   \   00007B   74F8         MOV       A,#-0x8
+   \   00007D   29           ADD       A,R1
+   \   00007E   78..         MOV       R0,#?V0
+   \   000080   12....       LCALL     ?S_SHL
+   \   000083   E5..         MOV       A,?V0
+   \   000085   F4           CPL       A
+   \   000086   5290         ANL       0x90,A
+    149          
+    150          		if BELONG_TO_PORT2(pin)
+   \                     ??pinWrite_6:
+   \   000088   E9           MOV       A,R1
+   \   000089   C3           CLR       C
+   \   00008A   9410         SUBB      A,#0x10
+   \   00008C   C3           CLR       C
+   \   00008D   9405         SUBB      A,#0x5
+   \   00008F   5013         JNC       ??pinWrite_4
+    151          			P2 &= ~(1 << (pin - PORT2));
+   \   000091   75..01       MOV       ?V0,#0x1
+   \   000094   75..00       MOV       ?V1,#0x0
+   \   000097   74F0         MOV       A,#-0x10
+   \   000099   29           ADD       A,R1
+   \   00009A   78..         MOV       R0,#?V0
+   \   00009C   12....       LCALL     ?S_SHL
+   \   00009F   E5..         MOV       A,?V0
+   \   0000A1   F4           CPL       A
+   \   0000A2   52A0         ANL       0xa0,A
+    152          	}
+    153          }
+   \                     ??pinWrite_4:
+   \   0000A4   D0..         POP       ?V1
+   \   0000A6   D0..         POP       ?V0
+   \   0000A8   02....       LJMP      ?BRET
+   \   0000AB                REQUIRE _A_P0
+   \   0000AB                REQUIRE _A_P1
+   \   0000AB                REQUIRE _A_P2
+    154          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    155          void portWrite(uint8_t port, uint8_t val)
+   \                     ??portWrite:
+    156          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    157          	if(port == PORT0)
+   \   000000   E9           MOV       A,R1
+   \   000001   7002         JNZ       ??portWrite_1
+    158          		P0 = val;
+   \   000003   8A80         MOV       0x80,R2
+    159          	if(port == PORT1)
+   \                     ??portWrite_1:
+   \   000005   7408         MOV       A,#0x8
+   \   000007   69           XRL       A,R1
+   \   000008   7002         JNZ       ??portWrite_2
+    160          		P1 = val;
+   \   00000A   8A90         MOV       0x90,R2
+    161          	if(port == PORT2)
+   \                     ??portWrite_2:
+   \   00000C   7410         MOV       A,#0x10
+   \   00000E   69           XRL       A,R1
+   \   00000F   7002         JNZ       ??portWrite_3
+    162          		P2 = val;
+   \   000011   8AA0         MOV       0xa0,R2
+    163          }
+   \                     ??portWrite_3:
+   \   000013   02....       LJMP      ?BRET
+   \   000016                REQUIRE _A_P0
+   \   000016                REQUIRE _A_P1
+   \   000016                REQUIRE _A_P2
+    164          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    165          uint8_t pinRead(uint8_t pin)
+   \                     ??pinRead:
+    166          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   C0..         PUSH      ?V0
+   \   000002   C0..         PUSH      ?V1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   \   000004   E9           MOV       A,R1
+   \   000005   FA           MOV       R2,A
+    167          	uint8_t val;
+    168          
+    169          	if BELONG_TO_PORT0(pin)
+   \   000006   EA           MOV       A,R2
+   \   000007   C3           CLR       C
+   \   000008   9408         SUBB      A,#0x8
+   \   00000A   5011         JNC       ??pinRead_1
+    170          		val = (P0 & (1 << (pin - PORT0)));
+   \   00000C   75..01       MOV       ?V0,#0x1
+   \   00000F   75..00       MOV       ?V1,#0x0
+   \   000012   EA           MOV       A,R2
+   \   000013   78..         MOV       R0,#?V0
+   \   000015   12....       LCALL     ?S_SHL
+   \   000018   E5..         MOV       A,?V0
+   \   00001A   5580         ANL       A,0x80
+   \   00001C   F9           MOV       R1,A
+    171          
+    172          	if BELONG_TO_PORT1(pin)
+   \                     ??pinRead_1:
+   \   00001D   EA           MOV       A,R2
+   \   00001E   C3           CLR       C
+   \   00001F   9408         SUBB      A,#0x8
+   \   000021   C3           CLR       C
+   \   000022   9408         SUBB      A,#0x8
+   \   000024   5013         JNC       ??pinRead_2
+    173          		val = (P1 & (1 << (pin - PORT1)));
+   \   000026   75..01       MOV       ?V0,#0x1
+   \   000029   75..00       MOV       ?V1,#0x0
+   \   00002C   74F8         MOV       A,#-0x8
+   \   00002E   2A           ADD       A,R2
+   \   00002F   78..         MOV       R0,#?V0
+   \   000031   12....       LCALL     ?S_SHL
+   \   000034   E5..         MOV       A,?V0
+   \   000036   5590         ANL       A,0x90
+   \   000038   F9           MOV       R1,A
+    174          
+    175          	if BELONG_TO_PORT2(pin)
+   \                     ??pinRead_2:
+   \   000039   EA           MOV       A,R2
+   \   00003A   C3           CLR       C
+   \   00003B   9410         SUBB      A,#0x10
+   \   00003D   C3           CLR       C
+   \   00003E   9405         SUBB      A,#0x5
+   \   000040   5013         JNC       ??pinRead_3
+    176          		val = (P2 & (1 << (pin - PORT2)));
+   \   000042   75..01       MOV       ?V0,#0x1
+   \   000045   75..00       MOV       ?V1,#0x0
+   \   000048   74F0         MOV       A,#-0x10
+   \   00004A   2A           ADD       A,R2
+   \   00004B   78..         MOV       R0,#?V0
+   \   00004D   12....       LCALL     ?S_SHL
+   \   000050   E5..         MOV       A,?V0
+   \   000052   55A0         ANL       A,0xa0
+   \   000054   F9           MOV       R1,A
+    177          
+    178          	return val;
+   \                     ??pinRead_3:
+   \   000055   D0..         POP       ?V1
+   \   000057   D0..         POP       ?V0
+   \   000059   02....       LJMP      ?BRET
+   \   00005C                REQUIRE _A_P0
+   \   00005C                REQUIRE _A_P1
+   \   00005C                REQUIRE _A_P2
+    179          }
+    180          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    181          uint8_t portRead(uint8_t port)
+   \                     ??portRead:
+    182          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+   \   000000   E9           MOV       A,R1
+   \   000001   F8           MOV       R0,A
+    183          	uint8_t val;
+    184          
+    185          	if(port == PORT0)
+   \   000002   E8           MOV       A,R0
+   \   000003   7002         JNZ       ??portRead_1
+    186          		val = P0;
+   \   000005   A980         MOV       R1,0x80+0x0
+    187          	if(port == PORT1)
+   \                     ??portRead_1:
+   \   000007   7408         MOV       A,#0x8
+   \   000009   68           XRL       A,R0
+   \   00000A   7002         JNZ       ??portRead_2
+    188          		val = P1;
+   \   00000C   A990         MOV       R1,0x90+0x0
+    189          	if(port == PORT2)
+   \                     ??portRead_2:
+   \   00000E   7410         MOV       A,#0x10
+   \   000010   68           XRL       A,R0
+   \   000011   7002         JNZ       ??portRead_3
+    190          		val = P2;
+   \   000013   A9A0         MOV       R1,0xa0+0x0
+    191          	
+    192          	return val;
+   \                     ??portRead_3:
+   \   000015   02....       LJMP      ?BRET
+   \   000018                REQUIRE _A_P0
+   \   000018                REQUIRE _A_P1
+   \   000018                REQUIRE _A_P2
+    193          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??pinFunction::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??pinFunction
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??portFunction::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??portFunction
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??pinDirect::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??pinDirect
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??portDirect::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??portDirect
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??pinPull::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??pinPull
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??portPull::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??portPull
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??pinWrite::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??pinWrite
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??portWrite::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??portWrite
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??pinRead::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??pinRead
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??portRead::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ??portRead
+
+   Maximum stack usage in bytes:
+
+   ISTACK Function
+   ------ --------
+      2   pinDirect(uint8_t, uint8_t)
+      2   pinFunction(uint8_t, uint8_t)
+      2   pinPull(uint8_t, uint8_t)
+      2   pinRead(uint8_t)
+      2   pinWrite(uint8_t, uint8_t)
+      0   portDirect(uint8_t, uint8_t)
+      0   portFunction(uint8_t, uint8_t)
+      0   portPull(uint8_t, uint8_t)
+      0   portRead(uint8_t)
+      0   portWrite(uint8_t, uint8_t)
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       1  P0DIR
+       1  P0INP
+       1  P0SEL
+       1  P1DIR
+       1  P1INP
+       1  P1SEL
+       1  P2DIR
+       1  P2INP
+       1  P2SEL
+       1  _A_P0
+       1  _A_P1
+       1  _A_P2
+     172  pinDirect(uint8_t, uint8_t)
+       6  pinDirect(uint8_t, uint8_t)::?relay
+     172  pinFunction(uint8_t, uint8_t)
+       6  pinFunction(uint8_t, uint8_t)::?relay
+     187  pinPull(uint8_t, uint8_t)
+       6  pinPull(uint8_t, uint8_t)::?relay
+      92  pinRead(uint8_t)
+       6  pinRead(uint8_t)::?relay
+     171  pinWrite(uint8_t, uint8_t)
+       6  pinWrite(uint8_t, uint8_t)::?relay
+      22  portDirect(uint8_t, uint8_t)
+       6  portDirect(uint8_t, uint8_t)::?relay
+      22  portFunction(uint8_t, uint8_t)
+       6  portFunction(uint8_t, uint8_t)::?relay
+      36  portPull(uint8_t, uint8_t)
+       6  portPull(uint8_t, uint8_t)::?relay
+      24  portRead(uint8_t)
+       6  portRead(uint8_t)::?relay
+      22  portWrite(uint8_t, uint8_t)
+       6  portWrite(uint8_t, uint8_t)::?relay
+
+ 
+ 920 bytes in segment BANKED_CODE
+  60 bytes in segment BANK_RELAYS
+  12 bytes in segment SFR_AN
+ 
+  60 bytes of CODE     memory
+   0 bytes of DATA     memory (+ 12 bytes shared)
+ 920 bytes of HUGECODE memory
+
+Errors: none
+Warnings: none
